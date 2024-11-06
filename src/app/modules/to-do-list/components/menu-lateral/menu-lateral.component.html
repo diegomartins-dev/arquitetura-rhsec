@@ -1,0 +1,61 @@
+<div class="example-container dark" [class.example-is-mobile]="mobileQuery.matches">
+	<mat-toolbar class="example-toolbar">
+		<button mat-icon-button (click)="snav.toggle()">
+			<mat-icon>menu</mat-icon>
+		</button>
+		<h1 class="example-app-name">Responsive TEST</h1>
+	</mat-toolbar>
+
+	<mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+		<mat-sidenav
+			class="mat-sidenav"
+			#snav
+			[mode]="'over'"
+			[fixedInViewport]="mobileQuery.matches"
+			fixedTopGap="56"
+			(closed)="selectCategory(undefined, 0)"
+			[opened]="true"
+		>
+			<div class="nav-container">
+				@for (level of levels; track level; let i = $index) {
+					<div class="column" [@columnAnimation]="isMobile ? 'vertical' : 'horizontal'">
+						@if (!isMobile) {
+							<mat-list>
+								@for (item of level; track item) {
+									<mat-list-item class="category" (click)="selectCategory(item, i + 1)">
+										<div class="title">
+											{{ item.name }}
+											@if (item.subcategories) {
+												@if (this.levels[i + 1] === item.subcategories) {
+													<mat-icon>keyboard_arrow_right</mat-icon>
+												} @else {
+													<mat-icon>keyboard_arrow_left</mat-icon>
+												}
+											}
+										</div>
+									</mat-list-item>
+								}
+							</mat-list>
+						} @else {
+							<mat-list>
+								<mat-list-item class="category" *ngFor="let category of level" (click)="toggleCategory(category)">
+									{{ category.name }}
+
+									<div *ngIf="category?.expanded" class="subcategories">
+										<div *ngFor="let subcategory of category?.subcategories" class="subcategory-item">
+											{{ subcategory.name }}
+										</div>
+									</div>
+								</mat-list-item>
+							</mat-list>
+						}
+					</div>
+				}
+			</div>
+		</mat-sidenav>
+
+		<mat-sidenav-content>
+			<ng-content></ng-content>
+		</mat-sidenav-content>
+	</mat-sidenav-container>
+</div>

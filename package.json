@@ -3,21 +3,26 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "start": "ng serve --aot",
+    "build": "ng build --aot",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "format": "prettier --write src/**/*.{js,ts,jsx,tsx,css,scss,html,json}",
+    "format:check": "prettier --check src/**/*.{js,ts,jsx,tsx,css,scss,html,json}"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^18.2.0",
+    "@angular/cdk": "^18.2.11",
     "@angular/common": "^18.2.0",
     "@angular/compiler": "^18.2.0",
     "@angular/core": "^18.2.0",
     "@angular/forms": "^18.2.0",
+    "@angular/material": "^18.2.11",
     "@angular/platform-browser": "^18.2.0",
     "@angular/platform-browser-dynamic": "^18.2.0",
     "@angular/router": "^18.2.0",
+    "angular-18-tasks": "file:../angular-18-tasks",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"
@@ -33,6 +38,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "prettier": "^3.3.3",
     "typescript": "~5.5.2"
   }
 }

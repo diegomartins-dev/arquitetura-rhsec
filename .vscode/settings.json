@@ -1,0 +1,31 @@
+{
+	"editor.defaultFormatter": "esbenp.prettier-vscode", // Define Prettier como o formatador padrão
+	"editor.formatOnSave": true, // Formata automaticamente ao salvar
+	"editor.tabSize": 2, //Define a largura do tab para 2 espaços no editor
+	//"prettier.tabWidth": 2, // Define a largura do tab para 2 espaços
+	//"prettier.semi": true, // Adiciona ponto e vírgula no final das linhas
+	//"prettier.singleQuote": true, // Usa aspas simples
+	//"prettier.trailingComma": "none", // Adiciona vírgulas ao final de objetos e arrays
+	//"prettier.bracketSpacing": true, // Espaço entre chaves em objetos
+	//"prettier.arrowParens": "always", // Adiciona parênteses em funções de uma linha
+	/*"files.exclude": {
+		"node_modules": true,
+		"dist": true
+	},*/
+	"[javascript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
+	},
+	"[html]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
+	},
+	"[typescript]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
+	},
+	"[scss]": {
+		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.formatOnSave": true
+	}
+}
