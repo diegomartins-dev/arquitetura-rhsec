@@ -11,6 +11,12 @@
 		width: fit-content;
 		border-radius: 0;
 		border-right: 2px solid var(--black-010);
+
+		@media (max-width: 768px) {
+			& {
+				min-width: 60%;
+			}
+		}
 	}
 }
 
@@ -40,41 +46,21 @@ h1.example-app-name {
 
 .nav-container {
 	display: flex;
-	height: 100%;
-	.column {
-		border-left: 2px solid var(--black-010);
-		min-width: 250px;
-		margin-right: 16px;
-
-		&:first-child {
-			border: none;
+	&.horizontal-layout {
+		flex-direction: row;
+		.column {
+			min-width: 250px;
+			margin-right: 16px;
+			transition: transform 0.3s ease;
 		}
 	}
-
-	&.mobile {
-		flex-direction: column;
+	&.vertical-layout {
+		display: block;
+		height: auto;
 		.column {
 			width: 100%;
+			margin-bottom: 16px;
+			transition: transform 0.3s ease;
 		}
-	}
-
-	.mdc-list {
-		.category {
-			.title {
-				display: flex;
-				justify-content: space-between;
-				align-items: center;
-			}
-		}
-	}
-}
-
-.category {
-	display: block;
-	height: auto !important;
-
-	.subcategories {
-		display: flex;
-		flex-direction: column;
 	}
 }

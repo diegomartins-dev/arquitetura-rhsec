@@ -1,11 +1,15 @@
-import { MediaMatcher } from '@angular/cdk/layout';
+import { BreakpointObserver, Breakpoints, MediaMatcher } from '@angular/cdk/layout';
 import {
 	AfterContentChecked,
 	ChangeDetectorRef,
 	Component,
+	ElementRef,
 	HostListener,
+	OnChanges,
 	OnDestroy,
 	OnInit,
+	SimpleChanges,
+	ViewChild,
 	inject
 } from '@angular/core';
 import { MatListModule } from '@angular/material/list';
@@ -13,10 +17,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { NgFor, NgIf } from '@angular/common';
+import { NgClass, NgFor, NgIf } from '@angular/common';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { MenuVerticalComponent } from './menu-vertical/menu-vertical.component';
 
-interface Category {
+export interface Category {
 	name: string;
 	subcategories?: Category[];
 	expanded?: boolean;
@@ -27,40 +32,35 @@ interface Category {
 	templateUrl: 'menu-lateral.component.html',
 	styleUrl: 'menu-lateral.component.scss',
 	standalone: true,
-	imports: [MatToolbarModule, MatButtonModule, MatIconModule, MatSidenavModule, MatListModule, NgFor, NgIf],
+	imports: [
+		MatToolbarModule,
+		MatButtonModule,
+		MatIconModule,
+		MatSidenavModule,
+		MatListModule,
+		NgFor,
+		NgIf,
+		NgClass,
+		MenuVerticalComponent
+	],
 	animations: [
 		trigger('columnAnimation', [
-			transition('* => horizontal', [
-				transition(':enter', [
-					style({ opacity: 0, transform: 'translateX(-20px)' }),
-					animate('500ms linear', style({ opacity: 1, transform: 'translateX(0)' }))
-				]),
-				transition(':leave', [animate('100ms linear', style({ opacity: 0, transform: 'translateX(-20px)' }))])
+			transition(':enter', [
+				style({ opacity: 0, transform: 'translateX(-20px)' }),
+				animate('300ms ease-out', style({ opacity: 1, transform: 'translateX(0)' }))
 			]),
-			transition('horizontal => *', [
-				transition(':leave', [
-					style({ opacity: 0, transform: 'translateX(-20px)' }),
-					animate('500ms linear', style({ opacity: 1, transform: 'translateX(0)' }))
-				]),
-				transition(':enter', [animate('100ms linear', style({ opacity: 0, transform: 'translateX(-20px)' }))])
+			transition(':leave', [animate('300ms ease-in', style({ opacity: 0, transform: 'translateX(-20px)' }))])
+		]),
+		trigger('expandDown', [
+			transition(':enter', [
+				style({ opacity: 0, transform: 'translateY(-20px)' }),
+				animate('300ms ease-out', style({ opacity: 1, transform: 'translateY(0)' }))
 			]),
-			// transition('void => vertical', [
-			// 	style({ opacity: 0, height: 0, overflow: 'hidden' }),
-			// 	animate('300ms ease-out', style({ opacity: 1, height: '*' }))
-			// ]),
-			//
-			transition('* => vertical', [
-				transition(':enter', [
-					style({ height: 0, opacity: 0 }),
-					animate('300ms ease-out', style({ height: '*', opacity: 1 }))
-				]),
-				transition(':leave', [animate('300ms ease-in', style({ height: 0, opacity: 0 }))])
-			]),
-			transition('* => *', [animate('300ms ease-in', style({ opacity: 0, height: 0 }))])
+			transition(':leave', [animate('300ms ease-in', style({ opacity: 0, transform: 'translateY(20px)' }))])
 		])
 	]
 })
-export class MenuLateralComponent implements OnInit, OnDestroy, AfterContentChecked {
+export class MenuLateralComponent implements OnInit, OnDestroy {
 	mobileQuery: MediaQueryList;
 
 	fillerNav: Category[] = [
@@ -88,64 +88,48 @@ export class MenuLateralComponent implements OnInit, OnDestroy, AfterContentChec
 	changeDetectorRef = inject(ChangeDetectorRef);
 	media = inject(MediaMatcher);
 
-	constructor() {
+	constructor(private breakpointObserver: BreakpointObserver) {
 		this.mobileQuery = this.media.matchMedia('(max-width: 600px)');
 		this._mobileQueryListener = () => this.changeDetectorRef.detectChanges();
 		this.mobileQuery.addListener(this._mobileQueryListener);
 	}
-
 	ngOnInit(): void {
 		this.changeDetectorRef.detectChanges();
+		this.breakpointObserver.observe([Breakpoints.Handset]).subscribe((result) => {
+			this.isMobile = result.matches;
+		});
 	}
 
-	ngAfterContentChecked(): void {
-		this.changeDetectorRef.detectChanges();
-	}
+	menuOpened = false;
 
 	isMobile = false;
 	@HostListener('window:resize', ['$event'])
 	@HostListener('window:load', ['$event'])
 	onResize(event: Event) {
-		console.log(event);
 		this.isMobile = window.innerWidth <= 768;
 		this.levels = [this.fillerNav];
+		this.menuOpened = false;
 	}
 
 	levels: Category[][] = [this.fillerNav];
-	//clicked = false;
-	selectCategory(category?: Category, levelIndex?: number): void {
-		//mantem aberto
-		// this.levels = this.levels.slice(0, levelIndex);
-		// if (category.subcategories) {
-		// 	this.levels[levelIndex] = category.subcategories;
-		// } else {
-		// 	this.levels = [this.fillerNav];
-		// }
-		console.log(category, levelIndex);
+	closeMenu(): void {
+		this.levels = [this.fillerNav];
+		this.menuOpened = false;
+	}
 
-		//toggle
-		if (category == null) this.levels = [this.fillerNav];
-		if (category && levelIndex) {
+	toggleSubcategory(category: Category, levelIndex: number): void {
+		if (this.isMobile) {
+			category.expanded = !category.expanded;
+		} else {
 			if (this.levels[levelIndex] === category.subcategories) {
 				this.levels = this.levels.slice(0, levelIndex);
-				if (!category.subcategories) {
-					this.levels = [this.fillerNav];
-				}
-			} else if (category.subcategories) {
+			} else {
 				this.levels = this.levels.slice(0, levelIndex);
 				if (category.subcategories) {
 					this.levels[levelIndex] = category.subcategories;
 				}
-			} else {
-				this.levels = [this.fillerNav];
 			}
 		}
-	}
-
-	showSubcategories?: boolean;
-	toggleCategory(category: Category): void {
-		console.log(category);
-		category.expanded = !category.expanded;
 	}
 
 	ngOnDestroy(): void {

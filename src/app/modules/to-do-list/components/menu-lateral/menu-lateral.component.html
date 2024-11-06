@@ -13,44 +13,37 @@
 			[mode]="'over'"
 			[fixedInViewport]="mobileQuery.matches"
 			fixedTopGap="56"
-			(closed)="selectCategory(undefined, 0)"
-			[opened]="true"
+			(closed)="closeMenu()"
+			[(opened)]="menuOpened"
 		>
-			<div class="nav-container">
-				@for (level of levels; track level; let i = $index) {
-					<div class="column" [@columnAnimation]="isMobile ? 'vertical' : 'horizontal'">
-						@if (!isMobile) {
-							<mat-list>
-								@for (item of level; track item) {
-									<mat-list-item class="category" (click)="selectCategory(item, i + 1)">
-										<div class="title">
-											{{ item.name }}
-											@if (item.subcategories) {
-												@if (this.levels[i + 1] === item.subcategories) {
-													<mat-icon>keyboard_arrow_right</mat-icon>
-												} @else {
-													<mat-icon>keyboard_arrow_left</mat-icon>
-												}
-											}
-										</div>
-									</mat-list-item>
-								}
-							</mat-list>
-						} @else {
-							<mat-list>
-								<mat-list-item class="category" *ngFor="let category of level" (click)="toggleCategory(category)">
-									{{ category.name }}
-
-									<div *ngIf="category?.expanded" class="subcategories">
-										<div *ngFor="let subcategory of category?.subcategories" class="subcategory-item">
-											{{ subcategory.name }}
-										</div>
-									</div>
-								</mat-list-item>
-							</mat-list>
+			<div class="nav-container" [ngClass]="isMobile ? 'vertical-layout' : 'horizontal-layout'">
+				<div
+					*ngFor="let level of levels; let i = index"
+					class="column"
+					[@columnAnimation]="isMobile ? 'expandDown' : 'expandRight'"
+				>
+					<mat-list>
+						@for (item of level; track item) {
+							<mat-list-item (click)="toggleSubcategory(item, i + 1)">
+								<div class="title">
+									{{ item.name }}
+									@if (item?.subcategories && item?.expanded) {
+										<mat-icon>keyboard_arrow_left</mat-icon>
+									} @else if (item?.subcategories && !item?.expanded) {
+										<mat-icon>keyboard_arrow_right</mat-icon>
+									}
+								</div>
+							</mat-list-item>
+							<div *ngIf="isMobile && item.expanded" class="submenu">
+								<app-menu-vertical
+									[item]="item?.subcategories"
+									[levelIndex]="1"
+									[isMobile]="isMobile"
+								></app-menu-vertical>
+							</div>
 						}
-					</div>
-				}
+					</mat-list>
+				</div>
 			</div>
 		</mat-sidenav>
 
