@@ -1,7 +1,7 @@
 @for (it of item; track it; let i = $index) {
-	<mat-list-item (click)="toggleSubcategory(i)">
-		<div class="title">
-			{{ it?.name }}
+	<mat-list-item (click)="toggleSubcategory(i)" class="items" @expand>
+		<div class="title" [ngStyle]="{ 'padding-left': calcPadding(levelIndex) }">
+			<span>{{ it?.name }}</span>
 			@if (it?.subcategories && it?.expanded) {
 				<mat-icon>keyboard_arrow_up</mat-icon>
 			} @else if (it?.subcategories && !it?.expanded) {
@@ -9,7 +9,7 @@
 			}
 		</div>
 	</mat-list-item>
-	<div *ngIf="it?.subcategories && it?.expanded" class="submenu">
+	<div *ngIf="it?.subcategories && it?.expanded" class="submenu" @expand>
 		<mat-list>
 			<app-menu-vertical
 				[item]="it?.subcategories"

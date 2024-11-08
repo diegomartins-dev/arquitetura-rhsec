@@ -15,6 +15,7 @@
 			placeholder="Adicione um novo item"
 			autofocus
 			(input)="updateItemValue(item.id, inputValue.value, item.checked)"
+			data-cy="login-input"
 		/>
 
 		<button class="btn btn-danger-circle" title="delete este item" (click)="deleteItemValue(item.id)"></button>
