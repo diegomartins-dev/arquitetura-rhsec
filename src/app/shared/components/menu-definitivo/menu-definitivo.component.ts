@@ -84,6 +84,7 @@ export class MenuDefinitivoComponent {
 	ngOnInit(): void {
 		this.breakpointObserver.observe([Breakpoints.Handset]).subscribe((result) => {
 			this.isMobile = result.matches;
+			this.openCloseMenu();
 		});
 	}
 
@@ -91,8 +92,12 @@ export class MenuDefinitivoComponent {
 	@HostListener('window:load', ['$event'])
 	onResize(event: Event) {
 		this.isMobile = window.innerWidth <= 768;
-		!this.isMobile ? (this.menuOpened = true) : (this.menuOpened = false);
+		this.openCloseMenu();
 		this.initializeMenu();
+	}
+
+	openCloseMenu() {
+		!this.isMobile ? (this.menuOpened = true) : (this.menuOpened = false);
 	}
 
 	closeMenu(): void {}
