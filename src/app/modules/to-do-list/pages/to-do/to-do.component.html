@@ -9,7 +9,7 @@
 		}
 	</div>
 } @else {
-	<app-menu-lateral>
+	<app-menu-definitivo>
 		<app-input-add-item [inputListItems]="getAllItems()" (outputAddListItem)="addItem($event)"></app-input-add-item>
 
 		<main class="container">
@@ -32,8 +32,7 @@
 				></app-input-list-item>
 			}
 		</main>
-	</app-menu-lateral>
-
+	</app-menu-definitivo>
 	<footer>
 		<button class="btn btn-danger" (click)="deleteAllItems()">Deletar todos os items</button>
 	</footer>

@@ -11,6 +11,7 @@
 		width: fit-content;
 		border-radius: 0;
 		border-right: 2px solid var(--black-010);
+		width: 250px;
 
 		@media (max-width: 768px) {
 			& {
@@ -35,6 +36,10 @@ h1.example-app-name {
 	margin-top: 64px;
 }
 
+.margin-top-none {
+	margin-top: 0;
+}
+
 .example-is-mobile .example-sidenav-container {
 	flex: 1 0 auto;
 }
@@ -49,7 +54,7 @@ h1.example-app-name {
 .nav-container {
 	display: flex;
 	&.horizontal-layout {
-		flex-direction: row;
+		flex-direction: column;
 		.column {
 			min-width: 250px;
 			margin-right: 16px;
@@ -76,4 +81,66 @@ h1.example-app-name {
 
 .items {
 	margin: 14px 0;
+}
+
+.hide {
+	display: none !important;
+}
+
+.margin-top-none {
+	margin-top: 0 !important;
+}
+
+.menu-container {
+	display: flex;
+	flex-direction: column;
+	overflow-x: auto;
+}
+
+.column {
+	padding: 8px;
+	transition: transform 0.3s ease;
+}
+
+.submenu-column {
+	margin-left: 20px;
+	transition:
+		opacity 0.3s ease,
+		transform 0.3s ease;
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.submenu-column.hidden {
+	opacity: 0;
+	transform: translateX(-20px);
+}
+
+//tentativa
+.sidenav {
+	width: 250px;
+	background-color: #f7f7f7;
+}
+
+.category {
+	padding: 16px;
+	cursor: pointer;
+}
+
+.submenu {
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	background-color: var(--mat-expansion-container-background-color);
+	// padding: 8px;
+	// border: 1px solid #ddd;
+
+	box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+	min-width: 150px;
+	z-index: 1000;
+	// height: -webkit-fill-available;
+}
+
+.content {
+	padding: 16px;
 }

@@ -1,16 +1,17 @@
-import { ToDoService } from './../../services/to-do.service';
+import { ToDoService } from '../../services/to-do.service';
 import { Component, signal, inject } from '@angular/core';
 import { InputAddItemComponent } from '../../components/input-add-item/input-add-item.component';
 import { IListItem } from '../../interfaces/i-list-item.interface';
 import { InputListItemComponent } from '../../components/input-list-item/input-list-item.component';
-import { MenuLateralComponent } from '../../components/menu-lateral/menu-lateral.component';
+import { MenuLateralComponent } from '../../../../shared/components/menu-lateral/menu-lateral.component';
+import { MenuDefinitivoComponent } from '../../../../shared/components/menu-definitivo/menu-definitivo.component';
 
 @Component({
-	selector: 'app-list',
+	selector: 'app-to-do',
 	standalone: true,
-	imports: [InputAddItemComponent, InputListItemComponent, MenuLateralComponent],
-	templateUrl: './list.component.html',
-	styleUrl: './list.component.scss'
+	imports: [InputAddItemComponent, InputListItemComponent, MenuLateralComponent, MenuDefinitivoComponent],
+	templateUrl: './to-do.component.html',
+	styleUrl: './to-do.component.scss'
 })
 export class ListComponent {
 	isAddItem = signal<boolean>(true);

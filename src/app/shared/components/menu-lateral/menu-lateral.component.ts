@@ -9,6 +9,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { MenuVerticalComponent } from './menu-vertical/menu-vertical.component';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
 
 export interface Category {
 	name: string;
@@ -30,7 +31,8 @@ export interface Category {
 		NgFor,
 		NgIf,
 		NgClass,
-		MenuVerticalComponent
+		MenuVerticalComponent,
+		CdkAccordionModule
 	],
 	animations: [
 		trigger('columnAnimation', [
@@ -88,7 +90,7 @@ export class MenuLateralComponent implements OnInit {
 		});
 	}
 
-	menuOpened = false;
+	menuOpened = true;
 
 	isMobile = false;
 	@HostListener('window:resize', ['$event'])
@@ -102,7 +104,7 @@ export class MenuLateralComponent implements OnInit {
 
 	initizalideMenu() {
 		this.menuLevels = [this.menuDB];
-		this.menuOpened = false;
+		// this.menuOpened = false;
 		this.resetMenuLevels(this.menuLevels[0]);
 	}
 
@@ -141,4 +143,7 @@ export class MenuLateralComponent implements OnInit {
 			}
 		}
 	}
+
+	items = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
+	expandedIndex = 0;
 }
