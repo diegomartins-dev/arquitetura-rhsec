@@ -1,0 +1,16 @@
+@for (category of menuCategory; track category) {
+	@if (category?.subcategories) {
+		<mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+			<mat-expansion-panel-header class="body">
+				<mat-panel-title> {{ category.name }}</mat-panel-title>
+			</mat-expansion-panel-header>
+			@if (category?.subcategories) {
+				<mat-accordion>
+					<app-item-menu [menuCategory]="category.subcategories"></app-item-menu>
+				</mat-accordion>
+			}
+		</mat-expansion-panel>
+	} @else {
+		<mat-list-item role="listitem">{{ category.name }}</mat-list-item>
+	}
+}

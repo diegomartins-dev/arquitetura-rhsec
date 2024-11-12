@@ -9,11 +9,11 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MenuItemComponent } from './menu-item/menu-item.component';
 
 export interface Category {
 	name: string;
 	subcategories?: Category[];
-	expanded?: boolean;
 }
 
 @Component({
@@ -32,11 +32,12 @@ export interface Category {
 		NgClass,
 		NgStyle,
 		CdkAccordionModule,
-		MatExpansionModule
+		MatExpansionModule,
+		MenuItemComponent
 	]
 })
 export class MenuDefinitivoComponent {
-	menuDB: Category[] = [
+	menu: Category[] = [
 		{
 			name: 'Categoria 1',
 			subcategories: [
@@ -49,31 +50,34 @@ export class MenuDefinitivoComponent {
 			subcategories: [
 				{
 					name: 'Subcategoria 2.1 com nome grande para ve como fica',
-					subcategories: [{ name: 'Item 2.2.1', subcategories: [{ name: 'Item 2.2.1.1' }] }]
+					subcategories: [
+						{
+							name: 'Item 2.2.1',
+							subcategories: [{ name: 'Item 1' }, { name: 'Item 2' }, { name: 'Item 3' }, { name: 'Item 4' }]
+						},
+						{
+							name: 'Item 2.2.2',
+							subcategories: [{ name: 'Item 1' }, { name: 'Item 2' }, { name: 'Item 3' }, { name: 'Item 4' }]
+						},
+						{
+							name: 'Item 2.2.3',
+							subcategories: [{ name: 'Item 1' }, { name: 'Item 2' }, { name: 'Item 3' }, { name: 'Item 4' }]
+						}
+					]
 				},
 				{
 					name: 'Subcategoria 2.2',
 					subcategories: [
 						{ name: 'Item 2.2.1 com nome grande para ve como fica', subcategories: [{ name: 'Item 2.2.1.1' }] }
 					]
+				},
+				{
+					name: 'Subcategoria 2.3'
 				}
 			]
 		},
 		{
 			name: 'Categoria 3 com nome grande para ve como fica'
-		}
-	];
-
-	menuAccordion = [
-		{
-			name: 'Subcategoria 2.1',
-			subcategories: [{ name: 'Item 2.2.1', subcategories: [{ name: 'Item 2.2.1.1' }] }]
-		},
-		{
-			name: 'Subcategoria 2.2',
-			subcategories: [
-				{ name: 'Item 2.2.1 com nome grande para ve como fica', subcategories: [{ name: 'Item 2.2.1.1' }] }
-			]
 		}
 	];
 
