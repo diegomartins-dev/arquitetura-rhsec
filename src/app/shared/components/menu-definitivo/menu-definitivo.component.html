@@ -10,7 +10,7 @@
 			<div class="nav-container" [ngClass]="isMobile ? 'vertical-layout' : 'horizontal-layout'">
 				<mat-nav-list>
 					@for (category of menu; track category) {
-						<div class="category" (click)="openSubmenu($event, category.name)">{{ category.name }}</div>
+						<div class="category" (mouseover)="openSubmenu($event, category.name)">{{ category.name }}</div>
 					}
 				</mat-nav-list>
 				<div

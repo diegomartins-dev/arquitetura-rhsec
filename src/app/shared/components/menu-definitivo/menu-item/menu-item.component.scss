@@ -1,12 +1,17 @@
-::ng-deep .mat-expansion-panel-content {
-	padding: 0 !important;
-	.mat-expansion-panel-body {
-		padding: 0 !important;
-	}
-}
-
 ::ng-deep {
+	// .mat-expansion-panel {
+	// 	display: contents;
+	// 	.mat-expansion-panel-header {
+	// 		height: auto;
+	// 	}
+	// }
 	.mdc-list-item {
 		padding: 0 24px;
+	}
+	.mat-expansion-panel-content {
+		padding: 0 !important;
+		.mat-expansion-panel-body {
+			padding: 0 !important;
+		}
 	}
 }
