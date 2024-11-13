@@ -14,7 +14,7 @@
 			[id]="item.id"
 			placeholder="Adicione um novo item"
 			autofocus
-			(input)="updateItemValue(item.id, inputValue.value, item.checked)"
+			(blur)="updateItemValue(item.id, inputValue.value, item.checked)"
 			data-cy="login-input"
 		/>
 

@@ -20,7 +20,7 @@ import { IListItem } from '../../interfaces/i-list-item.interface';
 	styleUrl: './input-add-item.component.scss'
 })
 export class InputAddItemComponent {
-	#cdr = inject(ChangeDetectorRef);
+	// #cdr = inject(ChangeDetectorRef);
 
 	@ViewChild('inputValue') inputValue!: ElementRef;
 
@@ -29,7 +29,7 @@ export class InputAddItemComponent {
 
 	focustAndAddItem(value: string) {
 		if (value) {
-			this.#cdr.detectChanges();
+			// this.#cdr.detectChanges();
 			this.inputValue.nativeElement.value = '';
 
 			const id = this.generateId();

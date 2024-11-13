@@ -1,32 +1,38 @@
-@if (!getAllItems().length) {
+@if (!toDoController.todos.length) {
 	<div class="container">
 		<img src="assets/img/task-list-null.png" alt="sua lista está vázia" loading="eager" />
 
 		@if (isAddItem()) {
 			<button class="btn btn-primary" (click)="isAddItem.set(false)">Crie uma lista de tarefas</button>
 		} @else {
-			<app-input-add-item [inputListItems]="getAllItems()" (outputAddListItem)="addItem($event)"></app-input-add-item>
+			<app-input-add-item
+				[inputListItems]="toDoController.todos"
+				(outputAddListItem)="addItem($event)"
+			></app-input-add-item>
 		}
 	</div>
 } @else {
 	<app-menu-definitivo>
-		<app-input-add-item [inputListItems]="getAllItems()" (outputAddListItem)="addItem($event)"></app-input-add-item>
+		<app-input-add-item
+			[inputListItems]="toDoController.todos"
+			(outputAddListItem)="addItem($event)"
+		></app-input-add-item>
 
 		<main class="container">
 			@if (getItemsByStage('pending').length) {
-				<h2>Pendentes</h2>
+				<h3>Pendentes</h3>
 				<app-input-list-item
 					[inputListItems]="getItemsByStage('pending')"
-					(outputUpdateItemCheckbox)="updateItem($event)"
+					(outputUpdateItemCheckbox)="updateStageItem($event)"
 					(outputUpdateItemValue)="updateItem($event)"
 					(outputUpdateItemDelete)="deleteItem($event.id)"
 				></app-input-list-item>
 			}
 			@if (getItemsByStage('completed').length) {
-				<h2>Concluídas</h2>
+				<h3>Concluídas</h3>
 				<app-input-list-item
 					[inputListItems]="getItemsByStage('completed')"
-					(outputUpdateItemCheckbox)="updateItem($event)"
+					(outputUpdateItemCheckbox)="updateStageItem($event)"
 					(outputUpdateItemValue)="updateItem($event)"
 					(outputUpdateItemDelete)="deleteItem($event.id)"
 				></app-input-list-item>
@@ -34,6 +40,6 @@
 		</main>
 	</app-menu-definitivo>
 	<footer>
-		<button class="btn btn-danger" (click)="deleteAllItems()">Deletar todos os items</button>
+		<button class="btn btn-danger" (click)="removeAllItems()">Deletar todos os items</button>
 	</footer>
 }

@@ -125,6 +125,13 @@ h1.example-app-name {
 .category {
 	padding: 16px;
 	cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+
+	mat-icon {
+		display: inline-table;
+	}
 }
 
 .submenu {

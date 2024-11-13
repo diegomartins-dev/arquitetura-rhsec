@@ -10,6 +10,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MenuItemComponent } from './menu-item/menu-item.component';
+import { NotificationComponent } from '../notification/notification.component';
 
 export interface Category {
 	name: string;
@@ -33,7 +34,8 @@ export interface Category {
 		NgStyle,
 		CdkAccordionModule,
 		MatExpansionModule,
-		MenuItemComponent
+		MenuItemComponent,
+		NotificationComponent
 	]
 })
 export class MenuDefinitivoComponent {
@@ -46,7 +48,7 @@ export class MenuDefinitivoComponent {
 			]
 		},
 		{
-			name: 'Categoria 2',
+			name: 'Categoria 2 com nome grande para ve como fica',
 			subcategories: [
 				{
 					name: 'Subcategoria 2.1 com nome grande para ve como fica',
@@ -77,7 +79,7 @@ export class MenuDefinitivoComponent {
 			]
 		},
 		{
-			name: 'Categoria 3 com nome grande para ve como fica'
+			name: 'Categoria 3'
 		}
 	];
 
