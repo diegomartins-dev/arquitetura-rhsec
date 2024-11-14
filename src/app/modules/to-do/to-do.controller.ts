@@ -32,7 +32,6 @@ export class ToDoController {
 	}
 
 	addTodo(newItem: IListItem): void {
-		// const newItem = { value: title, checked: false, id: this.state.generateId() };
 		this.toDoService.save(newItem).subscribe(
 			(data) => {
 				this.notificationService.success(data.message || 'Tarefa adicionada com sucesso');
@@ -40,7 +39,7 @@ export class ToDoController {
 				this.initialize();
 			},
 			(error) => {
-				alert(error.message);
+				this.notificationService.error(error.message || 'Aconteceu algum erro');
 			}
 		);
 	}
@@ -53,7 +52,7 @@ export class ToDoController {
 				this.initialize();
 			},
 			(error) => {
-				alert(error.message);
+				this.notificationService.error(error.message || 'Aconteceu algum erro');
 			}
 		);
 	}
@@ -65,7 +64,7 @@ export class ToDoController {
 				this.initialize();
 			},
 			(error) => {
-				alert(error.message);
+				this.notificationService.error(error.message || 'Aconteceu algum erro');
 			}
 		);
 	}
@@ -78,7 +77,7 @@ export class ToDoController {
 				this.initialize();
 			},
 			(error) => {
-				alert(error.message);
+				this.notificationService.error(error.message || 'Aconteceu algum erro');
 			}
 		);
 	}
@@ -91,7 +90,7 @@ export class ToDoController {
 				this.initialize();
 			},
 			(error) => {
-				alert(error.message);
+				this.notificationService.error(error.message || 'Aconteceu algum erro');
 			}
 		);
 	}

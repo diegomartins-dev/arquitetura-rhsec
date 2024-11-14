@@ -24,16 +24,11 @@ export class ToDoState {
 		);
 	}
 
-	generateId() {
-		return Date.now().toString();
-	}
-
 	save(newItem: IListItem) {
 		this.#setListItems.set([...this.#getListItems(), newItem]);
 	}
 
 	set(items: IListItem[]) {
-		console.log(items);
 		this.#setListItems.set(items);
 	}
 
