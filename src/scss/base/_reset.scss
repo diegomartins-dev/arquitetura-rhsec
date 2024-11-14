@@ -9,7 +9,6 @@ body {
 
 body {
 	margin: 0;
-	background-color: var(--black);
 	font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
@@ -25,9 +24,29 @@ h3 {
 h1,
 h2,
 h3,
+h4,
+h5,
 a {
 	color: var(--white);
 	text-decoration: none;
+}
+
+@media (prefers-color-scheme: light) {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	a {
+		color: var(--black);
+		text-decoration: none;
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: var(--black);
+	}
 }
 
 p {
