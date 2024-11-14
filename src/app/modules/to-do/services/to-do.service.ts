@@ -1,6 +1,7 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { from, Observable } from 'rxjs';
+
 import { IListItem } from '../interfaces/i-list-item.interface';
-import { catchError, from, Observable } from 'rxjs';
 
 export interface IReturn {
 	status: 'success' | 'error';

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { IListItem } from '../interfaces/i-list-item.interface';
 import { ToDoService } from '../services/to-do.service';
 import { ToDoState } from '../state/to-do.state';
@@ -10,11 +10,11 @@ export class ToDoController {
 	completedTodos: IListItem[] = [];
 	uncompletedTodos: IListItem[] = [];
 
-	constructor(
-		private toDoService: ToDoService,
-		private state: ToDoState,
-		private notificationService: NotificationService
-	) {}
+	toDoService = inject(ToDoService);
+	state = inject(ToDoState);
+	notificationService = inject(NotificationService);
+
+	constructor() {}
 
 	initialize() {
 		this.completedTodos = this.state.getByStage('completed');

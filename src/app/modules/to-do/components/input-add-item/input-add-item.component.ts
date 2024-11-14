@@ -1,14 +1,5 @@
 import { NgClass } from '@angular/common';
-import {
-	ChangeDetectorRef,
-	Component,
-	ElementRef,
-	EventEmitter,
-	inject,
-	Input,
-	Output,
-	ViewChild
-} from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 
 import { IListItem } from '../../interfaces/i-list-item.interface';
 
@@ -20,8 +11,6 @@ import { IListItem } from '../../interfaces/i-list-item.interface';
 	styleUrl: './input-add-item.component.scss'
 })
 export class InputAddItemComponent {
-	// #cdr = inject(ChangeDetectorRef);
-
 	@ViewChild('inputValue') inputValue!: ElementRef;
 
 	@Input({ required: true }) inputListItems: IListItem[] = [];
@@ -29,7 +18,6 @@ export class InputAddItemComponent {
 
 	focustAndAddItem(value: string) {
 		if (value) {
-			// this.#cdr.detectChanges();
 			this.inputValue.nativeElement.value = '';
 
 			const id = this.generateId();
