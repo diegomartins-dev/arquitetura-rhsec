@@ -37,7 +37,7 @@ export const routes: Routes = [
 			},
 			{
 				path: 'login',
-				loadComponent: () => import('./modules/to-do/containers/to-do/to-do.component').then((m) => m.ToDoComponent)
+				loadComponent: () => import('./modules/auth/containers/login/login.component').then((m) => m.LoginComponent)
 			}
 		]
 	},
