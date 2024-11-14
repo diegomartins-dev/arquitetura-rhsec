@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { NotificationService } from '../../shared/components/notification/notification.service';
+import { NotificationService } from '../../../shared/components/notification/notification.service';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 

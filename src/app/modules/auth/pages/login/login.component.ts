@@ -7,7 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { merge } from 'rxjs';
 
 import { NotificationComponent } from '../../../../shared/components/notification/notification.component';
-import { AuthController } from '../../../controllers/auth.controller';
+import { AuthController } from '../../controllers/auth.controller';
 
 @Component({
 	selector: 'app-login',
