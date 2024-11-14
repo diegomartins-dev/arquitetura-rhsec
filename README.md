@@ -15,5 +15,5 @@ Projeto gerado com a versão 18.2.9 do [Angular CLI](https://github.com/angular/
 
 ## Build
 
-- Navegar atá a pasta raíz do projeto e executar o comando `npm run build` ou `ng build`.
-- Após o passo acima, procurar pela pasta `/dist/browser` e copiar e colar em um servidor web (local ou remoto) e se for preciso apontar para o arquivo `index.html`
+- Navegar até a pasta raíz do projeto e procurar pela pasta `/dist/browser` e copiar e colar em um servidor web (local ou remoto) e se for preciso apontar para o arquivo `index.html`
+- Se não tiver essa pasta, executar o comando `npm run build` ou `ng build` e repetir o passo acima.
