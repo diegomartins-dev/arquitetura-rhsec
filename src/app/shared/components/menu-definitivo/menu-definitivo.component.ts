@@ -1,20 +1,21 @@
-import { animate, style, transition, trigger } from '@angular/animations';
-import { BreakpointObserver, Breakpoints, MediaMatcher } from '@angular/cdk/layout';
-import { NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
-import { ChangeDetectorRef, Component, HostListener, inject, OnInit, signal } from '@angular/core';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { NgClass, NgIf, NgStyle } from '@angular/common';
+import { Component, HostListener, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { CdkAccordionModule } from '@angular/cdk/accordion';
-import { MatExpansionModule } from '@angular/material/expansion';
-import { MenuItemComponent } from './menu-item/menu-item.component';
+
 import { NotificationComponent } from '../notification/notification.component';
+import { MenuItemComponent } from './menu-item/menu-item.component';
+import { RouterLink } from '@angular/router';
 
 export interface Category {
 	name: string;
 	subcategories?: Category[];
+	url?: string;
 }
 
 @Component({
@@ -28,11 +29,8 @@ export interface Category {
 		MatIconModule,
 		MatSidenavModule,
 		MatListModule,
-		NgFor,
 		NgIf,
 		NgClass,
-		NgStyle,
-		CdkAccordionModule,
 		MatExpansionModule,
 		MenuItemComponent,
 		NotificationComponent
@@ -41,10 +39,11 @@ export interface Category {
 export class MenuDefinitivoComponent {
 	menu: Category[] = [
 		{
-			name: 'Categoria 1',
+			name: 'Páginas',
 			subcategories: [
-				{ name: 'Subcategoria 1.1', subcategories: [{ name: 'Item 1.1.1' }] },
-				{ name: 'Subcategoria 1.2' }
+				{ name: 'Dashboard', subcategories: [{ name: 'Home', url: 'home' }] },
+				{ name: 'Login', url: '/auth/login' },
+				{ name: 'Not Found', url: 'error' }
 			]
 		},
 		{

@@ -7,7 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { merge } from 'rxjs';
 
 import { NotificationComponent } from '../../../../shared/components/notification/notification.component';
-import { AuthController } from '../../controllers/auth.controller';
+import { AuthControllerService } from '../../controllers/auth.controller.service';
 
 @Component({
 	selector: 'app-login',
@@ -21,7 +21,7 @@ import { AuthController } from '../../controllers/auth.controller';
 		MatButton,
 		NotificationComponent
 	],
-	providers: [AuthController],
+	providers: [AuthControllerService],
 	templateUrl: './login.component.html',
 	styleUrl: './login.component.scss'
 })
@@ -31,7 +31,7 @@ export class LoginComponent {
 
 	errorMessage: any = signal({});
 
-	readonly authController = inject(AuthController);
+	authController = inject(AuthControllerService);
 
 	constructor() {
 		merge(this.email.statusChanges, this.email.valueChanges)

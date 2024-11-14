@@ -7,7 +7,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+
 import { Category } from '../menu-definitivo.component';
+import { RouterLink } from '@angular/router';
 
 @Component({
 	selector: 'app-item-menu',
@@ -20,12 +22,9 @@ import { Category } from '../menu-definitivo.component';
 		MatIconModule,
 		MatSidenavModule,
 		MatListModule,
-		NgFor,
-		NgIf,
-		NgClass,
-		NgStyle,
 		CdkAccordionModule,
-		MatExpansionModule
+		MatExpansionModule,
+		RouterLink
 	]
 })
 export class MenuItemComponent {

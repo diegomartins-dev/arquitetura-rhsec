@@ -5,7 +5,7 @@ import { FormControl } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 
 @Injectable()
-export class AuthController {
+export class AuthControllerService {
 	router = inject(Router);
 	notificationService = inject(NotificationService);
 	authService = inject(AuthService);
@@ -19,7 +19,7 @@ export class AuthController {
 			this.authService.login(email?.value, password?.value).subscribe({
 				next: (res) => {
 					this.notificationService.success(res.message || 'Login realizado com sucesso');
-					this.router.navigateByUrl('/dashboard');
+					this.router.navigateByUrl('/dashboard/home');
 				},
 				error: (err) => {
 					this.notificationService.error(err.message || 'Erro ao tentar fazer o login');

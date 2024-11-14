@@ -5,7 +5,7 @@ import { ToDoState } from '../state/to-do.state';
 import { NotificationService } from '../../../shared/components/notification/notification.service';
 
 @Injectable()
-export class ToDoController {
+export class ToDoControllerService {
 	todos: IListItem[] = [];
 	completedTodos: IListItem[] = [];
 	uncompletedTodos: IListItem[] = [];
