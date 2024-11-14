@@ -38,14 +38,11 @@ import { MatSnackBarAction, MatSnackBarActions, MatSnackBarLabel, MatSnackBarRef
 			}
 
 			&.success {
-				background-color: var(--green);
-
-				.action {
-				}
+				background-color: var(--primary) !important;
 			}
 
 			&.error {
-				background-color: var(--red);
+				background-color: var(--red) !important;
 			}
 		}
 	`,
@@ -59,5 +56,6 @@ export class NotificationLayoutComponent implements OnInit {
 
 	ngOnInit(): void {
 		this.message = this.snackBarRef.containerInstance.snackBarConfig.data.message.message;
+		this.type = this.snackBarRef.containerInstance.snackBarConfig.data.message.type;
 	}
 }

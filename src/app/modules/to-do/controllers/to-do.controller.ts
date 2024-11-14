@@ -1,10 +1,8 @@
-import { Inject, Injectable, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { debounceTime, distinctUntilChanged, switchMap } from 'rxjs/operators';
-import { ToDoService } from './services/to-do.service';
-import { ToDoState } from './state/to-do.state';
-import { IListItem } from './interfaces/i-list-item.interface';
-import { NotificationService } from '../../shared/components/notification/notification.service';
+import { Injectable } from '@angular/core';
+import { IListItem } from '../interfaces/i-list-item.interface';
+import { ToDoService } from '../services/to-do.service';
+import { ToDoState } from '../state/to-do.state';
+import { NotificationService } from '../../../shared/components/notification/notification.service';
 
 @Injectable()
 export class ToDoController {
