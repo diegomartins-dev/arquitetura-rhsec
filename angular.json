@@ -3,7 +3,7 @@
 	"version": 1,
 	"newProjectRoot": "projects",
 	"projects": {
-		"angular-18-tasks": {
+		"arquitetura-rhsec": {
 			"projectType": "application",
 			"schematics": {
 				"@schematics/angular:component": {
@@ -60,10 +60,10 @@
 					"builder": "@angular-devkit/build-angular:dev-server",
 					"configurations": {
 						"production": {
-							"buildTarget": "angular-18-tasks:build:production"
+							"buildTarget": "arquitetura-rhsec:build:production"
 						},
 						"development": {
-							"buildTarget": "angular-18-tasks:build:development"
+							"buildTarget": "arquitetura-rhsec:build:development"
 						}
 					},
 					"defaultConfiguration": "development"
