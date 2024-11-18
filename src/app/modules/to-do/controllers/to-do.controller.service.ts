@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, effect, inject } from '@angular/core';
 import { IListItem } from '../interfaces/i-list-item.interface';
 import { ToDoService } from '../services/to-do.service';
 import { ToDoState } from '../state/to-do.state';
@@ -14,7 +14,11 @@ export class ToDoControllerService {
 	state = inject(ToDoState);
 	notificationService = inject(NotificationService);
 
-	constructor() {}
+	constructor() {
+		effect(() => {
+			this.initialize();
+		});
+	}
 
 	initialize() {
 		this.completedTodos = this.state.getByStage('completed');
@@ -25,7 +29,6 @@ export class ToDoControllerService {
 	listen(): void {
 		this.toDoService.getAll().subscribe((result) => {
 			this.state.set(result.data || []);
-			this.initialize();
 		});
 	}
 
@@ -34,7 +37,6 @@ export class ToDoControllerService {
 			(data) => {
 				this.notificationService.success(data.message || 'Tarefa adicionada com sucesso');
 				this.state.save(newItem);
-				this.initialize();
 			},
 			(error) => {
 				this.notificationService.error(error.message || 'Aconteceu algum erro');
@@ -47,7 +49,6 @@ export class ToDoControllerService {
 			(data) => {
 				this.notificationService.success(data.message || 'Tarefa atualizada com sucesso');
 				this.state.update(updateItem);
-				this.initialize();
 			},
 			(error) => {
 				this.notificationService.error(error.message || 'Aconteceu algum erro');
@@ -59,7 +60,6 @@ export class ToDoControllerService {
 		this.toDoService.updateStage(id, stage).subscribe(
 			(data) => {
 				this.state.updateStage(id, stage);
-				this.initialize();
 			},
 			(error) => {
 				this.notificationService.error(error.message || 'Aconteceu algum erro');
@@ -72,7 +72,6 @@ export class ToDoControllerService {
 			(data) => {
 				this.notificationService.success(data.message || 'Tarefa deletada com sucesso');
 				this.state.deleteById(id);
-				this.initialize();
 			},
 			(error) => {
 				this.notificationService.error(error.message || 'Aconteceu algum erro');
@@ -85,7 +84,6 @@ export class ToDoControllerService {
 			(data) => {
 				this.notificationService.success(data.message || 'Tarefas deletadas com sucesso');
 				this.state.deleteAll();
-				this.initialize();
 			},
 			(error) => {
 				this.notificationService.error(error.message || 'Aconteceu algum erro');
