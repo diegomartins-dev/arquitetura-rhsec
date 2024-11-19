@@ -9,7 +9,7 @@ export const routes: Routes = [
 	},
 	{
 		path: 'dashboard',
-		loadComponent: () => import('./shared/pages/home/home.page.component').then((m) => m.HomePageComponent),
+		loadComponent: () => import('./modules/to-do/pages/to-do.page.component').then((m) => m.ToDoPageComponent),
 		children: [
 			{
 				path: '',
@@ -28,7 +28,7 @@ export const routes: Routes = [
 	},
 	{
 		path: 'auth',
-		loadComponent: () => import('./shared/pages/auth/auth.page.component').then((m) => m.AuthPageComponent),
+		loadComponent: () => import('./modules/auth/pages/auth.page.component').then((m) => m.AuthPageComponent),
 		children: [
 			{
 				path: '',

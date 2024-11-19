@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { HomeLayoutComponent } from '../../templates/home/home.layout.component';
-import { ToDoComponent } from '../../../modules/to-do/containers/to-do/to-do.component';
+import { ToDoComponent } from '../containers/to-do/to-do.component';
+import { HomeLayoutComponent } from '../../../shared/templates/home/home.layout.component';
 
 @Component({
 	selector: 'app-home-page',
@@ -12,4 +12,4 @@ import { ToDoComponent } from '../../../modules/to-do/containers/to-do/to-do.com
 		</app-home-layout>
 	`
 })
-export class HomePageComponent {}
+export class ToDoPageComponent {}

@@ -115,10 +115,28 @@ html {
 		@include mat.core-color($light-theme);
 		@include mat.core-theme($light-theme);
 		@include mat.all-component-themes($light-theme);
+
+		input:-webkit-autofill {
+			background-color: transparent !important;
+			color: var(--black) !important;
+			transition: all 9999s ease-in-out 0s !important;
+		}
 	}
 	@media (prefers-color-scheme: dark) {
 		@include mat.core-color($dark-theme);
 		@include mat.core-theme($dark-theme);
 		@include mat.all-component-themes($dark-theme);
+
+		input:-webkit-autofill {
+			background-color: transparent !important;
+			color: var(--white) !important;
+			transition: all 9999s linear 9999s !important;
+		}
+
+		input:-internal-autofill-selected {
+			background-color: transparent !important;
+			color: var(--white) !important;
+			transition: all 9999s linear 9999s !important;
+		}
 	}
 }

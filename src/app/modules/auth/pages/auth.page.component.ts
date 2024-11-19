@@ -6,6 +6,7 @@ import { LoginComponent } from '../../../modules/auth/containers/login/login.com
 	selector: 'app-home-page',
 	standalone: true,
 	imports: [LoginComponent],
+	providers: [],
 	template: ` <app-login></app-login> `
 })
 export class AuthPageComponent {}
