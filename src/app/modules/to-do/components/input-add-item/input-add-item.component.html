@@ -1,8 +1,8 @@
-<header [ngClass]="{ 'has-items': inputListItems.length }">
+<header [ngClass]="{ 'has-items': inputListItems.length }" data-test="to-do-input-add-item-header">
 	@if (inputListItems.length > 0) {
 		<h1>Minha lista</h1>
 	}
-	<div [ngClass]="{ container: inputListItems.length }">
+	<div [ngClass]="{ container: inputListItems.length }" data-test="to-do-input-add-item-body">
 		<label class="input-label-text" for="input-value" [ngClass]="{ 'remove-margin-bottom': !inputListItems.length }">
 			<input
 				type="text"
@@ -11,12 +11,13 @@
 				autofocus
 				(keyup.enter)="focustAndAddItem(inputValue.value)"
 				#inputValue
-				data-cy="login-input"
+				data-testid="to-do-input-add-item-input"
 			/>
 			<button
 				class="btn btn-primary-circle"
 				title="Adicionar um novo item"
 				(click)="focustAndAddItem(inputValue.value)"
+				data-cy="to-do-input-add-item-button"
 			></button>
 		</label>
 	</div>

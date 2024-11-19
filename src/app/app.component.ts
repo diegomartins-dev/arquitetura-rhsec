@@ -5,6 +5,7 @@ import { RouterOutlet } from '@angular/router';
 	selector: 'app-root',
 	standalone: true,
 	imports: [RouterOutlet],
+	styleUrls: ['./app.component.scss'],
 	template: `<router-outlet></router-outlet>`
 })
 export class AppComponent {}

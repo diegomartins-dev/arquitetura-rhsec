@@ -5,6 +5,7 @@
 			#inputCheckbox
 			[checked]="item.checked"
 			(input)="updateItemCheckbox(item.id, item.value, inputCheckbox.checked)"
+			data-testid="to-do-list-item-checkbox"
 		/>
 
 		<input
@@ -15,9 +16,14 @@
 			placeholder="Adicione um novo item"
 			autofocus
 			(blur)="updateItemValue(item.id, inputValue.value, item.checked)"
-			data-cy="login-input"
+			data-testid="to-do-list-item-input"
 		/>
 
-		<button class="btn btn-danger-circle" title="delete este item" (click)="deleteItemValue(item.id)"></button>
+		<button
+			class="btn btn-danger-circle"
+			title="delete este item"
+			(click)="deleteItemValue(item.id)"
+			data-cy="to-do-list-item-delete"
+		></button>
 	</label>
 }

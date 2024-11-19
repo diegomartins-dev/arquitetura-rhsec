@@ -3,17 +3,31 @@
 	<h3>Entrar no sistema</h3>
 	<mat-form-field>
 		<mat-label>Email</mat-label>
-		<input matInput placeholder="Digite seu email" [formControl]="email" (blur)="updateErrorMessage()" required />
+		<input
+			matInput
+			placeholder="Digite seu email"
+			[formControl]="email"
+			(blur)="updateErrorMessage()"
+			required
+			data-testid="login-input-email"
+		/>
 		@if (email.invalid) {
 			<mat-error>{{ errorMessage()?.email }}</mat-error>
 		}
 	</mat-form-field>
 	<mat-form-field>
 		<mat-label>Senha</mat-label>
-		<input matInput placeholder="Digite sua senha" [formControl]="password" (blur)="updateErrorMessage()" required />
+		<input
+			matInput
+			placeholder="Digite sua senha"
+			[formControl]="password"
+			(blur)="updateErrorMessage()"
+			required
+			data-testid="login-input-password"
+		/>
 		@if (password.invalid) {
 			<mat-error>{{ errorMessage()?.password }}</mat-error>
 		}
 	</mat-form-field>
-	<button type="submit" mat-flat-button color="primary" (click)="login()">Entrar</button>
+	<button type="submit" mat-flat-button color="primary" (click)="login()" data-cy="login-button-enter">Entrar</button>
 </div>

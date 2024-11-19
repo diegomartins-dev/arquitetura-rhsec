@@ -35,10 +35,6 @@ export class ToDoComponent implements OnInit {
 		this.toDoController.removeAllTodos();
 	}
 
-	getItemsByStage(stage: 'pending' | 'completed') {
-		return stage == 'pending' ? this.toDoController.uncompletedTodos : this.toDoController.completedTodos;
-	}
-
 	updateItem(updateItem: IListItem) {
 		this.toDoController.updateTodo(updateItem);
 	}

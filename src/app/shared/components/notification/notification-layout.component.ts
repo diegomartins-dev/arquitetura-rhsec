@@ -6,10 +6,16 @@ import { MatSnackBarAction, MatSnackBarActions, MatSnackBarLabel, MatSnackBarRef
 
 @Component({
 	selector: 'app-notification-layout',
-	template: `<div class="message" [ngClass]="type" matSnackBarLabel>
+	template: `<div class="message" [ngClass]="type" matSnackBarLabel data-test="notification-message">
 		{{ message }}
 		<span matSnackBarActions>
-			<button mat-button matSnackBarAction (click)="snackBarRef.dismissWithAction()" class="action">
+			<button
+				mat-button
+				matSnackBarAction
+				(click)="snackBarRef.dismissWithAction()"
+				class="action"
+				data-cy="notification-close-button"
+			>
 				<mat-icon>close</mat-icon>
 			</button>
 		</span>

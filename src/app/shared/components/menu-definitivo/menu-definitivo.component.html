@@ -1,16 +1,20 @@
-<div class="example-container dark example-is-mobile">
-	<mat-toolbar class="example-toolbar" [ngClass]="!isMobile ? 'hide' : ''">
-		<button mat-icon-button (click)="snav.toggle()">
+<div class="example-container dark example-is-mobile" data-test="menu-definitivo">
+	<mat-toolbar class="example-toolbar" [ngClass]="!isMobile ? 'hide' : ''" data-test="menu-definitivo-toolbar">
+		<button mat-icon-button (click)="snav.toggle()" dats-cy="menu-definitivo-toggle-button">
 			<mat-icon>menu</mat-icon>
 		</button>
 		<h1 class="example-app-name">Menu Principal</h1>
 	</mat-toolbar>
-	<mat-sidenav-container class="example-sidenav-container" [ngClass]="!isMobile ? 'margin-top-none' : ''">
+	<mat-sidenav-container
+		class="example-sidenav-container"
+		[ngClass]="!isMobile ? 'margin-top-none' : ''"
+		data-test="menu-definitivo-container"
+	>
 		<mat-sidenav class="mat-sidenav" #snav [mode]="'side'" (closed)="closeMenu()" [(opened)]="menuOpened">
 			<div class="nav-container" [ngClass]="isMobile ? 'vertical-layout' : 'horizontal-layout'">
 				<mat-nav-list>
 					@for (category of menu; track category) {
-						<div class="category" (click)="openSubmenu($event, category.name)">
+						<div class="category" (click)="openSubmenu($event, category.name)" data-test="menu-definitivo-item">
 							{{ category.name }}
 							@if (category?.subcategories) {
 								<mat-icon>keyboard_arrow_right</mat-icon>
@@ -23,6 +27,7 @@
 					class="submenu"
 					[style.top.px]="submenuPosition.y"
 					[style.left.px]="submenuPosition.x"
+					data-test="menu-definitivo-submenu"
 				>
 					@for (category of menu; track category) {
 						@if (openCategory === category.name) {

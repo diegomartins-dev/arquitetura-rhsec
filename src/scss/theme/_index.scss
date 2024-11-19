@@ -1,5 +1,8 @@
 @use 'variables';
+
 @use '@angular/material' as mat;
+@use '@angular/material/core/m2';
+@use 'sass:string';
 
 @include mat.core();
 
@@ -12,29 +15,110 @@ $light-theme: mat.define-theme(
 	)
 );
 
-$dark-theme: mat.define-theme(
+// $dark-theme: mat.define-theme(
+// 	(
+// 		color: (
+// 			theme-type: dark,
+// 			primary: mat.$violet-palette,
+// 			tertiary: mat.$green-palette
+// 		),
+// 		typography: (
+// 			brand-family: 'Arial',
+// 			bold-weight: 900
+// 		)
+// 	)
+// );
+
+$dark-primary-text: rgba(0, 0, 0, 0.87);
+$light-primary-text: rgba(255, 255, 255, 0.87);
+
+$custom-palette: (
+	50: #ffebee,
+	100: #ffcdd2,
+	200: #ef9a9a,
+	300: #e57373,
+	400: #ef5350,
+	500: #f44336,
+	600: #e53935,
+	700: rgb(10, 87, 202),
+	800: #c62828,
+	900: #b71c1c,
+	A100: #ff8a80,
+	A200: #ff5252,
+	A400: #ff1744,
+	A700: #d50000,
+	contrast: (
+		50: $dark-primary-text,
+		100: $dark-primary-text,
+		200: $dark-primary-text,
+		300: $dark-primary-text,
+		400: $dark-primary-text,
+		500: $light-primary-text,
+		600: $light-primary-text,
+		700: $light-primary-text,
+		800: $light-primary-text,
+		900: $light-primary-text,
+		A100: $dark-primary-text,
+		A200: $light-primary-text,
+		A400: $light-primary-text,
+		A700: $light-primary-text
+	)
+);
+
+$primary: m2.define-palette($custom-palette, 700);
+$accent: m2.define-palette(m2.$yellow-palette, 400);
+$warn: m2.define-palette(m2.$red-palette, 400);
+
+$dark-theme: m2.define-dark-theme(
 	(
 		color: (
-			theme-type: dark,
-			primary: mat.$blue-palette,
-			tertiary: mat.$green-palette
-		),
-		typography: (
-			brand-family: 'Arial',
-			bold-weight: 900
+			primary: $primary,
+			accent: $accent,
+			warn: $warn
 		)
 	)
 );
+
+// $default-font-family: string.unquote('Arial, Helvetica, sans-serif');
+// $dark-theme: m2.define-dark-theme(
+// 	(
+// 		color: (
+// 			primary: $primary,
+// 			accent: $accent,
+// 			warn: $warn
+// 		),
+// 		typography:
+// 			m2.define-legacy-typography-config(
+// 				$font-family: $default-font-family,
+// 				$display-4: m2.define-typography-level(112px, 112px, 300, $letter-spacing: -0.05em),
+// 				$display-3: m2.define-typography-level(56px, 56px, 400, $letter-spacing: -0.02em),
+// 				$display-2: m2.define-typography-level(45px, 48px, 400, $letter-spacing: -0.005em),
+// 				$display-1: m2.define-typography-level(34px, 40px, 400),
+// 				$headline: m2.define-typography-level(24px, 32px, 400),
+// 				$title: m2.define-typography-level(20px, 32px, 500),
+// 				$subheading-2: m2.define-typography-level(16px, 28px, 400),
+// 				$subheading-1: m2.define-typography-level(15px, 24px, 400),
+// 				$body-2: m2.define-typography-level(14px, 24px, 500),
+// 				$body-1: m2.define-typography-level(14px, 20px, 400),
+// 				$caption: m2.define-typography-level(12px, 20px, 400),
+// 				$button: m2.define-typography-level(14px, 14px, 500),
+// 				$input: m2.define-typography-level(inherit, 1.125, 400)
+// 			),
+// 		density: 0
+// 	)
+// );
 
 html {
 	// @include mat.core-theme($light-theme);
 	// @include mat.all-component-themes($light-theme);
 	@media (prefers-color-scheme: light) {
 		@include mat.core-color($light-theme);
+		@include mat.core-theme($light-theme);
 		@include mat.all-component-themes($light-theme);
 	}
 	@media (prefers-color-scheme: dark) {
 		@include mat.core-color($dark-theme);
+		@include mat.core-theme($dark-theme);
 		@include mat.all-component-themes($dark-theme);
 	}
 }

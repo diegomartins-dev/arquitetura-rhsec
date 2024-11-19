@@ -35,23 +35,23 @@ export class InputListItemComponent {
 		checked: boolean;
 	}>();
 
-	updateItemCheckbox(id: string, value: string, checked: boolean) {
-		this.outputUpdateItemCheckbox.emit({ id, value, checked });
-	}
-
 	@Output() outputUpdateItemValue = new EventEmitter<{
 		id: string;
 		value: string;
 		checked: boolean;
 	}>();
 
-	updateItemValue(id: string, value: string, checked: boolean) {
-		this.outputUpdateItemValue.emit({ id, value, checked });
-	}
-
 	@Output() outputUpdateItemDelete = new EventEmitter<{
 		id: string;
 	}>();
+
+	updateItemCheckbox(id: string, value: string, checked: boolean) {
+		this.outputUpdateItemCheckbox.emit({ id, value, checked });
+	}
+
+	updateItemValue(id: string, value: string, checked: boolean) {
+		this.outputUpdateItemValue.emit({ id, value, checked });
+	}
 
 	deleteItemValue(id: string) {
 		this.outputUpdateItemDelete.emit({ id });

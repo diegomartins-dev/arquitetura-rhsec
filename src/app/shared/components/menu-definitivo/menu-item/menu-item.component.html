@@ -1,18 +1,26 @@
 @for (category of menuCategory; track category) {
 	@if (category?.subcategories) {
-		<mat-expansion-panel (opened)="panelOpenState.set(true)" (closed)="panelOpenState.set(false)">
+		<mat-expansion-panel
+			(opened)="panelOpenState.set(true)"
+			(closed)="panelOpenState.set(false)"
+			data-test="menu-definitivo-panel"
+		>
 			<mat-expansion-panel-header class="body">
 				<mat-panel-title> {{ category.name }}</mat-panel-title>
 			</mat-expansion-panel-header>
 			@if (category?.subcategories) {
-				<mat-accordion>
+				<mat-accordion data-test="menu-definitivo-accordion">
 					<app-item-menu [menuCategory]="category.subcategories"></app-item-menu>
 				</mat-accordion>
 			}
 		</mat-expansion-panel>
 	} @else {
-		<mat-list-item role="listitem" [routerLink]="category?.url" routerLinkActive="active">{{
-			category.name
-		}}</mat-list-item>
+		<mat-list-item
+			role="listitem"
+			[routerLink]="category?.url"
+			routerLinkActive="active"
+			data-test="menu-definitivo-listitem"
+			>{{ category.name }}</mat-list-item
+		>
 	}
 }
