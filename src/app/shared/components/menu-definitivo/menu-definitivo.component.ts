@@ -11,6 +11,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { NotificationComponent } from '../notification/notification.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { RouterLink } from '@angular/router';
+import { DashboardHeaderComponent } from '../dashboard/header/header.component';
 
 export interface Category {
 	name: string;
@@ -33,7 +34,8 @@ export interface Category {
 		NgClass,
 		MatExpansionModule,
 		MenuItemComponent,
-		NotificationComponent
+		NotificationComponent,
+		DashboardHeaderComponent
 	]
 })
 export class MenuDefinitivoComponent {

@@ -6,13 +6,14 @@ import { IAuth } from '../interfaces/auth.interface';
 export interface IReturn {
 	status: 'success' | 'error';
 	message?: string;
+	data?: IAuth;
 }
 
 @Injectable({
 	providedIn: 'root'
 })
 export class AuthService {
-	apiService = inject(ApiService<IAuth>);
+	private apiService = inject<ApiService<IAuth>>(ApiService<IAuth>);
 
 	constructor() {}
 
@@ -22,16 +23,21 @@ export class AuthService {
 				.list('users', { attr: 'email', value: email })
 				.pipe(
 					map((res) => {
-						if (res[0].email === email && res[0].password === password)
-							return { status: 'success', message: 'Login realizado com sucesso' };
-						throw new Error('Email ou senha inválidos') as any;
+						if (res[0] && res[0].email === email && res[0].password === password)
+							return { status: 'success', message: 'Login realizado com sucesso', data: res[0] };
+						throw new Error('');
 					})
 				)
-				.pipe(
-					catchError((err) => throwError(() => ({ status: 'error', message: err.message }))) as any
-				) as Observable<IReturn>;
+				.pipe(this.apiService.returnCatchError('Email ou senha inválidos')) as Observable<IReturn>;
 		} catch (e) {
-			return throwError(() => ({ status: 'error', message: 'Erro ao tentar fazer o login' })) as Observable<IReturn>;
+			return this.apiService.returnThrowError('Aconteceu algum erro ao tentar fazer o login');
 		}
+	}
+
+	getUser(id: string): Observable<IAuth> {
+		return this.apiService
+			.getById('users', id)
+			.pipe(map((res) => res))
+			.pipe(catchError(() => throwError(() => ({ id: '', name: '', email: '', password: '', role: '' }))));
 	}
 }

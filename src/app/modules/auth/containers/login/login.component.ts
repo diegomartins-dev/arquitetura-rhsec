@@ -8,9 +8,6 @@ import { merge } from 'rxjs';
 
 import { NotificationComponent } from '../../../../shared/components/notification/notification.component';
 import { AuthControllerService } from '../../controllers/auth.controller.service';
-import { ApiService } from '../../../../core/repository/api.service';
-import { HttpClient } from '@angular/common/http';
-import { AuthService } from '../../services/auth.service';
 
 @Component({
 	selector: 'app-login',

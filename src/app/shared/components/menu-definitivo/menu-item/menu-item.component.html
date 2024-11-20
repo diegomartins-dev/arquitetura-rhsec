@@ -19,6 +19,8 @@
 			role="listitem"
 			[routerLink]="category?.url"
 			routerLinkActive="active"
+			ariaCurrentWhenActive="page"
+			[attr.routerLinkActiveOptions]="{ exact: true }"
 			data-test="menu-definitivo-listitem"
 			>{{ category.name }}</mat-list-item
 		>

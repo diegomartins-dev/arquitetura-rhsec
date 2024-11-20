@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 import { ToDoComponent } from '../containers/to-do/to-do.component';
-import { HomeLayoutComponent } from '../../../shared/templates/home/home.layout.component';
+import { DashboardLayoutComponent } from '../../../shared/templates/dashboard/dashboardlayout.component';
 
 @Component({
-	selector: 'app-home-page',
+	selector: 'app-to-do-page',
 	standalone: true,
-	imports: [HomeLayoutComponent, ToDoComponent],
+	imports: [DashboardLayoutComponent, ToDoComponent],
 	template: `
-		<app-home-layout>
+		<app-dashboard-layout>
 			<app-to-do></app-to-do>
-		</app-home-layout>
+		</app-dashboard-layout>
 	`
 })
 export class ToDoPageComponent {}

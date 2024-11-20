@@ -13,4 +13,8 @@
 	.mat-expansion-panel {
 		box-shadow: none !important;
 	}
+
+	.active {
+		background-color: var(--primary) !important;
+	}
 }

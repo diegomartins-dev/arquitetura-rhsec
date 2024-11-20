@@ -9,7 +9,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { Category } from '../menu-definitivo.component';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
 	selector: 'app-item-menu',
@@ -24,7 +24,8 @@ import { RouterLink } from '@angular/router';
 		MatListModule,
 		CdkAccordionModule,
 		MatExpansionModule,
-		RouterLink
+		RouterLink,
+		RouterLinkActive
 	]
 })
 export class MenuItemComponent {

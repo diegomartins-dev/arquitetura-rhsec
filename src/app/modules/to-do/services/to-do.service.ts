@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
-import { from, Observable } from 'rxjs';
+import { inject, Injectable } from '@angular/core';
+import { from, map, Observable } from 'rxjs';
 
 import { IListItem } from '../interfaces/i-list-item.interface';
+import { ApiService } from '../../../core/repository/api.service';
 
 export interface IReturn {
 	status: 'success' | 'error';
@@ -13,20 +14,17 @@ export interface IReturn {
 	providedIn: 'root'
 })
 export class ToDoService {
+	private path = 'todos';
+	private apiService = inject<ApiService<IListItem>>(ApiService);
+
 	constructor() {}
-
-	getItemsByStorage() {
-		return JSON.parse(localStorage.getItem('list') || '[]');
-	}
-
-	setItemsByStorage(items: IListItem[], message?: { success: string; error: string }) {
-		localStorage.setItem('list', JSON.stringify(items));
-	}
 
 	getAll(): Observable<IReturn> {
 		try {
-			const items = this.getItemsByStorage();
-			return from<IReturn[]>([{ status: 'success', data: items }]);
+			return this.apiService
+				.getAll(this.path)
+				.pipe(map((res) => ({ status: 'success', data: res })))
+				.pipe(this.apiService.returnCatchError('Erro ao carregar as tarefas')) as Observable<IReturn>;
 		} catch (e) {
 			return from<IReturn[]>([{ status: 'error', message: 'Erro ao carregar as tarefas' }]);
 		}
@@ -34,59 +32,54 @@ export class ToDoService {
 
 	getById(id: string): Observable<IReturn> {
 		try {
-			const item = this.getItemsByStorage().find((item: IListItem) => item.id === id);
-			return from<IReturn[]>([{ status: 'success', data: item }]);
+			return this.apiService
+				.getById(this.path, id)
+				.pipe(map((res) => ({ status: 'success', data: res })))
+				.pipe(this.apiService.returnCatchError('Erro ao carregar a tarefa')) as Observable<IReturn>;
 		} catch (e) {
-			return from<IReturn[]>([{ status: 'error', message: 'Erro ao carregar as tarefas' }]);
+			return from<IReturn[]>([{ status: 'error', message: 'Erro ao carregar a tarefa' }]);
 		}
 	}
 
 	getByStage(stage: 'pending' | 'completed'): Observable<IReturn> {
 		try {
-			const item = this.getItemsByStorage().filter((item: IListItem) =>
-				stage === 'pending' ? !item.checked : stage === 'completed' ? item.checked : item
-			);
-			return from<IReturn[]>([{ status: 'success', data: item }]);
+			return this.apiService
+				.list(this.path, { attr: 'checked', value: stage === 'pending' ? 'false' : 'true' })
+				.pipe(map((res) => ({ status: 'success', data: res })))
+				.pipe(this.apiService.returnCatchError('Erro ao carregar as tarefas')) as Observable<IReturn>;
 		} catch (e) {
 			return from<IReturn[]>([{ status: 'error', message: 'Erro ao carregar as tarefas' }]);
 		}
 	}
 
-	save(newItem: IListItem) {
+	save(newTodo: IListItem) {
 		try {
-			const updated = [...this.getItemsByStorage(), newItem];
-			this.setItemsByStorage(updated);
-			return from<IReturn[]>([{ status: 'success', message: 'Tarefa criada com sucesso' }]);
+			return this.apiService
+				.create(this.path, newTodo)
+				.pipe(map(() => ({ status: 'success', message: 'Tarefa criada com sucesso' })))
+				.pipe(this.apiService.returnCatchError('Erro ao salvar a tarefa')) as Observable<IReturn>;
 		} catch (e) {
-			return from<IReturn[]>([{ status: 'error', message: 'Erro ao salvar as tarefas' }]);
+			return from<IReturn[]>([{ status: 'error', message: 'Erro ao salvar a tarefa' }]);
 		}
 	}
 
 	updateStage(id: string, stage: 'pending' | 'completed') {
 		try {
-			const updated = this.getItemsByStorage().map((item: IListItem) => {
-				if (item.id === id) {
-					return { ...item, checked: stage === 'completed' };
-				}
-				return item;
-			});
-			this.setItemsByStorage(updated);
-			return from<IReturn[]>([{ status: 'success', message: 'Tarefa atualizada com sucesso' }]);
+			return this.apiService
+				.updateByPatch(this.path, id, { checked: stage === 'completed' })
+				.pipe(map(() => ({ status: 'success', message: 'Tarefa atualizada com sucesso' })))
+				.pipe(this.apiService.returnCatchError('Erro ao atualizar a tarefa')) as Observable<IReturn>;
 		} catch (e) {
 			return from<IReturn[]>([{ status: 'error', message: 'Erro ao atualizar a tarefa' }]);
 		}
 	}
 
-	update(updateItem: IListItem) {
+	update(updateTodo: IListItem) {
 		try {
-			const updated = this.getItemsByStorage().map((item: IListItem) => {
-				if (item.id === updateItem.id) {
-					return updateItem;
-				}
-				return item;
-			});
-			this.setItemsByStorage(updated);
-			return from<IReturn[]>([{ status: 'success', message: 'Tarefa atualizada com sucesso' }]);
+			return this.apiService
+				.update(this.path, updateTodo.id, updateTodo)
+				.pipe(map(() => ({ status: 'success', message: 'Tarefa atualizada com sucesso' })))
+				.pipe(this.apiService.returnCatchError('Erro ao atualizar a tarefa')) as Observable<IReturn>;
 		} catch (e) {
 			return from<IReturn[]>([{ status: 'error', message: 'Erro ao atualizar a tarefa' }]);
 		}
@@ -94,8 +87,10 @@ export class ToDoService {
 
 	deleteAll() {
 		try {
-			localStorage.removeItem('list');
-			return from<IReturn[]>([{ status: 'success', message: 'Tarefas deletada com sucesso' }]);
+			return this.apiService
+				.deleteAll(this.path)
+				.pipe(map(() => ({ status: 'success', message: 'Tarefas deletadas com sucesso' })))
+				.pipe(this.apiService.returnCatchError('Erro ao deletar as tarefas')) as Observable<IReturn>;
 		} catch (e) {
 			return from<IReturn[]>([{ status: 'error', message: 'Erro ao deletar as tarefas' }]);
 		}
@@ -103,9 +98,10 @@ export class ToDoService {
 
 	deleteById(id: string) {
 		try {
-			const deleted = this.getItemsByStorage().filter((item: IListItem) => item.id !== id);
-			this.setItemsByStorage(deleted);
-			return from<IReturn[]>([{ status: 'success', message: 'Tarefa deletada com sucesso' }]);
+			return this.apiService
+				.deleteById(this.path, id)
+				.pipe(map(() => ({ status: 'success', message: 'Tarefa deletada com sucesso' })))
+				.pipe(this.apiService.returnCatchError('Erro ao deletar a tarefa')) as Observable<IReturn>;
 		} catch (e) {
 			return from<IReturn[]>([{ status: 'error', message: 'Erro ao deletar a tarefa' }]);
 		}

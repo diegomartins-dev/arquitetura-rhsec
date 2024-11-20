@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, forkJoin, map, merge, Observable, switchMap, throwError } from 'rxjs';
 
 @Injectable({
 	providedIn: 'root'
@@ -30,7 +30,23 @@ export class ApiService<T> {
 		return this.http.put<T>(`${this.baseUrl}/${path}/${id}`, data);
 	}
 
-	remove(id: string): Observable<T> {
-		return this.http.delete<T>(`${this.baseUrl}/todos/${id}`);
+	updateByPatch(path: string, id: string, data: any): Observable<T> {
+		return this.http.patch<T>(`${this.baseUrl}/${path}/${id}`, data);
+	}
+
+	deleteAll(path: string): Observable<T[]> {
+		return this.getAll(path).pipe(switchMap((res) => forkJoin(res.map((item: any) => this.deleteById(path, item.id)))));
+	}
+
+	deleteById(path: string, id: string): Observable<T> {
+		return this.http.delete<T>(`${this.baseUrl}/${path}/${id}`);
+	}
+
+	returnCatchError(message: string) {
+		return catchError(() => this.returnThrowError(message));
+	}
+
+	returnThrowError(message: string) {
+		return throwError(() => ({ status: 'error', message: message || 'Aconteceu algum erro' }));
 	}
 }

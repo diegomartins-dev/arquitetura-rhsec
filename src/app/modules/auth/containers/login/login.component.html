@@ -1,34 +1,46 @@
 <div class="container">
 	<app-notification></app-notification>
 	<h3>Entrar no sistema</h3>
-	<mat-form-field>
-		<mat-label>Email</mat-label>
-		<input
-			matInput
-			placeholder="Digite seu email"
-			[formControl]="email"
-			(blur)="updateErrorMessage()"
-			required
-			data-testid="login-input-email"
-		/>
-		@if (email.invalid) {
-			<mat-error>{{ errorMessage()?.email }}</mat-error>
-		}
-	</mat-form-field>
-	<mat-form-field>
-		<mat-label>Senha</mat-label>
-		<input
-			matInput
-			placeholder="Digite sua senha"
-			[formControl]="password"
-			(blur)="updateErrorMessage()"
-			type="password"
-			required
-			data-testid="login-input-password"
-		/>
-		@if (password.invalid) {
-			<mat-error>{{ errorMessage()?.password }}</mat-error>
-		}
-	</mat-form-field>
-	<button type="submit" mat-flat-button color="primary" (click)="login()" data-cy="login-button-enter">Entrar</button>
+	<form autocomplete="off">
+		<mat-form-field>
+			<mat-label>Email</mat-label>
+			<input
+				matInput
+				placeholder="Digite seu email"
+				[formControl]="email"
+				(blur)="updateErrorMessage()"
+				required
+				data-testid="login-input-email"
+				autocomplete="off"
+				autofocus="on"
+				aria-autocomplete="off"
+				tabindex="1"
+				type="email"
+				class="autocomplete"
+			/>
+			@if (email.invalid) {
+				<mat-error>{{ errorMessage()?.email }}</mat-error>
+			}
+		</mat-form-field>
+		<mat-form-field>
+			<mat-label>Senha</mat-label>
+			<input
+				matInput
+				placeholder="Digite sua senha"
+				[formControl]="password"
+				(blur)="updateErrorMessage()"
+				type="password"
+				tabindex="2"
+				required
+				data-testid="login-input-password"
+				autocomplete="off"
+			/>
+			@if (password.invalid) {
+				<mat-error>{{ errorMessage()?.password }}</mat-error>
+			}
+		</mat-form-field>
+		<button type="submit" tabindex="3" mat-flat-button color="primary" (click)="login()" data-cy="login-button-enter">
+			Entrar
+		</button>
+	</form>
 </div>

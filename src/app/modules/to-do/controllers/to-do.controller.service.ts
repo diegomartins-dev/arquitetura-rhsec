@@ -58,7 +58,7 @@ export class ToDoControllerService {
 
 	updateStageTodo(id: string, stage: 'pending' | 'completed'): void {
 		this.toDoService.updateStage(id, stage).subscribe(
-			(data) => {
+			() => {
 				this.state.updateStage(id, stage);
 			},
 			(error) => {

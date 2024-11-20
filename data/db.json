@@ -1,18 +1,35 @@
 {
-	"users": [
-		{
-			"id": 1,
-			"name": "John Doe",
-			"email": "john@email.com",
-			"password": "123456",
-			"role": "user"
-		},
-		{
-			"id": 2,
-			"name": "Admin",
-			"email": "admin@email.com",
-			"password": "123456",
-			"role": "admin"
-		}
-	]
+  "users": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@email.com",
+      "password": "123456",
+      "role": "user"
+    },
+    {
+      "id": 2,
+      "name": "Admin",
+      "email": "admin@email.com",
+      "password": "123456",
+      "role": "admin"
+    }
+  ],
+  "todos": [
+    {
+      "id": "4dgfmlfyrd8",
+      "value": "tarefa 1",
+      "checked": false
+    },
+    {
+      "id": "k9gouhucsyb",
+      "checked": true,
+      "value": "tarefa 2"
+    },
+    {
+      "id": "jsdq3zmqish",
+      "value": "tarefa 3.1",
+      "checked": true
+    }
+  ]
 }
