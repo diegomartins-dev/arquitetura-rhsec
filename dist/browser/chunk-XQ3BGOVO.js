@@ -1,1 +1,0 @@
-import{V as i,sa as o}from"./chunk-TUDI3YIP.js";var r=class e{message=new o;constructor(){}success(t){this.message.emit({type:"success",message:t})}error(t){this.message.emit({type:"error",message:t})}static \u0275fac=function(s){return new(s||e)};static \u0275prov=i({token:e,factory:e.\u0275fac,providedIn:"root"})};export{r as a};
