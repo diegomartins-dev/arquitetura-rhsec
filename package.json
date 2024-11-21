@@ -3,7 +3,7 @@
 	"version": "0.0.0",
 	"scripts": {
 		"ng": "ng",
-		"start": "ng serve --aot",
+		"start": "ng serve",
 		"build": "ng build --aot",
 		"server": "json-server --watch data/db.json --port 3000",
 		"watch": "ng build --watch --configuration development",
