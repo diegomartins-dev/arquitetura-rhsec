@@ -1,14 +1,14 @@
 {
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "name": "John Doe",
       "email": "john@email.com",
       "password": "123456",
       "role": "user"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Admin",
       "email": "admin@email.com",
       "password": "123456",
@@ -28,8 +28,8 @@
     },
     {
       "id": "0c30r4zjixbp",
-      "checked": false,
-      "value": "tarefa 2"
+      "value": "tarefa 2.1",
+      "checked": false
     }
   ]
 }
