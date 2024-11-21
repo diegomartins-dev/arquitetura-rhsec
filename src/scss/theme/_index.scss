@@ -223,7 +223,6 @@ $dark-theme: m2.define-dark-theme(
 // );
 
 // // Compute font config
-// // @include mat.core($fontConfig);
 
 // body {
 // 	--primary-color: #cc33ca;
@@ -320,8 +319,8 @@ html {
 
 		input:-webkit-autofill {
 			background-color: transparent !important;
-			color: var(--black) !important;
-			transition: all 9999s ease-in-out 0s !important;
+			-webkit-background-clip: text !important;
+			-webkit-text-fill-color: var(--black);
 		}
 	}
 	@media (prefers-color-scheme: dark) {
@@ -338,14 +337,8 @@ html {
 
 		input:-webkit-autofill {
 			background-color: transparent !important;
-			color: var(--white) !important;
-			transition: all 9999s linear 9999s !important;
-		}
-
-		input:-internal-autofill-selected {
-			background-color: transparent !important;
-			color: var(--white) !important;
-			transition: all 9999s linear 9999s !important;
+			-webkit-background-clip: text !important;
+			-webkit-text-fill-color: var(--white);
 		}
 	}
 }

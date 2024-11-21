@@ -48,4 +48,8 @@ export class AuthControllerService {
 		sessionStorage.removeItem('user');
 		this.router.navigateByUrl('/auth/login');
 	}
+
+	isAuthorized(role: string) {
+		return this.getUserLogged().role === role ? true : false;
+	}
 }

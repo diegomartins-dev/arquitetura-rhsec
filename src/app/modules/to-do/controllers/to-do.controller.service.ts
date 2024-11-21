@@ -3,6 +3,7 @@ import { IListItem } from '../interfaces/i-list-item.interface';
 import { ToDoService } from '../services/to-do.service';
 import { ToDoState } from '../state/to-do.state';
 import { NotificationService } from '../../../shared/components/notification/notification.service';
+import { AuthControllerService } from '../../auth/controllers/auth.controller.service';
 
 @Injectable()
 export class ToDoControllerService {
@@ -10,9 +11,10 @@ export class ToDoControllerService {
 	completedTodos: IListItem[] = [];
 	uncompletedTodos: IListItem[] = [];
 
-	toDoService = inject(ToDoService);
-	state = inject(ToDoState);
-	notificationService = inject(NotificationService);
+	private toDoService = inject(ToDoService);
+	private state = inject(ToDoState);
+	private notificationService = inject(NotificationService);
+	private authControllerService = inject(AuthControllerService);
 
 	constructor() {
 		effect(() => {
@@ -33,6 +35,10 @@ export class ToDoControllerService {
 	}
 
 	addTodo(newItem: IListItem): void {
+		if (!this.isAuthorized('admin')) {
+			this.notificationService.error('Você não tem permissão para adicionar tarefas');
+			return;
+		}
 		this.toDoService.save(newItem).subscribe(
 			(data) => {
 				this.notificationService.success(data.message || 'Tarefa adicionada com sucesso');
@@ -45,6 +51,10 @@ export class ToDoControllerService {
 	}
 
 	updateTodo(updateItem: IListItem): void {
+		if (!this.isAuthorized('admin')) {
+			this.notificationService.error('Você não tem permissão para atualizar tarefas');
+			return;
+		}
 		this.toDoService.update(updateItem).subscribe(
 			(data) => {
 				this.notificationService.success(data.message || 'Tarefa atualizada com sucesso');
@@ -68,6 +78,10 @@ export class ToDoControllerService {
 	}
 
 	removeTodo(id: string): void {
+		if (!this.isAuthorized('admin')) {
+			this.notificationService.error('Você não tem permissão para deletar tarefas');
+			return;
+		}
 		this.toDoService.deleteById(id).subscribe(
 			(data) => {
 				this.notificationService.success(data.message || 'Tarefa deletada com sucesso');
@@ -80,6 +94,10 @@ export class ToDoControllerService {
 	}
 
 	removeAllTodos(): void {
+		if (!this.isAuthorized('admin')) {
+			this.notificationService.error('Você não tem permissão para deletar tarefas');
+			return;
+		}
 		this.toDoService.deleteAll().subscribe(
 			(data) => {
 				this.notificationService.success(data.message || 'Tarefas deletadas com sucesso');
@@ -89,5 +107,9 @@ export class ToDoControllerService {
 				this.notificationService.error(error.message || 'Aconteceu algum erro');
 			}
 		);
+	}
+
+	isAuthorized(role: string): boolean {
+		return this.authControllerService.isAuthorized(role);
 	}
 }
