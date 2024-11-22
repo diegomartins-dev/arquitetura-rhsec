@@ -11,8 +11,11 @@ Projeto gerado com a versão 18.2.9 do [Angular CLI](https://github.com/angular/
 
 - Baixar o projeto do repositório
 - Navegar atá a pasta raíz do projeto e executar o comando `npm install`
-- Executar o comando `npm run server` em um terminal e mantê-lo ativo, para subir a api restfull com json-server. O servidor subirá no caminho [http://localhost:3000](http://localhost:3000)
-- Executar o comando `npm start` em outro terminal e mantê-lo ativo, para startar o servidor local e abrir o navegador em [http://localhost:4200](http://localhost:4200)
+- Primeira maneira
+  - Executar o comando `npm run server` em um terminal e mantê-lo ativo, para subir a api restfull com json-server. O servidor subirá no caminho [http://localhost:3000](http://localhost:3000)
+  - Executar o comando `npm start` em outro terminal e mantê-lo ativo, para startar o servidor local e abrir o navegador em [http://localhost:4200](http://localhost:4200)
+- Segunda maneira
+  - Executar o comando `npm run dev` para subir os servidores e acessar no navegador [http://localhost:4200](http://localhost:4200)
 
 ## Build
 
