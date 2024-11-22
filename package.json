@@ -6,7 +6,7 @@
 		"start": "ng serve",
 		"build": "ng build --aot",
 		"server": "json-server --watch data/db.json --port 3000",
-		"dev": "concurrently \"ng serve\" \"json-server --watch data/db.json --port 3000\"",
+		"dev": "concurrently \"ng serve\" \"json-server data/db.json --port 3000\"",
 		"watch": "ng build --watch --configuration development",
 		"test": "ng test",
 		"format": "prettier --write src/**/*.{js,ts,jsx,tsx,css,scss,html,json}",
