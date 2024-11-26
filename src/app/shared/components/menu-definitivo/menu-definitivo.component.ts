@@ -43,7 +43,7 @@ export class MenuDefinitivoComponent {
 		{
 			name: 'Páginas',
 			subcategories: [
-				{ name: 'Dashboard', subcategories: [{ name: 'Home', url: 'home' }] },
+				{ name: 'Dashboard', subcategories: [{ name: 'Home', url: '/dashboard/home' }] },
 				{ name: 'Login', url: '/auth/login' },
 				{ name: 'Not Found', url: 'error' }
 			]

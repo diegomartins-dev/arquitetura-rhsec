@@ -1,15 +1,13 @@
 import { inject, Injectable } from '@angular/core';
-import { NotificationService } from '../../../shared/components/notification/notification.service';
-import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
-import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
+
+import { NotificationService } from '../../../shared/components/notification/notification.service';
 import { IAuth } from '../interfaces/auth.interface';
-import { IProvider } from '../../../core/interface/iprovider.interface';
-import { HttpService } from '../../../core/http/http.service';
-import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../services/auth.service';
 
 @Injectable({
-	providedIn: 'any'
+	providedIn: 'root'
 })
 export class AuthControllerService {
 	router = inject(Router);
@@ -31,7 +29,7 @@ export class AuthControllerService {
 						const { id, name, email, role } = res.data;
 						this.notificationService.success(res.message || 'Login realizado com sucesso');
 						this.setUserLogged({ id, name, email, role });
-						this.router.navigateByUrl('/dashboard/home');
+						this.router.navigateByUrl('/dashboard');
 					}
 				},
 

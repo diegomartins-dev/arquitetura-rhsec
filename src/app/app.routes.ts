@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { NotFoundPageComponent } from './shared/pages/not-found/not-found.component';
+
 import { authGuard } from './modules/auth/guards/auth.guard';
-import { AuthControllerService } from './modules/auth/controllers/auth.controller.service';
+import { NotFoundPageComponent } from './shared/pages/not-found/not-found.component';
 
 export const routes: Routes = [
 	{
@@ -12,7 +12,6 @@ export const routes: Routes = [
 	{
 		path: 'dashboard',
 		loadComponent: () => import('./modules/to-do/pages/to-do.page.component').then((m) => m.ToDoPageComponent),
-		providers: [AuthControllerService],
 		children: [
 			{
 				path: '',
@@ -34,7 +33,6 @@ export const routes: Routes = [
 	{
 		path: 'auth',
 		loadComponent: () => import('./modules/auth/pages/auth.page.component').then((m) => m.AuthPageComponent),
-		providers: [AuthControllerService],
 		children: [
 			{
 				path: '',

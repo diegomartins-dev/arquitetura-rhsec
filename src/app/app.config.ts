@@ -10,7 +10,7 @@ import { InMemoryService } from './core/in-memory/in-memory.service';
 
 export const appConfig: ApplicationConfig = {
 	providers: [
-		provideZoneChangeDetection({ eventCoalescing: true }),
+		provideZoneChangeDetection({}),
 		provideRouter(routes),
 		provideAnimationsAsync(),
 		provideHttpClient(),
