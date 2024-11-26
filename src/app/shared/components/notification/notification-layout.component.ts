@@ -11,7 +11,7 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 		<p data-test="notification-message">{{ message }}</p>
 		<p>
 			<span matSnackBarActions>
-				<button mat-button matSnackBarAction (click)="close()" class="action" data-cy="notification-close-button">
+				<button mat-button matSnackBarAction (click)="hide()" class="action" data-cy="notification-close-button">
 					<mat-icon>close</mat-icon>
 				</button>
 			</span>
@@ -74,12 +74,8 @@ export class NotificationLayoutComponent implements OnInit {
 		this.show();
 
 		NotificationLayoutComponent.timeout = setTimeout(() => {
-			this.close();
+			this.hide();
 		}, 5000);
-	}
-
-	close() {
-		this.hide();
 	}
 
 	hide() {
