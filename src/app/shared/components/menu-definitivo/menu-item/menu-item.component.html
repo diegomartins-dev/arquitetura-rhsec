@@ -10,7 +10,10 @@
 			</mat-expansion-panel-header>
 			@if (category?.subcategories) {
 				<mat-accordion data-test="menu-definitivo-accordion">
-					<app-item-menu [menuCategory]="category.subcategories"></app-item-menu>
+					<app-item-menu
+						[menuCategory]="category.subcategories"
+						(outputClickSubmenu)="outputClickSubmenu.emit($event)"
+					></app-item-menu>
 				</mat-accordion>
 			}
 		</mat-expansion-panel>
@@ -21,6 +24,7 @@
 			routerLinkActive="active"
 			ariaCurrentWhenActive="page"
 			[attr.routerLinkActiveOptions]="{ exact: true }"
+			(click)="outputClickSubmenu.emit(true)"
 			data-test="menu-definitivo-listitem"
 			>{{ category.name }}</mat-list-item
 		>

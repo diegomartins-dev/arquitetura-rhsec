@@ -11,13 +11,7 @@ import { IAuth } from '../../../../modules/auth/interfaces/auth.interface';
 	standalone: true,
 	imports: [MatToolbarModule, MatIconModule, MatButtonModule],
 	providers: [AuthControllerService],
-	styles: [
-		`
-			.example-spacer {
-				flex: 1 1 auto;
-			}
-		`
-	]
+	styleUrls: ['./header.component.scss']
 })
 export class DashboardHeaderComponent implements OnInit {
 	user: IAuth = {

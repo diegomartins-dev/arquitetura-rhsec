@@ -1,6 +1,6 @@
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { NgClass, NgFor, NgIf, NgStyle } from '@angular/common';
-import { Component, Input, signal } from '@angular/core';
+import { Component, EventEmitter, Input, Output, output, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
@@ -30,5 +30,6 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 })
 export class MenuItemComponent {
 	@Input() menuCategory?: Category[];
+	@Output() outputClickSubmenu = new EventEmitter<boolean>();
 	readonly panelOpenState = signal(false);
 }

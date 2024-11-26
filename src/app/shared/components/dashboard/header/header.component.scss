@@ -1,0 +1,13 @@
+.example-spacer {
+	flex: 1 1 auto;
+}
+
+mat-toolbar {
+	@media (max-width: 768px) {
+		& {
+			display: flex;
+			flex-direction: column;
+			height: 100%;
+		}
+	}
+}

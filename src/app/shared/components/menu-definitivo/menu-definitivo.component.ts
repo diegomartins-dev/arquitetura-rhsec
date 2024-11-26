@@ -107,7 +107,10 @@ export class MenuDefinitivoComponent {
 		!this.isMobile ? (this.menuOpened = true) : (this.menuOpened = false);
 	}
 
-	closeMenu(): void {}
+	closeMenu(event: any): void {
+		if (this.isMobile) this.menuOpened = false;
+		else this.initializeMenu();
+	}
 
 	initializeMenu() {
 		this.categoryOpenned = null;
@@ -127,10 +130,5 @@ export class MenuDefinitivoComponent {
 		}
 		this.submenuPosition.x = (event.target as HTMLElement).getBoundingClientRect().right;
 		this.submenuPosition.y = (event.target as HTMLElement).getBoundingClientRect().top;
-	}
-
-	readonly panelOpenState = signal(false);
-	closeSubmenu() {
-		this.openCategory = null;
 	}
 }

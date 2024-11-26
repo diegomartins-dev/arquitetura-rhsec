@@ -10,7 +10,13 @@
 		[ngClass]="!isMobile ? 'margin-top-none' : ''"
 		data-test="menu-definitivo-container"
 	>
-		<mat-sidenav class="mat-sidenav" #snav [mode]="'side'" (closed)="closeMenu()" [(opened)]="menuOpened">
+		<mat-sidenav
+			class="mat-sidenav"
+			#snav
+			[mode]="!isMobile ? 'side' : 'over'"
+			(closed)="closeMenu($event)"
+			[(opened)]="menuOpened"
+		>
 			<div class="nav-container" [ngClass]="isMobile ? 'vertical-layout' : 'horizontal-layout'">
 				<mat-nav-list>
 					@for (category of menu; track category) {
@@ -32,7 +38,10 @@
 					@for (category of menu; track category) {
 						@if (openCategory === category.name) {
 							<mat-accordion>
-								<app-item-menu [menuCategory]="category?.subcategories"></app-item-menu>
+								<app-item-menu
+									[menuCategory]="category?.subcategories"
+									(outputClickSubmenu)="closeMenu($event)"
+								></app-item-menu>
 							</mat-accordion>
 						}
 					}

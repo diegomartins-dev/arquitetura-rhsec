@@ -130,6 +130,8 @@ html {
 		@include mat.core-theme($dark-theme);
 		@include mat.all-component-themes($dark-theme);
 
+		--mat-sidenav-scrim-color: rgba(0, 0, 0, 0.5);
+
 		input:-webkit-autofill {
 			background-color: transparent !important;
 			-webkit-background-clip: text !important;
