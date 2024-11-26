@@ -5,6 +5,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 import { NotificationService } from './notification.service';
 import { NotificationLayoutComponent } from './notification-layout.component';
+import { OverlayContainer } from '@angular/cdk/overlay';
 
 export interface Category {
 	name: string;
@@ -25,7 +26,6 @@ export class NotificationComponent implements OnInit {
 
 	horizontalPosition: MatSnackBarHorizontalPosition = 'right';
 	verticalPosition: MatSnackBarVerticalPosition = 'top';
-	durationInSeconds = 5;
 
 	constructor() {}
 
@@ -35,10 +35,10 @@ export class NotificationComponent implements OnInit {
 	}
 
 	openSnackBar(message: string, action?: string) {
+		this._snackBar.dismiss();
 		this._snackBar.openFromComponent(NotificationLayoutComponent, {
 			horizontalPosition: this.horizontalPosition,
 			verticalPosition: this.verticalPosition,
-			// duration: this.durationInSeconds * 1000,
 			data: { message }
 		});
 	}
