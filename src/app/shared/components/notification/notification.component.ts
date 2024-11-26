@@ -38,7 +38,7 @@ export class NotificationComponent implements OnInit {
 		this._snackBar.openFromComponent(NotificationLayoutComponent, {
 			horizontalPosition: this.horizontalPosition,
 			verticalPosition: this.verticalPosition,
-			duration: this.durationInSeconds * 1000,
+			// duration: this.durationInSeconds * 1000,
 			data: { message }
 		});
 	}
