@@ -4,7 +4,7 @@
 	"scripts": {
 		"ng": "ng",
 		"start": "ng serve",
-		"build": "ng build --aot",
+		"build": "ng build",
 		"server": "json-server --watch data/db.json --port 3000",
 		"dev": "concurrently \"ng serve\" \"json-server data/db.json --port 3000\"",
 		"watch": "ng build --watch --configuration development",
