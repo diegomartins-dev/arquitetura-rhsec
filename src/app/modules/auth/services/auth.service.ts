@@ -2,6 +2,9 @@ import { inject, Injectable } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { ApiService } from '../../../core/repository/api.service';
 import { IAuth } from '../interfaces/auth.interface';
+import { HttpService } from '../../../core/http/http.service';
+import { HttpClient, HttpClientModule, HttpContext, HttpHandler } from '@angular/common/http';
+import { IProvider } from '../../../core/interface/iprovider.interface';
 
 export interface IReturn {
 	status: 'success' | 'error';
@@ -23,7 +26,7 @@ export class AuthService {
 				.list('users', { attr: 'email', value: email })
 				.pipe(
 					map((res) => {
-						if (res[0] && res[0].email === email && res[0].password === password)
+						if (res[0] && res[0]?.email === email && res[0]?.password === password)
 							return { status: 'success', message: 'Login realizado com sucesso', data: res[0] };
 						throw new Error('');
 					})
@@ -34,7 +37,7 @@ export class AuthService {
 		}
 	}
 
-	getUser(id: string): Observable<IAuth> {
+	getUser(id: string) {
 		return this.apiService
 			.getById('users', id)
 			.pipe(map((res) => res))

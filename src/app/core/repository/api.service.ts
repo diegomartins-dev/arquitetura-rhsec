@@ -1,45 +1,46 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { catchError, forkJoin, map, merge, Observable, switchMap, throwError } from 'rxjs';
+import { Inject, Injectable } from '@angular/core';
+import { catchError, Observable, throwError } from 'rxjs';
+
+import { IProvider } from '../interface/iprovider.interface';
+import { HttpService } from '../http/http.service';
+import { InMemoryService } from '../in-memory/in-memory.service';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class ApiService<T> {
-	baseUrl = 'http://localhost:3000';
+	constructor(public provider: IProvider<any>) {}
 
-	constructor(private http: HttpClient) {}
-
-	getAll(path: string): Observable<T[]> {
-		return this.http.get<T[]>(`${this.baseUrl}/${path}`);
+	getAll(path: string) {
+		return this.provider.getAll(path);
 	}
 
-	getById(path: string, id: string): Observable<T> {
-		return this.http.get<T>(`${this.baseUrl}/${path}/${id}`);
+	getById(path: string, id: string) {
+		return this.provider.getById(path, id);
 	}
 
-	list(path: string, search: { attr: string; value: string }): Observable<T[]> {
-		return this.http.get<T[]>(`${this.baseUrl}/${path}?${search.attr}=${search.value}`);
+	list(path: string, search: { attr: string; value: string }) {
+		return this.provider.list(path, search);
 	}
 
-	create(path: string, data: T): Observable<T> {
-		return this.http.post<T>(`${this.baseUrl}/${path}`, data);
+	create(path: string, data: T) {
+		return this.provider.create(path, data);
 	}
 
-	update(path: string, id: string, data: T): Observable<T> {
-		return this.http.put<T>(`${this.baseUrl}/${path}/${id}`, data);
+	update(path: string, id: string, data: T) {
+		return this.provider.update(path, id, data);
 	}
 
-	updateByPatch(path: string, id: string, data: any): Observable<T> {
-		return this.http.patch<T>(`${this.baseUrl}/${path}/${id}`, data);
+	updateByPatch(path: string, id: string, data: { attr: string; value: any }) {
+		return this.provider.updateByPatch(path, id, data);
 	}
 
-	deleteAll(path: string): Observable<T[]> {
-		return this.getAll(path).pipe(switchMap((res) => forkJoin(res.map((item: any) => this.deleteById(path, item.id)))));
+	deleteAll(path: string) {
+		return this.provider.deleteAll(path);
 	}
 
-	deleteById(path: string, id: string): Observable<T> {
-		return this.http.delete<T>(`${this.baseUrl}/${path}/${id}`);
+	deleteById(path: string, id: string) {
+		return this.provider.deleteById(path, id);
 	}
 
 	returnCatchError(message: string) {

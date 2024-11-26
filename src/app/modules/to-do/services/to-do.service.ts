@@ -66,7 +66,7 @@ export class ToDoService {
 	updateStage(id: string, stage: 'pending' | 'completed') {
 		try {
 			return this.apiService
-				.updateByPatch(this.path, id, { checked: stage === 'completed' })
+				.updateByPatch(this.path, id, { attr: 'checked', value: stage === 'completed' })
 				.pipe(map(() => ({ status: 'success', message: 'Tarefa atualizada com sucesso' })))
 				.pipe(this.apiService.returnCatchError('Erro ao atualizar a tarefa')) as Observable<IReturn>;
 		} catch (e) {

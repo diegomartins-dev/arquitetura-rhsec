@@ -108,10 +108,8 @@ export class MenuDefinitivoComponent {
 	}
 
 	closeMenu(event: any): void {
-		if (this.isMobile) {
-			this.menuOpened = false;
-			this.initializeMenu();
-		} else this.initializeMenu();
+		if (this.isMobile) this.menuOpened = false;
+		this.initializeMenu();
 	}
 
 	initializeMenu() {

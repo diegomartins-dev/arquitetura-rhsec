@@ -34,6 +34,7 @@ export const routes: Routes = [
 	{
 		path: 'auth',
 		loadComponent: () => import('./modules/auth/pages/auth.page.component').then((m) => m.AuthPageComponent),
+		providers: [AuthControllerService],
 		children: [
 			{
 				path: '',

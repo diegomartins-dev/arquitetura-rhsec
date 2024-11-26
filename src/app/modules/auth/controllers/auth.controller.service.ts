@@ -4,8 +4,13 @@ import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { IAuth } from '../interfaces/auth.interface';
+import { IProvider } from '../../../core/interface/iprovider.interface';
+import { HttpService } from '../../../core/http/http.service';
+import { HttpClient } from '@angular/common/http';
 
-@Injectable()
+@Injectable({
+	providedIn: 'any'
+})
 export class AuthControllerService {
 	router = inject(Router);
 	notificationService = inject(NotificationService);
@@ -29,6 +34,7 @@ export class AuthControllerService {
 						this.router.navigateByUrl('/dashboard/home');
 					}
 				},
+
 				error: (err) => {
 					this.notificationService.error(err.message || 'Erro ao tentar fazer o login');
 				}
