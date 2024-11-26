@@ -41,14 +41,14 @@ a {
 	h4,
 	h5,
 	a {
-		color: var(--black);
+		// color: var(--black);
 		text-decoration: none;
 	}
 }
 
 @media (prefers-color-scheme: dark) {
 	body {
-		background-color: var(--black);
+		// background-color: var(--black);
 	}
 }
 
