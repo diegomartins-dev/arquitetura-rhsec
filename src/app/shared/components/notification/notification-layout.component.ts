@@ -7,15 +7,15 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 
 @Component({
 	selector: 'app-notification-layout',
-	template: `<div class="message" [ngClass]="type" matSnackBarLabel>
-		<p data-test="notification-message">{{ message }}</p>
-		<p>
+	template: `<div class="message-container" [ngClass]="type" matSnackBarLabel>
+		<div class="message" data-test="notification-message">{{ message }}</div>
+		<div>
 			<span matSnackBarActions>
 				<button mat-button matSnackBarAction (click)="hide()" class="action" data-cy="notification-close-button">
 					<mat-icon>close</mat-icon>
 				</button>
 			</span>
-		</p>
+		</div>
 	</div> `,
 	styles: `
 		::ng-deep .mat-mdc-snack-bar-container .mat-mdc-snackbar-surface {
@@ -23,7 +23,7 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 			background-color: unset !important;
 			box-shadow: none !important;
 		}
-		.message {
+		.message-container {
 			display: flex;
 			flex-direction: row;
 			align-items: center;
@@ -33,7 +33,7 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 			border-radius: 4px;
 			padding: 12px 24px;
 
-			p {
+			.message {
 				margin: 0;
 				color: white;
 			}
