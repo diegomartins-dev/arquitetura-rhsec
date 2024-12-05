@@ -10,11 +10,11 @@ import { OverlayContainer } from '@angular/cdk/overlay';
 	template: `<div class="message-container" [ngClass]="type" matSnackBarLabel>
 		<div class="message" data-test="notification-message">{{ message }}</div>
 		<div>
-			<span matSnackBarActions>
+			<div matSnackBarActions>
 				<button mat-button matSnackBarAction (click)="hide()" class="action" data-cy="notification-close-button">
-					<mat-icon>close</mat-icon>
+					<mat-icon fontIcon="close"></mat-icon>
 				</button>
-			</span>
+			</div>
 		</div>
 	</div> `,
 	styles: `

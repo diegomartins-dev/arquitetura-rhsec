@@ -19,7 +19,7 @@
 				class="autocomplete"
 			/>
 			@if (email.invalid) {
-				<mat-error>{{ errorMessage()?.email }}</mat-error>
+				<mat-error data-test="login-error-email">{{ errorMessage()?.email }}</mat-error>
 			}
 		</mat-form-field>
 		<mat-form-field>
@@ -36,7 +36,7 @@
 				autocomplete="off"
 			/>
 			@if (password.invalid) {
-				<mat-error>{{ errorMessage()?.password }}</mat-error>
+				<mat-error data-test="login-error-password">{{ errorMessage()?.password }}</mat-error>
 			}
 		</mat-form-field>
 		<button type="submit" tabindex="3" mat-flat-button color="primary" (click)="login()" data-cy="login-button-enter">

@@ -57,6 +57,7 @@ export class LoginComponent {
 	}
 
 	login() {
+		if (this.email.invalid && this.password.invalid) this.updateErrorMessage();
 		this.authController.login(this.email, this.password);
 	}
 }
