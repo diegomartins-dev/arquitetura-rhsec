@@ -1,1 +1,9 @@
-<p-toast data-test="notification" />
+<p-toast data-test="notification">
+	<ng-template let-message pTemplate="message">
+		<div class="flex flex-column align-items-start" style="flex: 1">
+			<div class="font-medium text-lg my-3 text-900" data-test="notification-message">
+				{{ message.detail }}
+			</div>
+		</div>
+	</ng-template>
+</p-toast>

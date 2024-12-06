@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { NotificationService } from './notification.service';
 import { RippleModule } from 'primeng/ripple';
 import { MessageService } from 'primeng/api';
@@ -15,12 +15,15 @@ export interface Category {
 	templateUrl: './notification.component.html',
 	standalone: true,
 	imports: [ToastModule, RippleModule],
-	providers: [MessageService]
+	providers: [MessageService],
+	changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NotificationComponent implements OnInit {
 	private cdr = inject(ChangeDetectorRef);
 	private notificationService = inject(NotificationService);
 	private messageService = inject(MessageService);
+
+	constructor() {}
 
 	ngOnInit(): void {
 		this.cdr.detectChanges();

@@ -13,10 +13,14 @@ export class NotificationService implements Notification {
 	message = new EventEmitter<IMessage>();
 
 	success(message: string): void {
-		this.message.emit({ type: 'success', message });
+		setTimeout(() => {
+			this.message.emit({ type: 'success', message });
+		}, 300);
 	}
 
 	error(message: string): void {
-		this.message.emit({ type: 'error', message });
+		setTimeout(() => {
+			this.message.emit({ type: 'error', message });
+		}, 300);
 	}
 }
