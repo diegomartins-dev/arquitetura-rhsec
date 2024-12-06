@@ -37,9 +37,9 @@ export class LayoutService {
 
 	fonts: any[] = [
 		{ label: 'Arial', value: 'font-arial' },
-		{ label: 'Sans Serif', value: 'font-sans-serif' },
 		{ label: 'Roboto', value: 'font-roboto' },
-		{ label: 'Inter', value: 'font-inter' }
+		{ label: 'Inter', value: 'font-inter' },
+		{ label: 'Playfair', value: 'font-playfair' }
 	];
 
 	fontItems: any[] = [
@@ -47,12 +47,6 @@ export class LayoutService {
 			label: 'Arial',
 			command: () => {
 				this.changeFont('font-arial');
-			}
-		},
-		{
-			label: 'Sans Serif',
-			command: () => {
-				this.changeFont('font-sans-serif');
 			}
 		},
 		{
@@ -65,6 +59,12 @@ export class LayoutService {
 			label: 'Inter',
 			command: () => {
 				this.changeFont('font-inter');
+			}
+		},
+		{
+			label: 'Playfair',
+			command: () => {
+				this.changeFont('font-playfair');
 			}
 		}
 	];
@@ -91,7 +91,7 @@ export class LayoutService {
 
 	changeFont(font: string) {
 		const body = document.body;
-		body.classList.remove('font-arial', 'font-sans-serif', 'font-roboto', 'font-inter');
+		body.classList.remove('font-arial', 'font-roboto', 'font-inter', 'font-playfair');
 		body.classList.add(font);
 		localStorage.setItem('font', font);
 		this.selectedFont = font;
