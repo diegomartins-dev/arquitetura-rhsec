@@ -1,4 +1,4 @@
-<p-panelMenu [model]="submenu" class="w-full">
+<p-panelMenu [model]="submenu" class="w-full" data-test="submenu">
 	<ng-template pTemplate="item" let-item>
 		@if (item.route) {
 			<a
@@ -6,12 +6,13 @@
 				[routerLinkActive]="'active'"
 				class="flex align-items-center cursor-pointer text-color px-3 py-2 no-underline"
 				(click)="outputClickSubmenu.emit(true)"
+				data-cy="submenu-button-click"
 			>
 				<span [class]="item.icon"></span>
 				<span class="ml-2 text-color">{{ item.label }}</span>
 			</a>
 		} @else {
-			<span class="flex align-items-center cursor-pointer text-color px-3 py-2">
+			<span class="flex align-items-center cursor-pointer text-color px-3 py-2" data-test="submenu-item">
 				<span [class]="item.icon"></span>
 				<span class="ml-2">{{ item.label }}</span>
 			</span>

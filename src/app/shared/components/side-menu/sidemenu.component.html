@@ -1,6 +1,6 @@
 <div class="grid mx-0 md:min-h-full">
 	@if (!isMobile) {
-		<div class="col-fixed min-h-full menu-lateral flex flex-column align-items-center z-5">
+		<div class="col-fixed min-h-full menu-lateral flex flex-column align-items-center z-5" data-test="sidemenu">
 			@for (category of menu; track category) {
 				<div
 					class="category"
@@ -8,7 +8,7 @@
 					appClickOutside
 					(closeMenu)="closeMenu($event)"
 					(outputClickSubmenu)="closeMenu($event)"
-					data-test="menu-definitivo-item"
+					data-test="sidemenu-item"
 					[ngClass]="openCategory === category.label ? 'active' : ''"
 				>
 					<i [class]="category.icon" style="font-size: 1.5rem" [ngStyle]="{ color: category.color }"></i>
@@ -19,7 +19,7 @@
 					class="submenu"
 					[style.top.px]="submenuPosition.y"
 					[style.left.px]="submenuPosition.x"
-					data-test="menu-definitivo-submenu"
+					data-test="sidemenu-subitem"
 				>
 					@for (category of menu; track category) {
 						@if (openCategory === category.label) {
@@ -36,7 +36,7 @@
 	}
 
 	<app-sidebar [sidebarVisible]="sidebarVisible" (closeSidebar)="sidebarVisible = false" [items]="menu"></app-sidebar>
-	<div class="col flex flex-column">
+	<div class="col flex flex-column" data-test="sidemenu-content">
 		<ng-content></ng-content>
 	</div>
 </div>
