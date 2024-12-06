@@ -3,7 +3,8 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 import { PanelMenuModule } from 'primeng/panelmenu';
 
 export interface Subcategory {
-	name: string;
+	label: string;
+	icon?: string;
 	items?: Subcategory[];
 	route?: string;
 }

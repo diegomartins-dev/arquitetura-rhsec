@@ -1,5 +1,5 @@
 import { NgClass, NgIf, NgStyle } from '@angular/common';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, HostListener, ViewChild } from '@angular/core';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, HostListener, OnInit, ViewChild } from '@angular/core';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { Subcategory, SubmenuComponent } from './submenu/submenu.component';
 import { Sidebar, SidebarModule } from 'primeng/sidebar';
@@ -10,12 +10,14 @@ import { StyleClassModule } from 'primeng/styleclass';
 import { AvatarModule } from 'primeng/avatar';
 import { RippleModule } from 'primeng/ripple';
 import { ClickOutsideMenuDirective } from '../../directives/click-outside-menu.directive';
+import { DashboardHeaderComponent } from '../dashboard/header/header.component';
+import { SidebarComponent } from '../sidebar/sidebar.component';
 
 export interface Category {
-	name: string;
+	label: string;
 	icon: string;
 	color?: string;
-	subcategories?: Subcategory[];
+	items?: Subcategory[];
 	route?: string;
 }
 
@@ -34,60 +36,59 @@ export interface Category {
 		ButtonModule,
 		ToolbarModule,
 		InputTextModule,
-		RippleModule,
-		AvatarModule,
-		StyleClassModule
+		DashboardHeaderComponent,
+		SidebarComponent
 	],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class SideMenuComponent {
+export class SideMenuComponent implements OnInit {
 	menu: Category[] = [
 		{
-			name: 'Notificação',
+			label: 'Notificação',
 			icon: 'pi pi-bell',
 			color: '#0050A9'
 		},
 		{
-			name: 'Mais',
+			label: 'Mais',
 			icon: 'pi pi-ellipsis-h',
 			color: '#0050A9'
 		},
 		{
-			name: 'Pasta',
+			label: 'Pasta',
 			icon: 'pi pi-folder',
 			color: '#0050A9',
-			subcategories: [
+			items: [
 				{
-					name: 'Home',
+					label: 'Home',
 					route: 'home'
 				},
 				{
-					name: 'Programação Escolar',
+					label: 'Programação Escolar',
 					route: 'programacao-escolar'
 				},
 				{
-					name: 'Práticas de Ensino',
+					label: 'Práticas de Ensino',
 					route: 'praticas-ensino'
 				},
 				{
-					name: 'Regência',
+					label: 'Regência',
 					items: [
 						{
-							name: 'Grade Escolar',
+							label: 'Grade Escolar',
 							route: 'regencia/grade'
 						},
 						{
-							name: 'Licença',
+							label: 'Licença',
 							route: 'regencia/licenca'
 						}
 					]
 				},
 				{
-					name: 'Administração',
+					label: 'Administração',
 					route: 'admin'
 				},
 				{
-					name: 'Escola',
+					label: 'Escola',
 					route: 'escola'
 				}
 			]
@@ -95,7 +96,16 @@ export class SideMenuComponent {
 	];
 
 	isMobile = false;
-	menuOpened = false;
+
+	openCategory: string | null = null;
+	submenuPosition = { x: 0, y: 0 };
+	categoryOpenned: string | null = null;
+
+	sidebarVisible: boolean = false;
+
+	ngOnInit(): void {
+		this.onResize();
+	}
 
 	closeMenu(event: any): void {
 		if (event) this.initializeMenu();
@@ -104,11 +114,9 @@ export class SideMenuComponent {
 	initializeMenu(): void {
 		this.openCategory = null;
 		this.categoryOpenned = null;
+		this.sidebarVisible = false;
 	}
 
-	openCategory: string | null = null;
-	submenuPosition = { x: 0, y: 0 };
-	categoryOpenned: string | null = null;
 	openSubmenu(event: MouseEvent, category: string, subcategories?: Subcategory[]) {
 		if (!subcategories) {
 			this.categoryOpenned = null;
@@ -126,22 +134,9 @@ export class SideMenuComponent {
 		this.submenuPosition.y = (event.target as HTMLElement).getBoundingClientRect().top;
 	}
 
-	@HostListener('window:resize', ['$event'])
-	@HostListener('window:load', ['$event'])
-	onResize(event: Event) {
+	@HostListener('window:resize')
+	onResize() {
 		this.isMobile = window.innerWidth <= 768;
 		this.initializeMenu();
 	}
-
-	openCloseMenu() {
-		!this.isMobile ? (this.menuOpened = true) : (this.menuOpened = false);
-	}
-
-	@ViewChild('sidebarRef') sidebarRef!: Sidebar;
-
-	closeCallback(e: any): void {
-		this.sidebarRef.close(e);
-	}
-
-	sidebarVisible: boolean = false;
 }

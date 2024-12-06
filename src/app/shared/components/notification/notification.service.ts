@@ -2,7 +2,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { Notification } from './notification.interface';
 
 export interface IMessage {
-	type: 'success' | 'info' | 'warning' | 'danger' | 'secondary' | 'contrast';
+	type: 'success' | 'info' | 'warning' | 'error' | 'secondary' | 'contrast';
 	message: string;
 }
 
@@ -17,6 +17,6 @@ export class NotificationService implements Notification {
 	}
 
 	error(message: string): void {
-		this.message.emit({ type: 'danger', message });
+		this.message.emit({ type: 'error', message });
 	}
 }

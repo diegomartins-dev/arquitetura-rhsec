@@ -1,20 +1,25 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, Output, output } from '@angular/core';
 import { AuthControllerService } from '../../../../modules/auth/controllers/auth.controller.service';
 import { IAuth } from '../../../../modules/auth/interfaces/auth.interface';
 import { ToolbarModule } from 'primeng/toolbar';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { LayoutService } from '../../../services/layout/layout.service';
 import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { NgClass } from '@angular/common';
 
 @Component({
 	selector: 'app-dashboard-header',
 	templateUrl: './header.component.html',
 	standalone: true,
-	imports: [ToolbarModule, SplitButtonModule, InputTextModule],
+	imports: [ToolbarModule, SplitButtonModule, InputTextModule, ButtonModule, NgClass],
 	providers: [AuthControllerService],
 	styleUrls: ['./header.component.scss']
 })
 export class DashboardHeaderComponent implements OnInit {
+	@Input() isMobile = false;
+	@Output() openSidebar = new EventEmitter<boolean>();
+
 	layoutService = inject(LayoutService);
 
 	user: IAuth = {
@@ -50,5 +55,9 @@ export class DashboardHeaderComponent implements OnInit {
 
 	getFont(font: string): string {
 		return this.layoutService.getFont(font);
+	}
+
+	openCloseSidebar() {
+		this.openSidebar.emit(true);
 	}
 }

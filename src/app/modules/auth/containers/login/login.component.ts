@@ -1,16 +1,12 @@
+import { NgClass } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { merge } from 'rxjs';
+import { ButtonModule } from 'primeng/button';
+import { FloatLabelModule } from 'primeng/floatlabel';
+import { InputTextModule } from 'primeng/inputtext';
 
 import { NotificationComponent } from '../../../../shared/components/notification/notification.component';
 import { AuthControllerService } from '../../controllers/auth.controller.service';
-import { HttpService } from '../../../../core/http/http.service';
-import { IProvider } from '../../../../core/interface/iprovider.interface';
-import { ButtonModule } from 'primeng/button';
-import { InputTextModule } from 'primeng/inputtext';
-import { FloatLabelModule } from 'primeng/floatlabel';
-import { NgClass } from '@angular/common';
 
 @Component({
 	selector: 'app-login',
@@ -36,10 +32,7 @@ export class LoginComponent {
 
 	authController = inject(AuthControllerService);
 
-	constructor() {}
-
 	updateErrorMessage() {
-		console.log(this.errorMessage());
 		if (this.email.hasError('required')) {
 			this.errorMessage.update((oldValues) => ({ ...oldValues, email: 'Campo email é obrigatório' }));
 		}
