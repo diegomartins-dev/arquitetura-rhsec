@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-
-import { LoginComponent } from '../../../modules/auth/containers/login/login.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
 	selector: 'app-auth-page',
 	standalone: true,
-	imports: [LoginComponent],
+	imports: [RouterOutlet],
 	providers: [],
-	template: ` <app-login></app-login> `
+	template: ` <router-outlet></router-outlet> `
 })
 export class AuthPageComponent {}

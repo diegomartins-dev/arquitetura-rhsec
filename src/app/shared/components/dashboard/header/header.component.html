@@ -1,8 +1,16 @@
-<mat-toolbar>
-	<span>Lista de Tarefas</span>
-	<span class="example-spacer"></span>
-	<span>{{ user.email }}</span>
-	<button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="logout()">
-		<mat-icon>logout</mat-icon>
-	</button>
-</mat-toolbar>
+<p-toolbar class="md:my-5 md:mx-8 md:block hidden z-1">
+	<div class="p-toolbar-group-center">
+		<span class="p-input-icon-left">
+			<i class="pi pi-search"></i>
+			<input pInputText placeholder="Search" />
+		</span>
+	</div>
+	<div class="p-toolbar-group-end">
+		<p-splitButton
+			class="mr-2"
+			[label]="getFont(this.layoutService.selectedFont)"
+			[model]="this.layoutService.fontItems"
+		/>
+		<p-splitButton [label]="getThemeName(this.layoutService.selectedTheme)" [model]="this.layoutService.themeItems" />
+	</div>
+</p-toolbar>

@@ -1,0 +1,20 @@
+<p-panelMenu [model]="submenu" class="w-full">
+	<ng-template pTemplate="item" let-item>
+		@if (item.route) {
+			<a
+				[routerLink]="item.route"
+				[routerLinkActive]="'active'"
+				class="flex align-items-center cursor-pointer text-color px-3 py-2 no-underline"
+				(click)="outputClickSubmenu.emit(true)"
+			>
+				<span [class]="item.icon"></span>
+				<span class="ml-2 text-color">{{ item.name }}</span>
+			</a>
+		} @else {
+			<span class="flex align-items-center cursor-pointer text-color px-3 py-2">
+				<span [class]="item.icon"></span>
+				<span class="ml-2">{{ item.name }}</span>
+			</span>
+		}
+	</ng-template>
+</p-panelMenu>

@@ -1,11 +1,11 @@
 import { Location } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { MatButton } from '@angular/material/button';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
 	selector: 'app-not-found-page',
 	standalone: true,
-	imports: [MatButton],
+	imports: [ButtonModule],
 	templateUrl: './not-found.component.html',
 	styleUrl: './not-found.component.scss'
 })

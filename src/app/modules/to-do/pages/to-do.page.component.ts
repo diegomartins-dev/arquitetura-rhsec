@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { ToDoComponent } from '../containers/to-do/to-do.component';
 import { DashboardLayoutComponent } from '../../../shared/templates/dashboard/dashboardlayout.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
 	selector: 'app-to-do-page',
 	standalone: true,
-	imports: [DashboardLayoutComponent, ToDoComponent],
+	imports: [DashboardLayoutComponent, RouterOutlet],
 	template: `
 		<app-dashboard-layout>
-			<app-to-do></app-to-do>
+			<router-outlet></router-outlet>
 		</app-dashboard-layout>
 	`
 })

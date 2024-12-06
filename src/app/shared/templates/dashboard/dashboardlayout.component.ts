@@ -1,18 +1,17 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatIcon } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { RouterOutlet } from '@angular/router';
 
 import { AuthControllerService } from '../../../modules/auth/controllers/auth.controller.service';
 import { IAuth } from '../../../modules/auth/interfaces/auth.interface';
-import { MenuDefinitivoComponent } from '../../components/menu-definitivo/menu-definitivo.component';
+import { SideMenuComponent } from '../../components/side-menu/sidemenu.component';
+import { DashboardHeaderComponent } from '../../components/dashboard/header/header.component';
+import { NotificationComponent } from '../../components/notification/notification.component';
 
 @Component({
 	selector: 'app-dashboard-layout',
 	templateUrl: './dashboard.layout.component.html',
 	standalone: true,
-	imports: [MenuDefinitivoComponent, RouterOutlet, MatToolbarModule, MatIcon, MatButtonModule],
+	imports: [RouterOutlet, SideMenuComponent, DashboardHeaderComponent, NotificationComponent],
 	providers: [AuthControllerService],
 	styles: [
 		`

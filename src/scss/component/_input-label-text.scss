@@ -12,6 +12,10 @@
 	margin-bottom: 20px;
 	padding: 5px;
 
+	input {
+		font-family: var(--font-family);
+	}
+
 	input[type='text'] {
 		width: 85%;
 		border: none;
@@ -20,6 +24,10 @@
 		color: var(--white);
 		outline: 0;
 		margin-left: 10px;
+	}
+
+	input::placeholder {
+		color: var(--white);
 	}
 
 	input[type='checkbox'] {

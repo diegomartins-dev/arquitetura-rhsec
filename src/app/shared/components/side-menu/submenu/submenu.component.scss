@@ -1,0 +1,61 @@
+::ng-deep {
+	@mixin active() {
+		background-color: transparent;
+		--text-color: var(--blue-500);
+	}
+
+	.p-panelmenu .p-panelmenu-panel {
+		background-color: var(--submenu-panel);
+		border: none;
+		padding: 0;
+		border-radius: 0;
+		margin: 0;
+
+		:has(.active) {
+			background-color: var(--blue-500);
+		}
+
+		.p-panelmenu-content {
+			border-radius: 0;
+		}
+
+		.p-panelmenu-header {
+			padding: 6px 0;
+
+			.p-panelmenu-header-content {
+				border: none;
+
+				.active {
+					--text-color: var(--primary-color-text);
+				}
+			}
+		}
+
+		&:not(:has(.p-highlight)):hover {
+			background-color: var(--blue-500);
+
+			.p-panelmenu-header-content {
+				--text-color: var(--primary-color-text);
+			}
+		}
+	}
+
+	.p-panelmenu-header-content {
+		background-color: transparent;
+		--text-color: var(--gray-500);
+	}
+
+	.p-toggleable-content.p-panelmenu-expanded {
+		background-color: var(--surface-b);
+
+		.p-panelmenu-content {
+			@include active();
+			border: none;
+		}
+	}
+
+	.p-panelmenu-header.p-highlight:has(+ .p-toggleable-content) {
+		background-color: var(--surface-b);
+		font-weight: 600;
+	}
+}

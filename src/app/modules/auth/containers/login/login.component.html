@@ -1,46 +1,64 @@
 <div class="container">
 	<app-notification></app-notification>
-	<h3>Entrar no sistema</h3>
+	<h3 class="text-lg mb-6">Entrar no sistema</h3>
 	<form autocomplete="off">
-		<mat-form-field>
-			<mat-label>Email</mat-label>
-			<input
-				matInput
-				placeholder="Digite seu email"
-				[formControl]="email"
-				(blur)="updateErrorMessage()"
-				required
-				data-testid="login-input-email"
-				autocomplete="off"
-				autofocus="on"
-				aria-autocomplete="off"
-				tabindex="1"
-				type="email"
-				class="autocomplete"
-			/>
+		<div class="field relative mb-6">
+			<p-floatLabel>
+				<input
+					pInputText
+					id="email"
+					type="email"
+					[formControl]="email"
+					(blur)="updateErrorMessage()"
+					data-testid="login-input-email"
+					placeholder="Digite seu email"
+					aria-describedby="email-help"
+					[ngClass]="errorMessage().email ? 'ng-invalid ng-dirty' : ''"
+					autocomplete="off"
+					tabindex="1"
+					autofocus
+				/>
+				<label for="email">Email</label>
+			</p-floatLabel>
 			@if (email.invalid) {
-				<mat-error data-test="login-error-email">{{ errorMessage()?.email }}</mat-error>
+				<small id="email-help" class="p-error absolute" data-test="login-error-email">
+					{{ errorMessage().email }}
+				</small>
 			}
-		</mat-form-field>
-		<mat-form-field>
-			<mat-label>Senha</mat-label>
-			<input
-				matInput
-				placeholder="Digite sua senha"
-				[formControl]="password"
-				(blur)="updateErrorMessage()"
-				type="password"
-				tabindex="2"
-				required
-				data-testid="login-input-password"
-				autocomplete="off"
-			/>
+		</div>
+
+		<div class="field relative mb-6">
+			<p-floatLabel>
+				<input
+					pInputText
+					id="password"
+					type="password"
+					[formControl]="password"
+					(blur)="updateErrorMessage()"
+					data-testid="login-input-password"
+					placeholder="Digite sua senha"
+					aria-describedby="password-help"
+					[ngClass]="errorMessage().password ? 'ng-invalid ng-dirty' : ''"
+					autocomplete="off"
+					tabindex="2"
+				/>
+				<label for="password">Senha</label>
+			</p-floatLabel>
 			@if (password.invalid) {
-				<mat-error data-test="login-error-password">{{ errorMessage()?.password }}</mat-error>
+				<small id="password-help" class="p-error absolute" data-test="login-error-password">
+					{{ errorMessage().password }}
+				</small>
 			}
-		</mat-form-field>
-		<button type="submit" tabindex="3" mat-flat-button color="primary" (click)="login()" data-cy="login-button-enter">
+		</div>
+		<p-button
+			type="submit"
+			tabindex="3"
+			mat-flat-button
+			color="primary"
+			(click)="login($event)"
+			data-cy="login-button-enter"
+		>
 			Entrar
-		</button>
+		</p-button>
 	</form>
 </div>

@@ -1,19 +1,22 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Notification } from './notification.interface';
 
+export interface IMessage {
+	type: 'success' | 'info' | 'warning' | 'danger' | 'secondary' | 'contrast';
+	message: string;
+}
+
 @Injectable({
 	providedIn: 'root'
 })
 export class NotificationService implements Notification {
-	message = new EventEmitter();
-
-	constructor() {}
+	message = new EventEmitter<IMessage>();
 
 	success(message: string): void {
 		this.message.emit({ type: 'success', message });
 	}
 
 	error(message: string): void {
-		this.message.emit({ type: 'error', message });
+		this.message.emit({ type: 'danger', message });
 	}
 }
