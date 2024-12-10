@@ -8,7 +8,7 @@
 					appClickOutside
 					(closeMenu)="closeMenu($event)"
 					(outputClickSubmenu)="closeMenu($event)"
-					data-test="sidemenu-item"
+					[attr.data-test]="'sidemenu-item-' + category.id"
 					[ngClass]="openCategory === category.label ? 'active' : ''"
 				>
 					<i [class]="category.icon" style="font-size: 1.5rem" [ngStyle]="{ color: category.color }"></i>

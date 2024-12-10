@@ -14,11 +14,13 @@ import { DashboardHeaderComponent } from '../dashboard/header/header.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 
 export interface Category {
+	id: string;
 	label: string;
 	icon: string;
 	color?: string;
 	items?: Subcategory[];
 	route?: string;
+	styleClass?: string;
 }
 
 @Component({
@@ -44,52 +46,88 @@ export interface Category {
 export class SideMenuComponent implements OnInit {
 	menu: Category[] = [
 		{
+			id: '1',
 			label: 'Notificação',
 			icon: 'pi pi-bell',
 			color: '#0050A9'
 		},
 		{
+			id: '2',
 			label: 'Mais',
 			icon: 'pi pi-ellipsis-h',
 			color: '#0050A9'
 		},
 		{
+			id: '3',
 			label: 'Pasta',
 			icon: 'pi pi-folder',
 			color: '#0050A9',
 			items: [
 				{
+					id: '3-1',
 					label: 'Home',
 					route: 'home'
 				},
 				{
+					id: '3-2',
 					label: 'Programação Escolar',
 					route: 'programacao-escolar'
 				},
 				{
+					id: '3-3',
 					label: 'Práticas de Ensino',
 					route: 'praticas-ensino'
 				},
 				{
+					id: '3-4',
 					label: 'Regência',
 					items: [
 						{
+							id: '3-4-1',
 							label: 'Grade Escolar',
 							route: 'regencia/grade'
 						},
 						{
+							id: '3-4-2',
 							label: 'Licença',
 							route: 'regencia/licenca'
 						}
 					]
 				},
 				{
+					id: '3-5',
 					label: 'Administração',
 					route: 'admin'
 				},
 				{
+					id: '3-6',
 					label: 'Escola',
 					route: 'escola'
+				}
+			]
+		},
+		{
+			id: '4',
+			label: 'Pasta 1',
+			icon: 'pi pi-inbox',
+			color: '#0050A9',
+			styleClass: 'ABC 111',
+			items: [
+				{
+					id: '4-1',
+					label: 'item 1'
+				},
+				{
+					id: '4-2',
+					label: 'item 2'
+				},
+				{
+					id: '4-3',
+					label: 'item 3'
+				},
+				{
+					id: '4-4',
+					label: 'item 4'
 				}
 			]
 		}

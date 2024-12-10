@@ -14,13 +14,13 @@ export class NotificationService implements Notification {
 
 	success(message: string): void {
 		setTimeout(() => {
-			this.message.emit({ type: 'success', message });
+			this.message.emit({ type: 'success', message: message.trim() });
 		}, 300);
 	}
 
 	error(message: string): void {
 		setTimeout(() => {
-			this.message.emit({ type: 'error', message });
+			this.message.emit({ type: 'error', message: message.trim() });
 		}, 300);
 	}
 }
