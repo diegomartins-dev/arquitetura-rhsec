@@ -1,33 +1,37 @@
 .menu-lateral {
-  width: 80px;
-  background-color: var(--surface-a);
-  box-shadow: 5px 1px 5px 1px var(--surface-c);
+	width: 80px;
+	background-color: var(--surface-a);
+	box-shadow: 5px 1px 5px 1px var(--surface-c);
 }
 
 .category {
-  margin: 16px;
-  padding: 16px;
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+	margin: 16px;
+	padding: 16px;
+	cursor: pointer;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 
-  &.active {
-    background-color: var(--blue-100);
-    border-radius: 16px;
-  }
+	&.active {
+		background-color: var(--blue-100);
+		border-radius: 16px;
+	}
+
+	&:hover {
+		background-color: var(--blue-200);
+	}
 }
 
 .submenu {
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  background-color: var(--submenu-panel);
-  width: 200px;
-  border: 1px solid var(--gray-100);
-  border-radius: 16px;
-  z-index: 9999;
-  overflow: auto;
-  max-height: -webkit-fill-available;
-  min-height: auto;
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	background-color: var(--submenu-panel);
+	width: 200px;
+	border: 1px solid var(--gray-100);
+	border-radius: 16px;
+	z-index: 9999;
+	overflow: auto;
+	max-height: -webkit-fill-available;
+	min-height: auto;
 }
