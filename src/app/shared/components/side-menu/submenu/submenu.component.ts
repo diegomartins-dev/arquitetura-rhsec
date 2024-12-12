@@ -64,4 +64,9 @@ export class SubmenuComponent implements AfterViewInit, OnInit {
 		event.stopPropagation();
 		this.outputClickSubmenu.emit(true);
 	}
+
+	//Apenas para quando clicar em cima do icon do submenu, não se propagar o efeito e fechar o menu com this.outputClickSubmenu
+	stopClickPropagation(event: Event) {
+		event.stopPropagation();
+	}
 }

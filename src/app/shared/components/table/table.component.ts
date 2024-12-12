@@ -1,39 +1,54 @@
-import { CurrencyPipe, DatePipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { CurrencyPipe, DatePipe, NgFor } from '@angular/common';
+import { Component, Input } from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
-
-export interface Column {
-	field: string;
-	header: string;
-}
 
 @Component({
 	selector: 'app-table',
 	templateUrl: 'table.component.html',
 	standalone: true,
 	styleUrl: './table.component.scss',
-	imports: [TableModule, TagModule, CurrencyPipe, DatePipe]
+	imports: [TableModule, TagModule, DatePipe]
 })
 export class TableComponent {
-	products: any[] = [];
-
-	cols: Column[] = [
-		{ field: 'code', header: 'Code' },
-		{ field: 'name', header: 'Name' },
-		{ field: 'category', header: 'Category' },
-		{ field: 'quantity', header: 'Quantity' },
-		{ field: 'inventoryStatus', header: 'Status' },
-		{ field: 'rating', header: 'Rating' }
+	@Input() data: any[] = [
+		{
+			codigo: '1000',
+			situacao: 'completa',
+			escola: 'Colégio Militar',
+			data: new Date(),
+			cidade: 'Salvador'
+		},
+		{
+			codigo: '1000',
+			situacao: 'em progresso',
+			escola: 'Colégio Estadual',
+			data: new Date(),
+			cidade: 'Salvador'
+		},
+		{
+			codigo: '1000',
+			situacao: 'desativada',
+			escola: 'Colégio Estadual',
+			data: new Date(),
+			cidade: 'Salvador'
+		}
+	];
+	@Input() columns: any[] = [
+		{ field: 'codigo', header: 'Código' },
+		{ field: 'escola', header: 'Escola' },
+		{ field: 'cidade', header: 'Cidade' },
+		{ field: 'data', header: 'Data' },
+		{ field: 'situacao', header: 'Situação' }
 	];
 
 	getSeverity(status: string) {
 		switch (status) {
-			case 'INSTOCK':
+			case 'completa':
 				return 'success';
-			case 'LOWSTOCK':
+			case 'em progresso':
 				return 'warning';
-			case 'OUTOFSTOCK':
+			case 'desativada':
 				return 'danger';
 			default:
 				return 'secondary';

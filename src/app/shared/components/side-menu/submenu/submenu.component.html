@@ -1,4 +1,4 @@
-<p-panelMenu [model]="submenu" class="w-full" data-test="submenu" #panelMenu>
+<p-panelMenu [model]="submenu" class="w-full" data-test="submenu" #panelMenu (click)="stopClickPropagation($event)">
 	<ng-template pTemplate="item" let-item>
 		@if (item.route) {
 			<a
