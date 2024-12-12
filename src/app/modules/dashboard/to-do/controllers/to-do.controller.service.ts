@@ -2,8 +2,8 @@ import { Injectable, effect, inject } from '@angular/core';
 import { IListItem } from '../interfaces/i-list-item.interface';
 import { ToDoService } from '../services/to-do.service';
 import { ToDoState } from '../state/to-do.state';
-import { NotificationService } from '../../../shared/components/notification/notification.service';
-import { AuthControllerService } from '../../auth/controllers/auth.controller.service';
+import { NotificationService } from '../../../../shared/components/notification/notification.service';
+import { AuthControllerService } from '../../../auth/controllers/auth.controller.service';
 
 @Injectable()
 export class ToDoControllerService {

@@ -1,19 +1,35 @@
 <div class="grid mx-0 md:min-h-full">
 	@if (!isMobile) {
-		<div class="col-fixed min-h-full menu-lateral flex flex-column align-items-center z-5" data-test="sidemenu">
-			@for (category of menu; track category) {
-				<div
-					class="category"
-					(click)="openSubmenu($event, category.label, category?.items)"
-					appClickOutside
-					(closeMenu)="closeMenu($event)"
-					(outputClickSubmenu)="closeMenu($event)"
-					[attr.data-test]="'sidemenu-item-' + category.id"
-					[ngClass]="openCategory === category.label ? 'active' : ''"
-				>
-					<i [class]="category.icon" style="font-size: 1.5rem" [ngStyle]="{ color: category.color }"></i>
+		<div
+			class="col-fixed min-h-full menu-lateral flex flex-column align-items-center z-5 gap-7 py-6"
+			data-test="sidemenu"
+		>
+			<div class="flex flex-column gap-2">
+				<div class="sidemenu-items" [attr.data-test]="'sidemenu-item-notification'">
+					<i class="material-icons-outlined" [ngStyle]="{ color: '#0050A9' }">notifications</i>
 				</div>
-			}
+				<div class="sidemenu-items" [attr.data-test]="'sidemenu-item-notification'">
+					<i class="material-icons-outlined" [ngStyle]="{ color: '#0050A9' }">more_horiz</i>
+				</div>
+			</div>
+			<div class="flex flex-column gap-3">
+				@for (category of menu; track category) {
+					<div
+						class="category"
+						(click)="openSubmenu($event, category.label, category?.items)"
+						appClickOutside
+						(closeMenu)="closeMenu($event)"
+						(outputClickSubmenu)="closeMenu($event)"
+						[attr.data-test]="'sidemenu-item-' + category.id"
+						[ngClass]="openCategory === category.label ? 'active' : ''"
+					>
+						<i class="material-icons-outlined" [ngStyle]="{ color: category.color }">
+							{{ category.icon }}
+						</i>
+						<span class="category-label">{{ category.label }}</span>
+					</div>
+				}
+			</div>
 			@if (openCategory) {
 				<div
 					class="submenu"
@@ -28,6 +44,11 @@
 					}
 				</div>
 			}
+			<div class="flex flex-column gap-1">
+				<div class="sidemenu-items" [attr.data-test]="'sidemenu-item-notification'">
+					<i class="material-icons-outlined" [ngStyle]="{ color: '#0050A9' }">settings</i>
+				</div>
+			</div>
 		</div>
 	} @else {
 		<div class="col-12">

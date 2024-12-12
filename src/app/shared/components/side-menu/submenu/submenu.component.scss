@@ -11,8 +11,13 @@
 		border-radius: 0;
 		margin: 0;
 
-		:has(.active) {
+		&:has(.active) {
 			background-color: var(--blue-500);
+
+			.ml-2,
+			i {
+				color: var(--primary-color-text);
+			}
 		}
 
 		.p-panelmenu-content {
@@ -51,11 +56,27 @@
 		.p-panelmenu-content {
 			@include active();
 			border: none;
+			padding: 0;
 		}
 	}
 
 	.p-panelmenu-header.p-highlight:has(+ .p-toggleable-content) {
 		background-color: var(--surface-b);
+		color: var(--text-color);
 		font-weight: 600;
+
+		.ml-2,
+		i {
+			color: var(--text-color);
+		}
+	}
+
+	.p-menuitem-content a.active {
+		background-color: var(--blue-500);
+
+		i,
+		span {
+			color: var(--primary-color-text) !important;
+		}
 	}
 }

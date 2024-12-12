@@ -1,9 +1,7 @@
-import { Inject, Injectable } from '@angular/core';
-import { catchError, Observable, throwError } from 'rxjs';
+import { Injectable } from '@angular/core';
+import { catchError, throwError } from 'rxjs';
 
 import { IProvider } from '../interface/iprovider.interface';
-import { HttpService } from '../http/http.service';
-import { InMemoryService } from '../in-memory/in-memory.service';
 
 @Injectable({
 	providedIn: 'root'

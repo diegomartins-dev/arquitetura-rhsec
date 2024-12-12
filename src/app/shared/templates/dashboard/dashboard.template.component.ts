@@ -8,8 +8,8 @@ import { DashboardHeaderComponent } from '../../components/dashboard/header/head
 import { NotificationComponent } from '../../components/notification/notification.component';
 
 @Component({
-	selector: 'app-dashboard-layout',
-	templateUrl: './dashboard.layout.component.html',
+	selector: 'app-dashboard-template',
+	templateUrl: './dashboard.template.component.html',
 	standalone: true,
 	imports: [RouterOutlet, SideMenuComponent, DashboardHeaderComponent, NotificationComponent],
 	providers: [AuthControllerService],
@@ -21,7 +21,7 @@ import { NotificationComponent } from '../../components/notification/notificatio
 		`
 	]
 })
-export class DashboardLayoutComponent implements OnInit {
+export class DashboardTemplateComponent implements OnInit {
 	user: IAuth = {
 		id: '',
 		name: '',

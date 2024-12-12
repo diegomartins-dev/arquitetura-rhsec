@@ -47,69 +47,119 @@ export class SideMenuComponent implements OnInit {
 	menu: Category[] = [
 		{
 			id: '1',
-			label: 'Notificação',
-			icon: 'pi pi-bell',
-			color: '#0050A9'
-		},
-		{
-			id: '2',
-			label: 'Mais',
-			icon: 'pi pi-ellipsis-h',
-			color: '#0050A9'
-		},
-		{
-			id: '3',
-			label: 'Pasta',
-			icon: 'pi pi-folder',
+			label: 'Programação',
+			icon: 'folder',
 			color: '#0050A9',
 			items: [
 				{
-					id: '3-1',
+					id: '1-1',
 					label: 'Home',
 					route: 'home'
 				},
 				{
-					id: '3-2',
+					id: '1-2',
 					label: 'Programação Escolar',
 					route: 'programacao-escolar'
 				},
 				{
-					id: '3-3',
+					id: '1-3',
 					label: 'Práticas de Ensino',
 					route: 'praticas-ensino'
 				},
 				{
-					id: '3-4',
+					id: '1-4',
 					label: 'Regência',
 					items: [
 						{
-							id: '3-4-1',
+							id: '1-4-1',
 							label: 'Grade Escolar',
 							route: 'regencia/grade'
 						},
 						{
-							id: '3-4-2',
+							id: '1-4-2',
 							label: 'Licença',
 							route: 'regencia/licenca'
 						}
 					]
 				},
 				{
-					id: '3-5',
+					id: '1-5',
 					label: 'Administração',
-					route: 'admin'
+					items: [
+						{
+							id: '1-5-1',
+							label: 'Admin 1',
+							route: 'admin/item1'
+						},
+						{
+							id: '1-5-2',
+							label: 'Admin 2',
+							route: 'admin/item2'
+						}
+					]
 				},
 				{
-					id: '3-6',
+					id: '1-6',
 					label: 'Escola',
 					route: 'escola'
 				}
 			]
 		},
 		{
+			id: '2',
+			label: 'Pasta 2',
+			icon: 'folder',
+			color: '#0050A9',
+			styleClass: 'ABC 111',
+			items: [
+				{
+					id: '2-1',
+					label: 'item 1',
+					route: 'home'
+				},
+				{
+					id: '2-2',
+					label: 'item 2'
+				},
+				{
+					id: '2-3',
+					label: 'item 3'
+				},
+				{
+					id: '2-4',
+					label: 'item 4'
+				}
+			]
+		},
+		{
+			id: '3',
+			label: 'Pasta 3',
+			icon: 'folder',
+			color: '#0050A9',
+			styleClass: 'ABC 111',
+			items: [
+				{
+					id: '3-1',
+					label: 'item 1'
+				},
+				{
+					id: '3-2',
+					label: 'item 2'
+				},
+				{
+					id: '3-3',
+					label: 'item 3'
+				},
+				{
+					id: '3-4',
+					label: 'item 4'
+				}
+			]
+		},
+		{
 			id: '4',
-			label: 'Pasta 1',
-			icon: 'pi pi-inbox',
+			label: 'Pasta 4',
+			icon: 'folder',
 			color: '#0050A9',
 			styleClass: 'ABC 111',
 			items: [
@@ -130,6 +180,56 @@ export class SideMenuComponent implements OnInit {
 					label: 'item 4'
 				}
 			]
+		},
+		{
+			id: '5',
+			label: 'Pasta 5',
+			icon: 'folder',
+			color: '#0050A9',
+			styleClass: 'ABC 111',
+			items: [
+				{
+					id: '5-1',
+					label: 'item 1'
+				},
+				{
+					id: '5-2',
+					label: 'item 2'
+				},
+				{
+					id: '5-3',
+					label: 'item 3'
+				},
+				{
+					id: '5-4',
+					label: 'item 4'
+				}
+			]
+		},
+		{
+			id: '6',
+			label: 'Pasta 6',
+			icon: 'folder',
+			color: '#0050A9',
+			styleClass: 'ABC 111',
+			items: [
+				{
+					id: '6-1',
+					label: 'item 1'
+				},
+				{
+					id: '6-2',
+					label: 'item 2'
+				},
+				{
+					id: '6-3',
+					label: 'item 3'
+				},
+				{
+					id: '6-4',
+					label: 'item 4'
+				}
+			]
 		}
 	];
 
@@ -138,6 +238,7 @@ export class SideMenuComponent implements OnInit {
 	openCategory: string | null = null;
 	submenuPosition = { x: 0, y: 0 };
 	categoryOpenned: string | null = null;
+	closeSubmenu = false;
 
 	sidebarVisible: boolean = false;
 
@@ -153,6 +254,7 @@ export class SideMenuComponent implements OnInit {
 		this.openCategory = null;
 		this.categoryOpenned = null;
 		this.sidebarVisible = false;
+		this.closeSubmenu = true;
 	}
 
 	openSubmenu(event: MouseEvent, category: string, subcategories?: Subcategory[]) {

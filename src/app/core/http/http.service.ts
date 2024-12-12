@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { forkJoin, Observable, OperatorFunction, switchMap } from 'rxjs';
+import { forkJoin, Observable, switchMap } from 'rxjs';
+
 import { IProvider } from '../interface/iprovider.interface';
 
 @Injectable({

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { from, Observable, OperatorFunction, of } from 'rxjs';
-import { IListItem } from '../../modules/to-do/interfaces/i-list-item.interface';
 import { IProvider } from '../interface/iprovider.interface';
 import { IAuth } from '../../modules/auth/interfaces/auth.interface';
+import { IListItem } from '../../modules/dashboard/to-do/interfaces/i-list-item.interface';
 
 export interface IReturn<T> {
 	status: 'success' | 'error';

@@ -11,7 +11,8 @@ export const routes: Routes = [
 	},
 	{
 		path: 'dashboard',
-		loadComponent: () => import('./modules/to-do/pages/to-do.page.component').then((m) => m.ToDoPageComponent),
+		loadComponent: () =>
+			import('./modules/dashboard/layout/dashboard.layout.component').then((m) => m.DashboardLayoutComponent),
 		children: [
 			{
 				path: '',
@@ -20,7 +21,8 @@ export const routes: Routes = [
 			},
 			{
 				path: 'home',
-				loadComponent: () => import('./modules/to-do/containers/to-do/to-do.component').then((m) => m.ToDoComponent),
+				loadComponent: () =>
+					import('./modules/dashboard/home/pages/home.page.component').then((m) => m.HomePageComponent),
 				canActivate: [authGuard]
 			},
 			{
