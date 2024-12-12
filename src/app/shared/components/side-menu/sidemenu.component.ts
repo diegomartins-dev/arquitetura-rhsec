@@ -53,37 +53,32 @@ export class SideMenuComponent implements OnInit {
 			items: [
 				{
 					id: '1-1',
-					label: 'Home',
+					label: 'Programação Escolar',
 					route: 'home'
 				},
 				{
 					id: '1-2',
-					label: 'Programação Escolar',
-					route: 'programacao-escolar'
-				},
-				{
-					id: '1-3',
 					label: 'Práticas de Ensino',
 					route: 'praticas-ensino'
 				},
 				{
-					id: '1-4',
+					id: '1-3',
 					label: 'Regência',
 					items: [
 						{
-							id: '1-4-1',
+							id: '1-3-1',
 							label: 'Grade Escolar',
 							route: 'regencia/grade'
 						},
 						{
-							id: '1-4-2',
+							id: '1-3-2',
 							label: 'Licença',
 							route: 'regencia/licenca'
 						}
 					]
 				},
 				{
-					id: '1-5',
+					id: '1-4',
 					label: 'Administração',
 					items: [
 						{
@@ -99,7 +94,7 @@ export class SideMenuComponent implements OnInit {
 					]
 				},
 				{
-					id: '1-6',
+					id: '1-5',
 					label: 'Escola',
 					route: 'escola'
 				}
@@ -114,8 +109,7 @@ export class SideMenuComponent implements OnInit {
 			items: [
 				{
 					id: '2-1',
-					label: 'item 1',
-					route: 'home'
+					label: 'item 1'
 				},
 				{
 					id: '2-2',

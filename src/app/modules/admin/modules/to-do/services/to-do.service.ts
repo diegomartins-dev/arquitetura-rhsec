@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { from, map, Observable } from 'rxjs';
 
 import { IListItem } from '../interfaces/i-list-item.interface';
-import { ApiService } from '../../../../core/repository/api.service';
+import { ApiService } from '../../../../../core/repository/api.service';
 
 export interface IReturn {
 	status: 'success' | 'error';

@@ -1,35 +1,10 @@
 <div class="card">
-	<p-table [value]="data" [tableStyle]="{ 'min-width': '80px' }">
+	<p-table [value]="data">
 		<ng-template pTemplate="header">
-			<tr>
-				@for (column of columns; track $index) {
-					<th>{{ column.header }}</th>
-				}
-			</tr>
+			<ng-content select="[slot='header']"></ng-content>
 		</ng-template>
-		<ng-template pTemplate="body" let-data>
-			<tr>
-				<!-- @for (column of columns; track $index) {
-				<td>
-					{{ data[column.field] }}
-				</td>
-			} -->
-				<td>
-					{{ data.codigo }}
-				</td>
-				<td>
-					{{ data.escola }}
-				</td>
-				<td>
-					{{ data.cidade }}
-				</td>
-				<td>
-					{{ data.data | date: 'dd/MM/yyyy' }}
-				</td>
-				<td>
-					<p-tag [value]="data.situacao" [severity]="getSeverity(data.situacao)" />
-				</td>
-			</tr>
+		<ng-template pTemplate="body" let-data let-columns>
+			<ng-content select="[slot='body']"></ng-content>
 		</ng-template>
 	</p-table>
 </div>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { HomeComponent } from '../container/home.component';
+import { HomeComponent } from '../containers/home.component';
 
 @Component({
 	selector: 'app-home-page',

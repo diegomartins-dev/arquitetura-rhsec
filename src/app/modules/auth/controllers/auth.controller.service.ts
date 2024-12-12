@@ -28,7 +28,7 @@ export class AuthControllerService {
 					} else if (res.data !== undefined) {
 						const { id, name, email, role } = res.data;
 						this.setUserLogged({ id, name, email, role });
-						this.router.navigateByUrl('/dashboard');
+						this.router.navigateByUrl('/admin');
 						this.notificationService.success(res.message || 'Login realizado com sucesso');
 					}
 				},

@@ -1,0 +1,46 @@
+<div class="md:my-5 md:mx-8 grid">
+	<app-card class="col-4"></app-card>
+
+	<app-card class="col-4"></app-card>
+
+	<app-card class="col-4"></app-card>
+</div>
+
+<div class="md:my-5 md:mx-8 col">
+	<app-table [data]="data">
+		<tr slot="header">
+			@for (column of columns; track $index) {
+				<th [class]="column?.class">{{ column.header }}</th>
+			}
+		</tr>
+
+		@for (item of data; track item) {
+			<tr slot="body">
+				<td>
+					{{ item.codigo }}
+				</td>
+				<td>
+					{{ item.escola }}
+				</td>
+				<td>
+					{{ item.cidade }}
+				</td>
+				<td>
+					{{ item.data | date: 'dd/MM/yyyy' }}
+				</td>
+				<td class="text-center">
+					<p-tag [value]="item.situacao" [severity]="getSeverity(item.situacao)" />
+				</td>
+				<td>
+					{{ item.bairro }}
+				</td>
+				<td>
+					{{ item.estado }}
+				</td>
+				<td>
+					{{ item.pais }}
+				</td>
+			</tr>
+		}
+	</app-table>
+</div>

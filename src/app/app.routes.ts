@@ -10,9 +10,9 @@ export const routes: Routes = [
 		redirectTo: 'auth/login'
 	},
 	{
-		path: 'dashboard',
+		path: 'admin',
 		loadComponent: () =>
-			import('./modules/dashboard/layout/dashboard.layout.component').then((m) => m.DashboardLayoutComponent),
+			import('./modules/admin/layouts/dashboard.layout.component').then((m) => m.DashboardLayoutComponent),
 		children: [
 			{
 				path: '',
@@ -22,7 +22,7 @@ export const routes: Routes = [
 			{
 				path: 'home',
 				loadComponent: () =>
-					import('./modules/dashboard/home/pages/home.page.component').then((m) => m.HomePageComponent),
+					import('./modules/admin/modules/home/pages/home.page.component').then((m) => m.HomePageComponent),
 				canActivate: [authGuard]
 			},
 			{

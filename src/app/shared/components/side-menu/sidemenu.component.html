@@ -57,7 +57,7 @@
 	}
 
 	<app-sidebar [sidebarVisible]="sidebarVisible" (closeSidebar)="sidebarVisible = false" [items]="menu"></app-sidebar>
-	<div class="col flex flex-column" data-test="sidemenu-content">
+	<div class="col flex flex-column overflow-y-auto" data-test="sidemenu-content">
 		<ng-content></ng-content>
 	</div>
 </div>
