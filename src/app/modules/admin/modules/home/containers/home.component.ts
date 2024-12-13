@@ -1,47 +1,54 @@
-import { Component } from '@angular/core';
-import { TableComponent } from '../../../../../shared/components/table/table.component';
-import { TagModule } from 'primeng/tag';
 import { DatePipe } from '@angular/common';
+import { Component } from '@angular/core';
 import { TableModule } from 'primeng/table';
+import { TagModule } from 'primeng/tag';
+
 import { CardComponent } from '../../../../../shared/components/card/card.component';
+import { TableComponent } from '../../../../../shared/components/table/table.component';
+import { TagComponent } from '../../../../../shared/components/tag/tag.component';
 
 @Component({
 	selector: 'app-home',
 	templateUrl: './home.component.html',
 	standalone: true,
-	imports: [TableComponent, TagModule, DatePipe, TableModule, CardComponent]
+	imports: [TableComponent, TagModule, DatePipe, TableModule, CardComponent, TagComponent]
 })
 export class HomeComponent {
 	data: any[] = [
 		{
-			codigo: '1000',
+			codigo: '00001',
 			situacao: 'completa',
-			escola: 'Colégio Militar',
-			data: new Date(),
-			cidade: 'Salvador',
-			bairro: 'Centro',
-			estado: 'Bahia',
-			pais: 'Brasil'
+			escola: 'Colégio Estadual Carlos Costa',
+			data: '2025-03-01',
+			cidade: 'Salvador'
 		},
 		{
-			codigo: '1000',
+			codigo: '00002',
 			situacao: 'em progresso',
-			escola: 'Colégio Estadual',
-			data: new Date(),
-			cidade: 'Salvador',
-			bairro: 'Centro',
-			estado: 'Bahia',
-			pais: 'Brasil'
+			escola: 'Colégio Estadual Thales de Azevedo',
+			data: '2025-01-12',
+			cidade: 'Lauro de Freitas'
 		},
 		{
-			codigo: '1000',
+			codigo: '00003',
 			situacao: 'desativada',
-			escola: 'Colégio Estadual',
-			data: new Date(),
-			cidade: 'Salvador',
-			bairro: 'Centro',
-			estado: 'Bahia',
-			pais: 'Brasil'
+			escola: 'Centro Educacional do Estado',
+			data: '2025-09-11',
+			cidade: 'Simões Filho'
+		},
+		{
+			codigo: '00004',
+			situacao: 'completa',
+			escola: 'Colégio da Polícia Militar',
+			data: '2025-04-24',
+			cidade: 'Valença'
+		},
+		{
+			codigo: '00005',
+			situacao: 'em progresso',
+			escola: 'Centro Integrado de Educação',
+			data: '2025-06-30',
+			cidade: 'Feira de Santana'
 		}
 	];
 	columns: any[] = [
@@ -49,22 +56,6 @@ export class HomeComponent {
 		{ field: 'escola', header: 'Escola' },
 		{ field: 'cidade', header: 'Cidade' },
 		{ field: 'data', header: 'Data' },
-		{ field: 'situacao', header: 'Situação', class: 'text-center' },
-		{ field: 'cidade', header: 'Bairro' },
-		{ field: 'cidade', header: 'Estado' },
-		{ field: 'cidade', header: 'País' }
+		{ field: 'situacao', header: 'Situação', class: 'text-center' }
 	];
-
-	getSeverity(status: string) {
-		switch (status) {
-			case 'completa':
-				return 'success';
-			case 'em progresso':
-				return 'warning';
-			case 'desativada':
-				return 'danger';
-			default:
-				return 'secondary';
-		}
-	}
 }

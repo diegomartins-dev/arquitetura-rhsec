@@ -1,12 +1,33 @@
-<div class="md:my-5 md:mx-8 grid">
-	<app-card class="col-4"></app-card>
+<div class="md:my-5 md:mx-8 grid gap-2">
+	<app-card
+		class="col-12 xl:col"
+		[titleIconBgColor]="'info'"
+		titleName="Carência Escolar"
+		[titleNumber]="48.689"
+		[statistics]="{ number: 1, text: 'Up from past week' }"
+		[titleIconImage]="{ src: 'assets/icons/people.png', alt: 'Carência Escolar' }"
+	></app-card>
 
-	<app-card class="col-4"></app-card>
+	<app-card
+		class="col-12 xl:col"
+		[titleIconBgColor]="'warning'"
+		titleName="Escolas Homologadas"
+		[titleNumber]="2536"
+		[statistics]="{ number: 1.3, text: 'Up from past week' }"
+		[titleIconImage]="{ src: 'assets/icons/box.png', alt: 'Escolas Homologadas' }"
+	></app-card>
 
-	<app-card class="col-4"></app-card>
+	<app-card
+		class="col-12 xl:col"
+		[titleIconBgColor]="'success'"
+		titleName="Nome grande para vê como fica"
+		[titleNumber]="2536"
+		[statistics]="{ number: -4.3, text: 'Down from yesterday' }"
+		[titleIconImage]="{ src: 'assets/icons/graphic.png', alt: 'Escolas Homologadas' }"
+	></app-card>
 </div>
 
-<div class="md:my-5 md:mx-8 col">
+<div class="md:my-5 md:mx-8">
 	<app-table [data]="data">
 		<tr slot="header">
 			@for (column of columns; track $index) {
@@ -29,16 +50,7 @@
 					{{ item.data | date: 'dd/MM/yyyy' }}
 				</td>
 				<td class="text-center">
-					<p-tag [value]="item.situacao" [severity]="getSeverity(item.situacao)" />
-				</td>
-				<td>
-					{{ item.bairro }}
-				</td>
-				<td>
-					{{ item.estado }}
-				</td>
-				<td>
-					{{ item.pais }}
+					<app-tag [value]="item.situacao"></app-tag>
 				</td>
 			</tr>
 		}

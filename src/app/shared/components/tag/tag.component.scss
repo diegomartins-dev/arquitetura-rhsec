@@ -1,0 +1,25 @@
+::ng-deep {
+	.p-tag {
+		min-width: 85px;
+		padding: 0.4rem 0.4rem;
+	}
+	.p-tag-value {
+		color: var(--text-color);
+		text-transform: capitalize;
+	}
+
+	.p-tag-success {
+		background-color: #9ff995;
+	}
+
+	.p-tag-warning {
+		background-color: #fdf797;
+	}
+
+	.p-tag-danger {
+		background-color: #fbb198;
+		.p-tag-value {
+			color: #6a0024;
+		}
+	}
+}

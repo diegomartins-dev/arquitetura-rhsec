@@ -1,3 +1,26 @@
-<p-card header="Simple Card">
-	<p class="m-0">Lorem ipsum dolor sit amet...</p>
+<p-card>
+	<ng-template pTemplate="title">
+		<div class="header flex flex-column gap-3">
+			<p class="m-0 header-title">{{ titleName }}</p>
+			<p class="m-0 header-number">{{ titleNumber }}</p>
+		</div>
+		<div class="header-icon" [class]="titleIconBgColor">
+			<img class="header-icon-image" [src]="titleIconImage.src" [alt]="titleIconImage.alt" />
+		</div>
+	</ng-template>
+	<ng-template pTemplate="footer">
+		<div class="flex align-items-center gap-2">
+			<div class="flex gap-2 align-items-center" [ngClass]="statistics.number > 0 ? 'up' : 'down'">
+				@if (statistics.number > 0) {
+					<i class="material-icons-outlined">trending_up</i>
+				} @else {
+					<i class="material-icons-outlined">trending_down</i>
+				}
+				<span>{{ statistics.number < 0 ? statistics.number * -1 : statistics.number }}%</span>
+			</div>
+			<span>{{ statistics.text }}</span>
+		</div>
+
+		<i class="material-icons-outlined fullscreen-icon">fullscreen</i>
+	</ng-template>
 </p-card>

@@ -1,15 +1,6 @@
 ::ng-deep {
 	.p-datatable-wrapper {
-		// border-radius: 20px;
-		// overflow: hidden;
-		border-top: 1px solid #ededed;
-		border-bottom: 1px solid #ededed;
-
 		.p-datatable-table {
-			// border-radius: 20px;
-
-			// border: 1px solid #edeef4;
-
 			.p-datatable-thead {
 				background-color: #fcfdfd;
 
@@ -25,27 +16,26 @@
 				}
 
 				tr th {
-					color: #1d3460;
-					border-bottom: 2px solid #ededed;
-					// border-bottom: 2px solid #f2f3f3;
+					color: var(--text-color);
+					padding: 1rem 2rem;
 				}
 			}
 
 			.p-datatable-tbody {
 				& > tr:last-child {
-					border: 2px solid #ededed;
 					margin-bottom: 1rem;
 				}
 
-				& > tr {
-					color: #37393a;
+				& > tr td {
+					padding: 1.8rem 2rem;
+					font-weight: 500;
 				}
 			}
 		}
 	}
 }
 
-.card {
+.p-card {
 	border: 1px solid #ededed;
 	overflow: hidden;
 	border-radius: 20px;

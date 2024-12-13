@@ -43,6 +43,8 @@ body.light-theme {
 	--black: #10101a;
 	--black-010: var(--blue-500);
 	--grey: var(--gray-200);
+	background-color: #f5f7ff;
+	--text-color: #031d4e;
 }
 
 body.dark-theme {
@@ -53,4 +55,5 @@ body.dark-theme {
 	--blue-200: #c4ffeb;
 	--gray-500: #758294;
 	--gray-100: var(--gray-800);
+	background-color: black;
 }
