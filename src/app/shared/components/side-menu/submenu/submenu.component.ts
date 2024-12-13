@@ -39,25 +39,19 @@ export class SubmenuComponent implements AfterViewInit, OnInit {
 
 	private renderer = inject(Renderer2);
 
+	//fecha todos os itens cada fez que fechar o menu
 	ngOnInit(): void {
 		this.submenu?.map((menuItem) => {
 			menuItem.expanded = false;
 		});
 	}
 
+	//para inserir a tag no cypress no .p-toggleable-content
 	ngAfterViewInit() {
 		const expandedDivs = document.querySelectorAll('.p-toggleable-content');
 		expandedDivs.forEach((div: any) => {
 			this.renderer.setAttribute(div, 'data-test', 'submenu-panel-content-' + div.id);
 		});
-	}
-
-	searchClassnameInParent(element: HTMLElement, className: string): boolean {
-		if (element.parentElement && !element.classList.contains(className)) {
-			return this.searchClassnameInParent(element.parentElement, className);
-		} else {
-			return element.classList.contains(className) ? true : false;
-		}
 	}
 
 	clickSubmenu(event: Event) {
