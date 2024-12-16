@@ -14,9 +14,9 @@
 				label="Email"
 				type="text"
 				[formControl]="email"
-				[invalid]="email.invalid && email.touched"
+				[invalid]="(email.invalid && email.touched) || errorMessage().email ? true : false"
 				[errorMessage]="errorMessage().email || ''"
-				(blur)="updateErrorMessage()"
+				(outputOnBlur)="updateErrorMessage()"
 				[cyErrorId]="'login-error-email'"
 				[cyInputId]="'login-input-email'"
 			></app-input-field>
@@ -28,9 +28,9 @@
 				label="Senha"
 				type="password"
 				[formControl]="password"
-				[invalid]="password.invalid && password.touched"
+				[invalid]="(password.invalid && password.touched) || errorMessage().password ? true : false"
 				[errorMessage]="errorMessage().password || ''"
-				(blur)="updateErrorMessage()"
+				(outputOnBlur)="updateErrorMessage()"
 				[cyErrorId]="'login-error-password'"
 				[cyInputId]="'login-input-password'"
 			></app-input-field>

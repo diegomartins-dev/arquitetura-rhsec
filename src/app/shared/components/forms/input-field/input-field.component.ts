@@ -1,4 +1,4 @@
-import { Component, Input, forwardRef } from '@angular/core';
+import { Component, EventEmitter, Input, Output, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { CommonModule } from '@angular/common';
@@ -24,6 +24,7 @@ export class InputFieldComponent implements ControlValueAccessor {
 	@Input() invalid: boolean = false;
 	@Input() cyErrorId: string = '';
 	@Input() cyInputId: string = '';
+	@Output() outputOnBlur = new EventEmitter<boolean>();
 
 	value: string = '';
 
@@ -49,5 +50,9 @@ export class InputFieldComponent implements ControlValueAccessor {
 		const value = (event.target as HTMLInputElement).value;
 		this.value = value;
 		this.onChange(value);
+	}
+
+	handleBlur() {
+		this.outputOnBlur.emit(true);
 	}
 }

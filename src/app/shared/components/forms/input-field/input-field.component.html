@@ -6,7 +6,7 @@
 			[ngClass]="{ 'p-invalid': invalid }"
 			[value]="value"
 			(input)="handleInput($event)"
-			(blur)="onTouched()"
+			(blur)="handleBlur()"
 			[attr.data-testid]="cyInputId"
 		/>
 		<label [ngClass]="{ 'p-error': invalid }">{{ label }}</label>
