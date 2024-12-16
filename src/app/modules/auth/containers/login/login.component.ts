@@ -7,19 +7,23 @@ import { InputTextModule } from 'primeng/inputtext';
 
 import { NotificationComponent } from '../../../../shared/components/notification/notification.component';
 import { AuthControllerService } from '../../controllers/auth.controller.service';
+import { InputFieldComponent } from "../../../../shared/input-field/input-field.component";
+import { ButtonComponent } from "../../../../shared/button/button.component";
 
 @Component({
 	selector: 'app-login',
 	standalone: true,
 	imports: [
-		FormsModule,
-		ReactiveFormsModule,
-		ButtonModule,
-		InputTextModule,
-		FloatLabelModule,
-		NotificationComponent,
-		NgClass
-	],
+    FormsModule,
+    ReactiveFormsModule,
+    ButtonModule,
+    InputTextModule,
+    FloatLabelModule,
+    NotificationComponent,
+    NgClass,
+    InputFieldComponent,
+    ButtonComponent
+],
 	providers: [AuthControllerService],
 	templateUrl: './login.component.html',
 	styleUrl: './login.component.scss'
