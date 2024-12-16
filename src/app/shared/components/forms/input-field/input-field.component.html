@@ -1,16 +1,17 @@
 <div class="p-field">
-  <span class="p-float-label">
-    <input
-      [type]="type"
-      pInputText
-      [ngClass]="{ 'p-invalid': invalid }"
-      [value]="value"
-      (input)="handleInput($event)"
-      (blur)="onTouched()"
-    />
-    <label [ngClass]="{ 'p-error': invalid }">{{ label }}</label>
-  </span>
-  <small *ngIf="invalid && errorMessage" class="p-error">
-    {{ errorMessage }}
-  </small>
+	<span class="p-float-label">
+		<input
+			[type]="type"
+			pInputText
+			[ngClass]="{ 'p-invalid': invalid }"
+			[value]="value"
+			(input)="handleInput($event)"
+			(blur)="onTouched()"
+			[attr.data-testid]="cyInputId"
+		/>
+		<label [ngClass]="{ 'p-error': invalid }">{{ label }}</label>
+	</span>
+	<small *ngIf="invalid && errorMessage" class="p-error" [attr.data-testid]="cyErrorId">
+		{{ errorMessage }}
+	</small>
 </div>

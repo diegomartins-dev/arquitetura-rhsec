@@ -17,6 +17,8 @@
 				[invalid]="email.invalid && email.touched"
 				[errorMessage]="errorMessage().email || ''"
 				(blur)="updateErrorMessage()"
+				[cyErrorId]="'login-error-email'"
+				[cyInputId]="'login-input-email'"
 			></app-input-field>
 		</div>
 
@@ -29,6 +31,8 @@
 				[invalid]="password.invalid && password.touched"
 				[errorMessage]="errorMessage().password || ''"
 				(blur)="updateErrorMessage()"
+				[cyErrorId]="'login-error-password'"
+				[cyInputId]="'login-input-password'"
 			></app-input-field>
 		</div>
 
@@ -43,13 +47,13 @@
 				label="Entrar"
 				[styleClass]="'normal-btn-large'"
 				type="submit"
-				data-cy="login-button-enter"
+				cyButtonId="login-button-enter"
 			></app-button>
 			<app-button
 				label="Cadastrar"
 				[styleClass]="'secondary-btn-large'"
 				type="button"
-				data-cy="login-button-register"
+				cyButtonId="login-button-register"
 			></app-button>
 		</div>
 

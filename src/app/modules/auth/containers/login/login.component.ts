@@ -1,29 +1,28 @@
-import { NgClass } from '@angular/common';
 import { Component, inject, signal } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { FloatLabelModule } from 'primeng/floatlabel';
 import { InputTextModule } from 'primeng/inputtext';
 
+import { ButtonComponent } from '../../../../shared/components/button/button.component';
+import { InputFieldComponent } from '../../../../shared/components/forms/input-field/input-field.component';
 import { NotificationComponent } from '../../../../shared/components/notification/notification.component';
 import { AuthControllerService } from '../../controllers/auth.controller.service';
-import { InputFieldComponent } from "../../../../shared/input-field/input-field.component";
-import { ButtonComponent } from "../../../../shared/button/button.component";
 
 @Component({
 	selector: 'app-login',
 	standalone: true,
 	imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    ButtonModule,
-    InputTextModule,
-    FloatLabelModule,
-    NotificationComponent,
-    NgClass,
-    InputFieldComponent,
-    ButtonComponent
-],
+		FormsModule,
+		ReactiveFormsModule,
+		ButtonModule,
+		InputTextModule,
+		FloatLabelModule,
+		NotificationComponent,
+
+		InputFieldComponent,
+		ButtonComponent
+	],
 	providers: [AuthControllerService],
 	templateUrl: './login.component.html',
 	styleUrl: './login.component.scss'
