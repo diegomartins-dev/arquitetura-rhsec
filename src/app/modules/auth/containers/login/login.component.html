@@ -1,59 +1,59 @@
 <div class="container">
-  <app-notification></app-notification>
- <div class="logo-container">
-  <img src="/assets/img/logo.png" alt="">
-  <img src="/assets/img/logo-gov.png" alt="">
- </div>
-  <form (submit)="login($event)" class="login-container" autocomplete="off">
-    <!-- Título -->
-    <h3 class="login-title">Faça o login para iniciar a sessão no sistema</h3>
+	<app-notification></app-notification>
+	<div class="logo-container">
+		<img src="/assets/img/logo.png" alt="" />
+		<img src="/assets/img/logo-gov.png" alt="" />
+	</div>
+	<form (submit)="login($event)" class="login-container" autocomplete="off">
+		<!-- Título -->
+		<h3 class="login-title">Faça o login para iniciar a sessão no sistema</h3>
 
-    <!-- Input CPF -->
-    <div class="field mb-4">
-      <app-input-field
-        label="Email"
-        type="text"
-        [formControl]="email"
-        [invalid]="email.invalid && email.touched"
-        [errorMessage]="errorMessage().email || ''"
-        (blur)="updateErrorMessage()"
-      ></app-input-field>
-    </div>
+		<!-- Input CPF -->
+		<div class="field mb-4">
+			<app-input-field
+				label="Email"
+				type="text"
+				[formControl]="email"
+				[invalid]="email.invalid && email.touched"
+				[errorMessage]="errorMessage().email || ''"
+				(blur)="updateErrorMessage()"
+			></app-input-field>
+		</div>
 
-    <!-- Input Senha -->
-    <div class="field password-field">
-      <app-input-field
-        label="Senha"
-        type="password"
-        [formControl]="password"
-        [invalid]="password.invalid && password.touched"
-        [errorMessage]="errorMessage().password || ''"
-        (blur)="updateErrorMessage()"
-      ></app-input-field>
-    </div>
+		<!-- Input Senha -->
+		<div class="field password-field">
+			<app-input-field
+				label="Senha"
+				type="password"
+				[formControl]="password"
+				[invalid]="password.invalid && password.touched"
+				[errorMessage]="errorMessage().password || ''"
+				(blur)="updateErrorMessage()"
+			></app-input-field>
+		</div>
 
-    <!-- Link "Esqueci minha senha" -->
-    <div class="forgot-password">
-      <a href="#" class="forgot-link">Esqueci minha senha</a>
-    </div>
+		<!-- Link "Esqueci minha senha" -->
+		<div class="forgot-password">
+			<a href="#" class="forgot-link">Esqueci minha senha</a>
+		</div>
 
-    <!-- Botões -->
-    <div class="button-group">
-      <app-button
-        label="Entrar"
-        [styleClass]="'normal-btn-large'"
-        type="submit"
-        data-cy="login-button-enter"
-      ></app-button>
-      <app-button
-        label="Cadastrar"
-        [styleClass]="'secondary-btn-large'"
-        type="button"
-        data-cy="login-button-register"
-      ></app-button>
-    </div>
+		<!-- Botões -->
+		<div class="button-group">
+			<app-button
+				label="Entrar"
+				[styleClass]="'normal-btn-large'"
+				type="submit"
+				data-cy="login-button-enter"
+			></app-button>
+			<app-button
+				label="Cadastrar"
+				[styleClass]="'secondary-btn-large'"
+				type="button"
+				data-cy="login-button-register"
+			></app-button>
+		</div>
 
-    <!-- Link de solicitação -->
-    <p class="access-request">Solicitar acesso à coordenação</p>
-  </form>
+		<!-- Link de solicitação -->
+		<p class="access-request">Solicitar acesso à coordenação</p>
+	</form>
 </div>
