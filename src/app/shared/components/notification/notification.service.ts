@@ -12,6 +12,7 @@ export interface IMessage {
 export class NotificationService implements Notification {
 	message = new EventEmitter<IMessage>();
 
+
 	success(message: string): void {
 		setTimeout(() => {
 			this.message.emit({ type: 'success', message: message.trim() });

@@ -28,19 +28,20 @@ export class NotificationComponent implements OnInit {
 	ngOnInit(): void {
 		this.cdr.detectChanges();
 		this.notificationService.message.subscribe((data) => this.openNotification(data.type, data.message));
-		this.playSound();
-		//Se for funcionar com websocket, descomentar código abaixo
-		// this.websocketService.listen('notification').subscribe((data) => {
-		// 	this.openNotification(data.type, data.message);
-		// 	this.playSound();
+		//Para laçar notificações ao receber eventos do websocket, basta descomentar as linhas abaixo
+		// this.websocketService.listen('notification').subscribe((data: any) => {
+		// 	this.openNotification(  'success',  data.message || 'Nova notificação recebida!');
 		// });
 	}
 
 	openNotification(type: string, message: string) {
 		this.messageService.add({ severity: type, detail: message, life: 5000 });
+		this.playSound();
+
 	}
 
 	playSound() {
+		console.log('chamei')
     const audio = new Audio('assets/notificacao.mp3');
     audio.play();
   }

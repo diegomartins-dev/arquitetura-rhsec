@@ -7,6 +7,7 @@ import { InputTextModule } from 'primeng/inputtext';
 
 import { NotificationComponent } from '../../../../shared/components/notification/notification.component';
 import { AuthControllerService } from '../../controllers/auth.controller.service';
+import { CardModule } from 'primeng/card';
 
 @Component({
 	selector: 'app-login',
@@ -18,7 +19,8 @@ import { AuthControllerService } from '../../controllers/auth.controller.service
 		InputTextModule,
 		FloatLabelModule,
 		NotificationComponent,
-		NgClass
+		NgClass,
+		CardModule
 	],
 	providers: [AuthControllerService],
 	templateUrl: './login.component.html',

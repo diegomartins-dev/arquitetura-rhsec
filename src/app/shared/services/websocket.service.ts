@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { io } from 'socket.io-client';
+import { io, Socket } from 'socket.io-client';
 import { Observable } from 'rxjs';
-import { Socket } from 'socket.io-client';
+import { NotificationService } from '../components/notification/notification.service'; // Atualize o caminho conforme necessário
 
 @Injectable({
   providedIn: 'root',
