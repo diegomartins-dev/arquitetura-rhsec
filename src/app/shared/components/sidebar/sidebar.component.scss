@@ -1,0 +1,14 @@
+::ng-deep {
+	.p-sidebar-right {
+		width: calc(100% - 48px);
+		margin: 4px 24px;
+		padding: 12px;
+		height: calc(100% - 8px);
+		border-radius: 12px;
+		background-color: var(--surface-a);
+
+		.p-panelmenu-icon {
+			font-family: 'Material Icons' !important;
+		}
+	}
+}

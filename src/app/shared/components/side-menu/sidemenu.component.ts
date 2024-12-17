@@ -21,6 +21,7 @@ export interface Category {
 	items?: Subcategory[];
 	route?: string;
 	styleClass?: string;
+	notExpandIcon: boolean;
 }
 
 @Component({
@@ -50,6 +51,7 @@ export class SideMenuComponent implements OnInit {
 			label: 'Programação',
 			icon: 'folder',
 			color: '#0050A9',
+			notExpandIcon: true,
 			items: [
 				{
 					id: '1-1',
@@ -105,7 +107,7 @@ export class SideMenuComponent implements OnInit {
 			label: 'Pasta 2',
 			icon: 'folder',
 			color: '#0050A9',
-			styleClass: 'ABC 111',
+			notExpandIcon: true,
 			items: [
 				{
 					id: '2-1',
@@ -130,7 +132,7 @@ export class SideMenuComponent implements OnInit {
 			label: 'Pasta 3',
 			icon: 'folder',
 			color: '#0050A9',
-			styleClass: 'ABC 111',
+			notExpandIcon: true,
 			items: [
 				{
 					id: '3-1',
@@ -155,7 +157,7 @@ export class SideMenuComponent implements OnInit {
 			label: 'Pasta 4',
 			icon: 'folder',
 			color: '#0050A9',
-			styleClass: 'ABC 111',
+			notExpandIcon: true,
 			items: [
 				{
 					id: '4-1',
@@ -180,7 +182,7 @@ export class SideMenuComponent implements OnInit {
 			label: 'Pasta 5',
 			icon: 'folder',
 			color: '#0050A9',
-			styleClass: 'ABC 111',
+			notExpandIcon: true,
 			items: [
 				{
 					id: '5-1',
@@ -205,7 +207,7 @@ export class SideMenuComponent implements OnInit {
 			label: 'Pasta 6',
 			icon: 'folder',
 			color: '#0050A9',
-			styleClass: 'ABC 111',
+			notExpandIcon: true,
 			items: [
 				{
 					id: '6-1',

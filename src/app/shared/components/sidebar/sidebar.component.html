@@ -1,3 +1,46 @@
-<p-sidebar #sidebarRef [(visible)]="sidebarVisible" (onHide)="closeSidebar.emit(true)" data-test="sidebar">
-	<p-panelMenu [model]="itemsBackup" styleClass="w-full md:w-20rem" data-test="sidebar-menu" />
+<p-sidebar
+	#sidebarRef
+	[(visible)]="sidebarVisible"
+	(onHide)="closeSidebar.emit(true)"
+	data-test="sidebar"
+	[position]="'right'"
+>
+	<p-panelMenu
+		[model]="itemsBackup"
+		styleClass="w-full md:w-20rem"
+		data-test="sidebar-menu"
+		#panelMenu
+		(click)="stopClickPropagation($event)"
+	>
+		<ng-template pTemplate="item" let-item>
+			@if (item.route) {
+				<a
+					[routerLink]="item.route"
+					[routerLinkActive]="'active'"
+					class="flex align-items-center cursor-pointer text-color px-3 py-2 no-underline"
+					[attr.data-cy]="'sidebar-button-click-' + item.id"
+					(click)="closeSidebar.emit(true)"
+				>
+					<i class="material-icons-outlined">{{ item.icon }}</i>
+					<span class="ml-2 text-color">{{ item.label }}</span>
+				</a>
+			} @else {
+				<span
+					class="flex align-items-center justify-content-between cursor-pointer text-color px-3 py-2"
+					[attr.data-test]="'sidebar-panel-label-' + item.id"
+				>
+					<div class="flex align-items-center">
+						<i class="material-icons-outlined">{{ item.icon }}</i>
+						<span class="ml-2">{{ item.label }}</span>
+					</div>
+
+					@if (item.items && item.expanded && !item.notExpandIcon) {
+						<i class="material-icons-outlined">remove</i>
+					} @else if (item.items && !item.notExpandIcon) {
+						<i class="material-icons-outlined">add</i>
+					}
+				</span>
+			}
+		</ng-template>
+	</p-panelMenu>
 </p-sidebar>
