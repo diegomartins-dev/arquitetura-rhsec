@@ -45,10 +45,16 @@
 			}
 		</ng-template>
 	</p-panelMenu>
-	<div class="mt-6 ml-1 icon-buttons">
-		<i class="material-icons-outlined" (click)="onGoToPage('admin/configuracao')">settings</i>
-	</div>
-	<div class="mt-6 ml-1 icon-buttons">
-		<i class="material-icons-outlined" (click)="logout()">logout</i>
+	<div class="flex flex-column mt-6">
+		<div>
+			<span class="ml-1 icon-buttons">
+				<i class="material-icons-outlined" (click)="onGoToPage('admin/configuracao')">settings</i>
+			</span>
+		</div>
+		<div>
+			<span class="ml-1 icon-buttons">
+				<i class="material-icons-outlined" (click)="logout()">exit_to_app</i>
+			</span>
+		</div>
 	</div>
 </p-sidebar>
