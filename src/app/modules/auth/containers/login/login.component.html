@@ -9,16 +9,17 @@
 
 		<!-- Input CPF -->
 		<div class="field mb-4">
-			<app-input-field
-				label="Email"
+			<app-input-mask
+				label="CPF"
 				type="text"
-				[formControl]="email"
-				[invalid]="email.invalid && email.touched"
-				[errorMessage]="errorMessage().email || ''"
+				mask="999.999.999-99"
+				[formControl]="cpf"
+				[invalid]="cpf.invalid && cpf.touched"
+				[errorMessage]="errorMessage().cpf || ''"
 				(blur)="updateErrorMessage()"
-				[cyErrorId]="'login-error-email'"
-				[cyInputId]="'login-input-email'"
-			></app-input-field>
+				[cyErrorId]="'login-error-cpf'"
+				[cyInputId]="'login-input-cpf'"
+			></app-input-mask>
 		</div>
 
 		<!-- Input Senha -->

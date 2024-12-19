@@ -48,6 +48,7 @@ export class InMemoryService<T> implements IProvider<T> {
 				{
 					id: '1',
 					email: 'admin@email.com',
+					cpf:'123.123.123-12',
 					password: '123456',
 					name: 'Admin',
 					role: 'admin'

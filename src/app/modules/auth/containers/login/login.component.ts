@@ -8,6 +8,7 @@ import { ButtonComponent } from '../../../../shared/components/button/button.com
 import { InputFieldComponent } from '../../../../shared/components/forms/input-field/input-field.component';
 import { NotificationComponent } from '../../../../shared/components/notification/notification.component';
 import { AuthControllerService } from '../../controllers/auth.controller.service';
+import { InputMaskComponent } from '../../../../shared/components/forms/input-mask/input-mask.components';
 
 @Component({
 	selector: 'app-login',
@@ -19,7 +20,7 @@ import { AuthControllerService } from '../../controllers/auth.controller.service
 		InputTextModule,
 		FloatLabelModule,
 		NotificationComponent,
-
+    InputMaskComponent,
 		InputFieldComponent,
 		ButtonComponent
 	],
@@ -28,34 +29,35 @@ import { AuthControllerService } from '../../controllers/auth.controller.service
 	styleUrl: './login.component.scss'
 })
 export class LoginComponent {
-	readonly email = new FormControl('', [Validators.required, Validators.email]);
+	readonly cpf = new FormControl('', [Validators.required, Validators.pattern(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/)]);
 	readonly password = new FormControl('', [Validators.required]);
 
-	errorMessage = signal<{ email?: string; password?: string }>({});
+	errorMessage = signal<{ cpf?: string; password?: string }>({});
 
 	authController = inject(AuthControllerService);
 
 	updateErrorMessage() {
-		if (this.email.hasError('required')) {
-			this.errorMessage.update((oldValues) => ({ ...oldValues, email: 'Campo email é obrigatório' }));
+		if (this.cpf.hasError('required')) {
+			this.errorMessage.update((oldValues) => ({ ...oldValues, cpf: 'Campo cpf é obrigatório' }));
 		}
 
-		if (this.email.hasError('email')) {
-			this.errorMessage.update((oldValues) => ({ ...oldValues, email: 'Informe um email válido' }));
+		if (this.cpf.hasError('cpf')) {
+			this.errorMessage.update((oldValues) => ({ ...oldValues, cpf: 'Informe um cpf válido' }));
 		}
 
 		if (this.password.hasError('required')) {
 			this.errorMessage.update((oldValues) => ({ ...oldValues, password: 'Campo senha é obrigatório' }));
 		}
 
-		if (this.email.valid && this.password.valid) {
+		if (this.cpf.valid && this.password.valid) {
 			this.errorMessage.set({});
 		}
 	}
 
 	login(event: any) {
 		event.preventDefault();
-		if (this.email.invalid || this.password.invalid) this.updateErrorMessage();
-		this.authController.login(this.email, this.password);
+		console.log(this.cpf)
+		if (this.cpf.invalid || this.password.invalid) this.updateErrorMessage();
+		this.authController.login(this.cpf, this.password);
 	}
 }

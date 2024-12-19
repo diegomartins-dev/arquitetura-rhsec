@@ -1,0 +1,20 @@
+<div class="p-field">
+	<span class="p-float-label p-inputgroup">
+		<p-inputMask
+			[type]="type"
+			pInputText
+			[ngClass]="{ 'p-invalid': invalid }"
+  		[(ngModel)]="value"
+			[mask]="mask"
+			(input)="handleInput($event)"
+			[attr.data-testid]="cyInputId"
+		/>
+		<label [ngClass]="{ 'p-error': invalid }">{{ label }}</label>
+		<span *ngIf="invalid" class="p-inputgroup-addon p-error-icon">
+			<i class="pi pi-exclamation-circle"></i>
+		</span>
+	</span>
+	<small *ngIf="invalid && errorMessage" class="p-error" [attr.data-testid]="cyErrorId">
+		{{ errorMessage }}
+	</small>
+</div>

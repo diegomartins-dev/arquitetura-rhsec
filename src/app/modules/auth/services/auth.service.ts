@@ -20,18 +20,19 @@ export class AuthService {
 
 	constructor() {}
 
-	login(email: string, password: string): Observable<IReturn> {
+	login(cpf: string, password: string): Observable<IReturn> {
 		try {
 			return this.apiService
-				.list('users', { attr: 'email', value: email })
+				.list('users', { attr: 'cpf', value: cpf })
 				.pipe(
 					map((res) => {
-						if (res[0] && res[0]?.email === email && res[0]?.password === password)
+						console.log(res[0], cpf)
+						if (res[0] && res[0]?.cpf === cpf && res[0]?.password === password)
 							return { status: 'success', message: 'Login realizado com sucesso', data: res[0] };
 						throw new Error('');
 					})
 				)
-				.pipe(this.apiService.returnCatchError('Email ou senha inválidos')) as Observable<IReturn>;
+				.pipe(this.apiService.returnCatchError('CPF ou senha inválidos')) as Observable<IReturn>;
 		} catch (e) {
 			return this.apiService.returnThrowError('Aconteceu algum erro ao tentar fazer o login');
 		}

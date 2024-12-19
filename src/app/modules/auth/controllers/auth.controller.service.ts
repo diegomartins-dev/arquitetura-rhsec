@@ -16,11 +16,11 @@ export class AuthControllerService {
 
 	constructor() {}
 
-	login(email: FormControl | null, password: FormControl | null) {
-		if (email?.invalid || password?.invalid) {
-			this.notificationService.error('Email ou senha inválidos');
+	login(cpf: FormControl | null, password: FormControl | null) {
+		if (cpf?.invalid || password?.invalid) {
+			this.notificationService.error('CPF ou senha inválidos');
 		} else {
-			this.authService.login(email?.value, password?.value).subscribe({
+			this.authService.login(cpf?.value, password?.value).subscribe({
 				next: (res) => {
 					if (res.status !== 'success') {
 						this.notificationService.error(res.message || 'Erro ao tentar fazer o login');

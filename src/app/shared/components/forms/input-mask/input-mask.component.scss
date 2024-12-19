@@ -1,0 +1,31 @@
+:host {
+  display: block; /* Garante que o componente ocupe a largura total do pai */
+  width: 100%;
+}
+
+.p-field {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+p-inputmask{
+  display: flex;
+  width: 100%;
+  color: aquamarine;
+}
+
+.p-inputmask{
+  width: 100%;
+}
+
+.p-field input, p-inputmask > input {
+  width: 100%;
+}
+
+.p-error {
+  color: var(--error);
+}
+
+.p-invalid {
+  border-color: var(--error) !important;
+}
