@@ -1,4 +1,4 @@
-<div class="grid flex-column md:flex-row mx-0 min-h-full">
+<div class="block md:flex md:flex-row mx-0 min-h-full">
 	@if (!isMobile) {
 		<div
 			class="col-fixed min-h-full menu-lateral flex flex-column align-items-center z-5 gap-7 py-6"
@@ -62,7 +62,7 @@
 	}
 
 	<app-sidebar [sidebarVisible]="sidebarVisible" (closeSidebar)="sidebarVisible = false" [items]="menu"></app-sidebar>
-	<div class="col flex flex-column overflow-auto" data-test="sidemenu-content">
+	<div class="col flex flex-column" data-test="sidemenu-content">
 		<ng-content></ng-content>
 	</div>
 </div>

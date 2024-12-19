@@ -22,7 +22,10 @@
 	} @else {
 		<div class="p-toolbar-group-end">
 			<p class="mr-4 user" data-test="header-user">{{ user.name }}</p>
-			<p class="p-card datetime">{{ datetime | date: 'hh:mm dd/MM/yyyy' }}</p>
+			<p class="p-card datetime flex flex-row gap-3">
+				<span>{{ datetime | date: 'hh:mm' }}</span>
+				<span>{{ datetime | date: 'dd/MM/yyyy' }}</span>
+			</p>
 		</div>
 	}
 </p-toolbar>
