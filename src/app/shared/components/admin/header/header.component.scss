@@ -1,0 +1,42 @@
+::ng-deep {
+	.p-toolbar {
+		background-color: transparent;
+		border: none;
+
+		.menu-button {
+			color: var(--blue-500);
+			cursor: pointer;
+			user-select: none;
+		}
+
+		.notification {
+			padding: 16px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+
+			&.active {
+				background-color: var(--blue-100);
+				border-radius: 80px;
+			}
+
+			&:hover {
+				background-color: var(--blue-200);
+				border-radius: 80px;
+			}
+		}
+
+		.user {
+			font-weight: 600;
+			font-size: 1rem;
+			color: var(--blue-500);
+		}
+
+		.datetime {
+			padding: 4px 8px;
+			border-radius: 24px;
+			color: var(--blue-500);
+			font-size: 0.9rem;
+		}
+	}
+}

@@ -1,14 +1,14 @@
-<div class="grid mx-0 md:min-h-full">
+<div class="grid flex-column md:flex-row mx-0 min-h-full">
 	@if (!isMobile) {
 		<div
 			class="col-fixed min-h-full menu-lateral flex flex-column align-items-center z-5 gap-7 py-6"
 			data-test="sidemenu"
 		>
 			<div class="flex flex-column gap-2">
-				<div class="sidemenu-items" [attr.data-test]="'sidemenu-item-notification'">
+				<div class="sidemenu-items" [attr.data-cy]="'sidemenu-button-notification'">
 					<i class="material-icons-outlined" [ngStyle]="{ color: '#0050A9' }">notifications</i>
 				</div>
-				<div class="sidemenu-items" [attr.data-test]="'sidemenu-item-notification'">
+				<div class="sidemenu-items" [attr.data-cy]="'sidemenu-button-more'">
 					<i class="material-icons-outlined" [ngStyle]="{ color: '#0050A9' }">more_horiz</i>
 				</div>
 			</div>
@@ -45,8 +45,13 @@
 				</div>
 			}
 			<div class="flex flex-column gap-1">
-				<div class="sidemenu-items" [attr.data-test]="'sidemenu-item-notification'">
-					<i class="material-icons-outlined" [ngStyle]="{ color: '#0050A9' }">settings</i>
+				<div class="sidemenu-items" [attr.data-cy]="'sidemenu-button-notification'">
+					<i class="material-icons-outlined" [ngStyle]="{ color: '#0050A9' }" [routerLink]="['configuracao']">
+						settings
+					</i>
+				</div>
+				<div class="sidemenu-items" [attr.data-cy]="'sidemenu-button-logout'">
+					<i class="material-icons-outlined" [ngStyle]="{ color: '#0050A9' }" (click)="logout()">logout</i>
 				</div>
 			</div>
 		</div>
@@ -57,7 +62,7 @@
 	}
 
 	<app-sidebar [sidebarVisible]="sidebarVisible" (closeSidebar)="sidebarVisible = false" [items]="menu"></app-sidebar>
-	<div class="col flex flex-column overflow-y-auto" data-test="sidemenu-content">
+	<div class="col flex flex-column overflow-auto" data-test="sidemenu-content">
 		<ng-content></ng-content>
 	</div>
 </div>

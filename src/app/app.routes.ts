@@ -11,8 +11,7 @@ export const routes: Routes = [
 	},
 	{
 		path: 'admin',
-		loadComponent: () =>
-			import('./modules/admin/layouts/dashboard.layout.component').then((m) => m.DashboardLayoutComponent),
+		loadComponent: () => import('./modules/admin/layouts/admin.layout.component').then((m) => m.AdminLayoutComponent),
 		children: [
 			{
 				path: '',
@@ -23,6 +22,12 @@ export const routes: Routes = [
 				path: 'home',
 				loadComponent: () =>
 					import('./modules/admin/modules/home/pages/home.page.component').then((m) => m.HomePageComponent),
+				canActivate: [authGuard]
+			},
+			{
+				path: 'configuracao',
+				loadComponent: () =>
+					import('./modules/admin/modules/settings/pages/settings.component').then((m) => m.SettingsPageComponent),
 				canActivate: [authGuard]
 			},
 			{

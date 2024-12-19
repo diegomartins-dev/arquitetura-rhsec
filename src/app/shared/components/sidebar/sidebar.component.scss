@@ -7,8 +7,84 @@
 		border-radius: 12px;
 		background-color: var(--surface-a);
 
-		.p-panelmenu-icon {
-			font-family: 'Material Icons' !important;
+		.p-panelmenu-header {
+			.p-panelmenu-header-content {
+				border: none;
+				background: transparent;
+				border-radius: 12px;
+				transition: none;
+				padding: 4px 8px;
+
+				&:hover {
+					background-color: var(--blue-200);
+
+					.ml-2 {
+						font-weight: 600;
+					}
+				}
+
+				.ml-2,
+				i {
+					color: var(--blue-500);
+					user-select: none;
+				}
+			}
+		}
+		.p-panelmenu-content {
+			background-color: transparent;
+			border: none;
+
+			.active .ml-2 {
+				color: var(--blue-500);
+			}
+
+			.p-menuitem > .p-menuitem-content {
+				background-color: transparent;
+			}
+
+			.p-menuitem:not(.p-highlight):not(.p-disabled) > .p-menuitem-content {
+				--text-color: var(--blue-500);
+				margin: 0 12px;
+			}
+
+			.p-menuitem:not(.p-highlight):not(.p-disabled) > .p-menuitem-content:hover {
+				background-color: var(--blue-200);
+				font-weight: 600;
+			}
+		}
+	}
+
+	.p-sidebar-header {
+		.material-icons-outlined {
+			cursor: pointer;
+			user-select: none;
+			color: var(--blue-500);
+
+			&:hover {
+				color: var(--blue-100);
+			}
+		}
+	}
+
+	.icon-buttons {
+		padding: 16px;
+		user-select: none;
+		display: inline-flex;
+		color: var(--blue-500);
+		cursor: pointer;
+
+		i {
+			font-size: 24px;
+		}
+
+		&.active {
+			background-color: var(--blue-100);
+			border-radius: 80px;
+		}
+
+		&:hover {
+			background-color: var(--blue-200);
+			border-radius: 80px;
 		}
 	}
 }

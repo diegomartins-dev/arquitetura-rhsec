@@ -4,24 +4,17 @@ import { RouterOutlet } from '@angular/router';
 import { AuthControllerService } from '../../../modules/auth/controllers/auth.controller.service';
 import { IAuth } from '../../../modules/auth/interfaces/auth.interface';
 import { SideMenuComponent } from '../../components/side-menu/sidemenu.component';
-import { DashboardHeaderComponent } from '../../components/dashboard/header/header.component';
 import { NotificationComponent } from '../../components/notification/notification.component';
+import { AdminHeaderComponent } from '../../components/admin/header/header.component';
 
 @Component({
-	selector: 'app-dashboard-template',
-	templateUrl: './dashboard.template.component.html',
+	selector: 'app-admin-template',
+	templateUrl: './admin.template.component.html',
 	standalone: true,
-	imports: [RouterOutlet, SideMenuComponent, DashboardHeaderComponent, NotificationComponent],
-	providers: [AuthControllerService],
-	styles: [
-		`
-			.example-spacer {
-				flex: 1 1 auto;
-			}
-		`
-	]
+	imports: [RouterOutlet, SideMenuComponent, AdminHeaderComponent, NotificationComponent],
+	providers: [AuthControllerService]
 })
-export class DashboardTemplateComponent implements OnInit {
+export class AdminTemplateComponent implements OnInit {
 	user: IAuth = {
 		id: '',
 		name: '',

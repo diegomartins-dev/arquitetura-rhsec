@@ -1,17 +1,16 @@
-import { NgClass, NgIf, NgStyle } from '@angular/common';
-import { Component, CUSTOM_ELEMENTS_SCHEMA, HostListener, OnInit, ViewChild } from '@angular/core';
-import { PanelMenuModule } from 'primeng/panelmenu';
-import { Subcategory, SubmenuComponent } from './submenu/submenu.component';
-import { Sidebar, SidebarModule } from 'primeng/sidebar';
+import { NgClass, NgStyle } from '@angular/common';
+import { Component, CUSTOM_ELEMENTS_SCHEMA, HostListener, inject, OnInit } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
-import { ToolbarModule } from 'primeng/toolbar';
 import { InputTextModule } from 'primeng/inputtext';
-import { StyleClassModule } from 'primeng/styleclass';
-import { AvatarModule } from 'primeng/avatar';
-import { RippleModule } from 'primeng/ripple';
+import { PanelMenuModule } from 'primeng/panelmenu';
+import { SidebarModule } from 'primeng/sidebar';
+import { ToolbarModule } from 'primeng/toolbar';
+
 import { ClickOutsideMenuDirective } from '../../directives/click-outside-menu.directive';
-import { DashboardHeaderComponent } from '../dashboard/header/header.component';
+import { AdminHeaderComponent } from '../admin/header/header.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
+import { Subcategory, SubmenuComponent } from './submenu/submenu.component';
+import { AuthControllerService } from '../../../modules/auth/controllers/auth.controller.service';
 
 export interface Category {
 	id: string;
@@ -22,6 +21,8 @@ export interface Category {
 	route?: string;
 	styleClass?: string;
 	notExpandIcon: boolean;
+	expanded?: boolean;
+	command?: Function;
 }
 
 @Component({
@@ -39,7 +40,7 @@ export interface Category {
 		ButtonModule,
 		ToolbarModule,
 		InputTextModule,
-		DashboardHeaderComponent,
+		AdminHeaderComponent,
 		SidebarComponent
 	],
 	schemas: [CUSTOM_ELEMENTS_SCHEMA]
@@ -238,6 +239,8 @@ export class SideMenuComponent implements OnInit {
 
 	sidebarVisible: boolean = false;
 
+	private authControllerService = inject(AuthControllerService);
+
 	ngOnInit(): void {
 		this.onResize();
 	}
@@ -274,5 +277,9 @@ export class SideMenuComponent implements OnInit {
 	onResize() {
 		this.isMobile = window.innerWidth <= 768;
 		this.initializeMenu();
+	}
+
+	logout() {
+		this.authControllerService.logout();
 	}
 }

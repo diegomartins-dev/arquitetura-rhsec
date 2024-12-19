@@ -1,0 +1,15 @@
+<div class="mx-3 grid gap-2 h-full" data-test="settings">
+	<div class="p-toolbar-group-center mx-1 md:mx-8">
+		<p-splitButton
+			class="mr-2"
+			[label]="getFont(this.layoutService.selectedFont)"
+			[model]="this.layoutService.fontItems"
+			data-cy="header-button-change-font"
+		/>
+		<p-splitButton
+			[label]="getThemeName(this.layoutService.selectedTheme)"
+			[model]="this.layoutService.themeItems"
+			data-cy="header-button-change-theme"
+		/>
+	</div>
+</div>

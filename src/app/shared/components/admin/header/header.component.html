@@ -1,0 +1,28 @@
+<p-toolbar class="md:my-5 md:mx-8 z-1" [ngClass]="isMobile ? '' : 'md:block hidden'" data-test="header">
+	@if (isMobile) {
+		<div class="p-toolbar-group-start">
+			<span
+				class="material-icons-outlined menu-button"
+				(click)="openCloseSidebar()"
+				data-cy="header-button-open-close-sidebar"
+			>
+				format_list_bulleted
+			</span>
+		</div>
+	}
+	<div class="p-toolbar-group-center">
+		<img src="assets/img/logo.png" class="max-h-1rem md:max-h-2rem" alt="" />
+	</div>
+	@if (isMobile) {
+		<div class="p-toolbar-group-end">
+			<span class="material-icons-outlined menu-button notification" data-cy="header-button-notification">
+				notifications
+			</span>
+		</div>
+	} @else {
+		<div class="p-toolbar-group-end">
+			<p class="mr-4 user" data-test="header-user">{{ user.name }}</p>
+			<p class="p-card datetime">{{ datetime | date: 'hh:mm dd/MM/yyyy' }}</p>
+		</div>
+	}
+</p-toolbar>

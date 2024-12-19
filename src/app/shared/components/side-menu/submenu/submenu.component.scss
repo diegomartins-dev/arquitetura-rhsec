@@ -4,6 +4,12 @@
 		--text-color: var(--blue-500);
 	}
 
+	//subpanel quando hover
+	.p-panelmenu .p-panelmenu-content .p-menuitem:not(.p-highlight):not(.p-disabled) > .p-menuitem-content:hover {
+		background-color: var(--blue-500);
+		--text-color: var(--primary-color-text);
+	}
+
 	.p-panelmenu .p-panelmenu-panel {
 		background-color: var(--submenu-panel);
 		border: none;
@@ -11,6 +17,7 @@
 		border-radius: 0;
 		margin: 0;
 
+		//todos os items do panel quando tiver na rota que estiver ativa
 		&:has(.active) {
 			background-color: var(--blue-500);
 
@@ -33,14 +40,23 @@
 				.active {
 					--text-color: var(--primary-color-text);
 				}
+
+				i {
+					color: var(--blue-500);
+				}
 			}
 		}
 
+		//subpanel fica fundo azul e texto branco quando hover e tiver expandido
 		&:not(:has(.p-highlight)):hover {
 			background-color: var(--blue-500);
 
 			.p-panelmenu-header-content {
 				--text-color: var(--primary-color-text);
+
+				i {
+					color: var(--primary-color-text);
+				}
 			}
 		}
 	}
@@ -60,6 +76,7 @@
 		}
 	}
 
+	//conteudo do subpanel quando estiver expandido, fundo azul claro
 	.p-panelmenu-header.p-highlight:has(+ .p-toggleable-content) {
 		background-color: var(--surface-b);
 		color: var(--text-color);

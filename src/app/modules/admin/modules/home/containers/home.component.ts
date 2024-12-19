@@ -58,4 +58,11 @@ export class HomeComponent {
 		{ field: 'data', header: 'Data' },
 		{ field: 'situacao', header: 'Situação', class: 'text-center' }
 	];
+
+	constructor() {
+		//pequeno teste com geolocalizacao do navegador
+		// navigator.geolocation.getCurrentPosition((position) => {
+		// 	console.log(position.coords.latitude, position.coords.longitude);
+		// });
+	}
 }
