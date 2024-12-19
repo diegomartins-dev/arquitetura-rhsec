@@ -2,7 +2,7 @@
 	.p-datatable-wrapper {
 		.p-datatable-table {
 			.p-datatable-thead {
-				background-color: #fcfdfd;
+				background-color: var(--table-header);
 
 				//arrendondar os cantos do header da tabela para que o border-radius fique mais visivel
 				tr:last-child th {
@@ -16,7 +16,8 @@
 				}
 
 				tr th {
-					color: var(--text-color);
+					color: var(--surface-e);
+					font-weight: 800;
 					padding: 1rem 2rem;
 				}
 			}
@@ -36,7 +37,7 @@
 }
 
 .p-card {
-	border: 1px solid #ededed;
+	border: 1px solid var(--table-border);
 	overflow: hidden;
 	border-radius: 20px;
 	padding-bottom: 1rem;

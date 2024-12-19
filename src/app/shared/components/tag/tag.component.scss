@@ -4,7 +4,10 @@
 		padding: 0.4rem 0.4rem;
 	}
 	.p-tag-value {
-		color: #031d4e;
+		font-family: var(--font-family-secondary);
+		font-weight: 700;
+		font-size: 12px;
+		color: var(--tag-color);
 		text-transform: capitalize;
 	}
 

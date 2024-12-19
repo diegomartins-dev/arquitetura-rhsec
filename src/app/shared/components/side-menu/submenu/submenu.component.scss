@@ -63,11 +63,16 @@
 
 	.p-panelmenu-header-content {
 		background-color: transparent;
+		font-family: var(--font-family-secondary);
+		font-size: 13px;
+		font-weight: 400;
 		--text-color: var(--gray-500);
 	}
 
 	.p-toggleable-content.p-panelmenu-expanded {
-		background-color: var(--surface-b);
+		background-color: var(--submenu-panel-content-active);
+		font-size: 12px;
+		font-weight: 400;
 
 		.p-panelmenu-content {
 			@include active();
@@ -78,9 +83,10 @@
 
 	//conteudo do subpanel quando estiver expandido, fundo azul claro
 	.p-panelmenu-header.p-highlight:has(+ .p-toggleable-content) {
-		background-color: var(--surface-b);
+		background-color: var(--submenu-panel-content-active);
+		font-family: var(--font-family-secondary);
 		color: var(--text-color);
-		font-weight: 600;
+		font-weight: 700;
 
 		.ml-2,
 		i {

@@ -1,7 +1,7 @@
 .menu-lateral {
 	width: 82px;
 	background-color: var(--surface-a);
-	box-shadow: 5px 1px 5px 1px var(--surface-c);
+	box-shadow: 5px 1px 5px 1px var(--menu-box-shadow);
 }
 
 .sidemenu-items {
@@ -12,19 +12,15 @@
 	user-select: none;
 	gap: 8px;
 	cursor: pointer;
+	border-radius: 80px;
 
 	i {
 		font-size: 24px;
 	}
 
+	&:hover,
 	&.active {
-		background-color: var(--blue-100);
-		border-radius: 80px;
-	}
-
-	&:hover {
 		background-color: var(--blue-200);
-		border-radius: 80px;
 	}
 }
 
@@ -39,19 +35,15 @@
 	user-select: none;
 	text-align: center;
 	line-height: 14px;
+	border-radius: 14px;
 
 	i {
 		font-size: 24px;
 	}
 
-	&.active {
-		background-color: var(--blue-100);
-		border-radius: 14px;
-	}
-
+	&.active,
 	&:hover {
 		background-color: var(--blue-200);
-		border-radius: 14px;
 	}
 
 	.category-label {
@@ -65,7 +57,7 @@
 	position: fixed;
 	display: flex;
 	flex-direction: column;
-	background-color: var(--submenu-panel);
+	background-color: var(--surface-a);
 	width: 200px;
 	border: 1px solid var(--gray-100);
 	border-radius: 16px;

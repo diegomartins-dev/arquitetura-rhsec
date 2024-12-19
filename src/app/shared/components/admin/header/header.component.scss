@@ -10,32 +10,33 @@
 		}
 
 		.notification {
+			border: none;
 			padding: 16px;
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
-
-			&.active {
-				background-color: var(--blue-100);
-				border-radius: 80px;
-			}
+			border-radius: 80px;
+			background-color: transparent;
 
 			&:hover {
-				background-color: var(--blue-200);
-				border-radius: 80px;
+				background-color: var(--surface-a);
+			}
+
+			&:active {
+				background-color: var(--surface-b);
 			}
 		}
 
 		.user {
-			font-weight: 600;
-			font-size: 1rem;
+			font-weight: 500;
+			font-size: 16px;
 			color: var(--blue-500);
 		}
 
 		.datetime {
 			padding: 4px 8px;
 			border-radius: 24px;
-			color: var(--blue-500);
+			color: var(--surface-d);
 			font-size: 0.9rem;
 		}
 
